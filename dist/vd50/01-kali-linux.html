@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="MobileOptimized" content="0">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="generator" content="pandoc">
+	<meta name="author" content="Караваев С. В.">
+	<meta name="dcterms.date" content="2019-01-01">
+	<title>Установка и настройка программных средств для тестирования безопасности</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../templates/top/css/top.min.css"
+		integrity="sha256-Jk/Lrypj95Ipq97zXBYyL7uBcmozq0IC+m8Fr/POBFU="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr>
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2019
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br>«Установка и настройка программных средств для тестирования безопасности»<br>по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br>для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Получить практический опыт установки и настройки программных средств, предназначенных для аудита безопасности веб­‑приложений (в соответствии с регламентами по безопасности) и подготовки специалистов соответствующего профиля.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Установить и настроить операционную систему <i lang="en">Kali Linux</i> и обучающее веб­‑приложение <i lang="en">WebGoat</i> ⁠— программные средства, предназначенные для аудита безопасности веб­‑приложений и подготовки специалистов по тестированию на проникновение.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Минимальные системные требования</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Chrome 29, Firefox 27, IE 11, Opera 16 или Safari 7</td>
+</tr>
+<tr class="even">
+<td>Гипервизор</td>
+<td>Oracle VM VirtualBox 6.1</td>
+</tr>
+<tr class="odd">
+<td>Операционная система</td>
+<td>Windows 7 (x64), Linux (x64) или macOS 10.12</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+<tr class="even">
+<td>Torrent­‑клиент</td>
+<td>Совместимый со стандартом BEP‑0012</td>
+</tr>
+</tbody>
+</table>
+<p>Требования к браузеру обусловлены необходимостью доступа к веб­‑сайту <a href="https://www.offensive-security.com" class="uri">https://www.offensive-security.com</a>. Требования к операционной системе установлены разработчиками гипервизора. Требования к <i lang="en">torrent</i>­‑клиенту обусловлены форматом файла, который содержит метаданные образа виртуальной машины <i lang="en">Kali Linux</i>, доступного для скачивания по протоколу <i lang="en">BitTorrent</i>.</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p><i lang="en">Kali Linux</i> ⁠— это предназначенный для тестирования безопасности программных средств дистрибутив операционной системы на основе <a href="https://www.debian.org">Debian</a>. В состав <i lang="en">Kali Linux</i> включены сотни программ, в том числе анализатор сетевых пакетов <i lang="en">Wireshark</i>, взломщик паролей <i lang="en">John the Ripper</i>, сканеры безопасности <i lang="en">OWASP ZAP</i> и <i lang="en">Burp Suite Community Edition</i>.</p>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Установка <i lang="en">Kali Linux</i> в <i lang="en">VirtualBox</i></h3>
+<ol>
+<li>Откройте в браузере веб­‑страницу <a href="https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/" class="uri">https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/</a> и скачайте архив <i lang="en">OVA</i> с 64­‑битным образом виртуальной машины <i lang="en">Kali Linux</i> для гипервизора <i lang="en">VirtualBox</i>. (Допускается использование другого гипервизора, но данная инструкция рассчитана именно на <i lang="en">VirtualBox</i>.) <strong>Убедитесь, что скачиваете архив именно для выбранного гипервизора: архивы для <i lang="en">Hyper­‑V</i>, <i lang="en">VirtualBox</i>, <i lang="en">VMware</i> не взаимозаменяемы!</strong></li>
+<li>Запустите гипервизор <i lang="en">VirtualBox</i>, если он ещё не запущен.</li>
+<li>Выберите пункт Файл⏵​Импорт конфигураций… или нажмите <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">I</kbd> (<kbd>⌘ ⁠Command</kbd><kbd lang="en">I</kbd>). Будет открыто одноимённое окно.</li>
+<li>На странице «Выберите конфигурацию» укажите путь к файлу формата <i lang="en">OVA</i> и нажмите на кнопку «Далее».</li>
+<li>На странице «Укажите параметры импорта» выберите в выпадающем списке элемент «Сгенерировать новые <i lang="en">MAC</i>­‑адреса всех сетевых адаптеров» и нажмите на кнопку «Импорт».</li>
+<li>Дождитесь окончания импорта. Окно «Импорт конфигураций» будет закрыто.</li>
+<li>В боковом меню <i lang="en">VirtualBox</i> появится пункт, соответствующий новой гостевой операционной системе ⁠— <i lang="en">Kali Linux</i>. Выберите указанный пункт и нажмите на <kbd lang="en">↵ ⁠Enter</kbd>.</li>
+<li>В случае возникновения ошибки <i lang="en">Implementation of the USB 2.0 controller not found!</i> вызовите контекстное меню и выберите пункт «Настроить…» (<kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">S</kbd> или <kbd>⌘ ⁠Command</kbd><kbd lang="en">S</kbd>). Откроется модальное окно с настройками. В этом окне, в боковом меню, выберите пункт <i lang="en">USB</i> и на соответствующей вкладке установите переключатель на радиокнопку «Контроллер <i lang="en">USB 1.1 (OHCI)</i>», после чего нажмите на кнопку <i lang="en">OK</i> и повторно выполните предыдущий шаг.</li>
+<li>Дождитесь загрузки гостевой операционной системы и пройдите аутентификацию, используя имя пользователя <code>kali</code> и пароль <code>kali</code>. <strong>Внимание!</strong> Указанная учётная запись существует в <i lang="en">Kali Linux</i> начиная с версии 2020.1. Если Вы используете одну из предыдущих версий этой операционной системы, используйте имя пользователя <code>root</code> и пароль <code>toor</code>.</li>
+</ol>
+</section>
+<section class="level3">
+<h3>Настройка <i lang="en">Kali Linux</i></h3>
+<p>Все команды, отмеченные знаками «#» и «$», следует вводить в оболочку командной строки, которую можно запустить, нажав <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">⎇ ⁠Alt</kbd> ⁠+ ⁠<kbd lang="en">T</kbd> (<kbd lang="en">⌥ ⁠Option</kbd><kbd>⌘ ⁠Command</kbd><kbd lang="en">T</kbd>). Комбинация <kbd lang="en">⎇ ⁠Alt</kbd> ⁠+ ⁠<kbd lang="en">⭾ ⁠Tab</kbd> (<kbd lang="en">⌥ ⁠Option</kbd><kbd lang="en">⭾ ⁠Tab</kbd>) ⁠— переключение между окнами.</p>
+<section class="level4">
+<h4>Новый пользователь операционной системы</h4>
+<p>Эту секцию необходимо выполнить только тем, кто начал сеанс работы с <i lang="en">Kali Linux</i>, используя учётную запись суперпользователя <code>root</code>.</p>
+<p>Суперпользователь <code>root</code> наделён правами на чтение, запись, выполнение любого файла. Этот факт позволяет забыть о правах доступа, вводе пароля перед выполнением системных операций и т. п., но повседневная работа в таком режиме опасна, противоестественна и затруднена из­‑за политик безопасности программного обеспечения. Например, запуск <i lang="en">Chromium</i> в сеансе суперпользователя невозможен без дополнительной настройки, которая нарушит защиту браузера. Именно поэтому необходимо зарегистрировать нового пользователя с урезанными правами.</p>
+<ol>
+<li><p>Создайте учётную запись нового пользователя по имени <code>kali</code>.</p>
+<pre class="bash command-line" data-prompt="root@kali:~#"><code>adduser kali</code></pre>
+<p>Запомните указанные имя пользователя и пароль! Остальные поля можно не заполнять.</p></li>
+<li><p>Причислите нового пользователя к группе <code>sudo</code> ⁠— её участники имеют право подавать команды на правах суперпользователя, написав перед командой слово <code>sudo</code> и аутентифицировав себя посредством ввода своего пароля.</p>
+<pre class="bash command-line" data-prompt="root@kali:~#"><code>usermod --append --groups sudo kali</code></pre></li>
+<li><p>Перезагрузите операционную систему:</p>
+<pre class="bash command-line" data-prompt="root@kali:~#"><code>reboot</code></pre></li>
+<li><p>Используйте для входа в систему имя пользователя <code>kali</code> и соответствующий пароль.</p></li>
+</ol>
+</section>
+<section class="level4">
+<h4>Локализация пользовательского интерфейса</h4>
+<p><i lang="en">Locale</i> ⁠— это инфраструктура операционной системы, которая позволяет пользователю выбрать язык пользовательского интерфейса, порядок сортировки строк и т. п.</p>
+<ol>
+<li><p>Выведем сведения о текущей <i lang="en">locale</i>’и:</p>
+<pre class="bash command-line" data-prompt="$"><code>localectl status</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>System Locale: LANG=en_US.UTF-8</code></pre>
+<p>Как видим, операционная система использует в качестве регионального стандарта американский вариант английского языка.</p></li>
+<li><p>Проверьте, есть ли в системе современная русская <i lang="en">locale</i>’ь:</p>
+<pre class="bash command-line" data-prompt="$"><code>localectl list-locales | grep ru_RU.UTF-8</code></pre>
+<p>Если система ничего не выведет, то переходите к следующему шагу. Если <i lang="en">locale</i>’ь найдена, перейдите к шагу 7.</p></li>
+<li><p>Перенастроим программный пакет <i lang="en">locales</i> на правах суперпользователя:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo dpkg-reconfigure locales</code></pre>
+<p>Операционная система запросит пароль пользователя <code>kali</code>. Аккуратно наберите <code>kali</code> в оболочке командной строки и нажмите на <kbd lang="en">↵ ⁠Enter</kbd>. Учитывайте, что система в целях безопасности не отображает набираемые символы.</p>
+<p>Откроется окно <i lang="en">Configuring locales</i> («Настраивается <i lang="en">locales</i>»).</p></li>
+<li><p>Первая страница позволяет сгенерировать <i lang="en">locale</i>, соответствующую региональному стандарту <code>ru_RU.UTF-8</code>. Используя <kbd lang="en">⇞ ⁠Page Up</kbd>, <kbd lang="en">⇟ ⁠Page Down</kbd>, <kbd>⭡</kbd> и <kbd>⭣</kbd>, установите курсор на пункт <code>ru_RU.UTF-8 UTF-8</code> и нажмите на <kbd lang="en">Space</kbd>. Напротив пункта появится астери́ск (звёздочка). Нажмите на <kbd lang="en">⭾ ⁠Tab</kbd>, чтобы переключиться на кнопку <i lang="en">OK</i>, и подтвердите выбор, нажав на <kbd lang="en">↵ ⁠Enter</kbd>.</p></li>
+<li><p>На второй странице установим <i lang="en">locale</i>, используемую по умолчанию. Нажимая <kbd>⭡</kbd> или <kbd>⭣</kbd>, установите курсор на пункт <code>ru_RU.UTF-8</code>, затем нажмите на <kbd lang="en">⭾ ⁠Tab</kbd>, чтобы переключиться на кнопку <i lang="en">OK</i>, и подтвердите выбор, нажав на <kbd lang="en">↵ ⁠Enter</kbd>.</p>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>Generating locales (this might take a while)...
+  en_US.UTF-8... done
+  ru_RU.UTF-8... done
+Generation complete.</code></pre></li>
+<li><p>Убедитесь, что русская <i lang="en">locale</i>’ь сгенерирована:</p>
+<pre class="bash command-line" data-prompt="$"><code>localectl list-locales | grep ru_RU.UTF-8</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>ru_RU.UTF-8</code></pre></li>
+<li><p>На правах суперпользователя установите русскую <i lang="en">locale</i>’ь в качестве общесистемной:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo localectl set-locale LANG=ru_RU.UTF-8 LANGUAGE=ru_RU</code></pre></li>
+<li><p>Перезагрузите операционную систему на правах суперпользователя:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo reboot</code></pre></li>
+<li><p>Убедитесь, что пользовательский интерфейс операционной системы после её перезагрузки представлен на русском языке.</p></li>
+<li><p>Выведем сведения о текущей <i lang="en">locale</i>’и:</p>
+<pre class="bash command-line" data-prompt="$"><code>localectl status</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>System Locale: LANG=ru_RU.UTF-8
+               LANGUAGE=ru_RU</code></pre>
+<p>Отныне операционная система использует русский язык в качестве регионального стандарта.</p></li>
+</ol>
+</section>
+<section class="level4">
+<h4>Изменение раскладки клавиатуры</h4>
+<ol>
+<li>Нажмите на кнопку <kbd lang="en">❖ ⁠Win</kbd> (<kbd>⌘ ⁠Command</kbd>).</li>
+<li>Введите в поисковую строку слово <i lang="en">key</i>.</li>
+<li>Из найденных приложений выберите и запустите <i lang="en">Keyboard</i> («Клавиатура»). Будет открыто одноимённое окно.</li>
+<li>На вкладке <i lang="en">Layout</i> («Раскладка») установите отметку на элементе с надписью <i lang="en">Use system defaults</i> («Использовать стандартные системные параметры»), после чего в разделе <i lang="en">Keyboard layout</i> («Раскладка клавиатуры») нажмите на кнопку <i lang="en">Add</i> («Добавить»), установите курсор на пункт <i lang="en">Russian</i> («Русская»), а затем подтвердите выбор, нажав на кнопку <i lang="en">OK</i>.</li>
+<li>Из перечня <i lang="en">Change layout option</i> («Изменить параметры раскладки») выберите пункт <i lang="en">Alt ⁠+ ⁠Shift</i>. С этого момента раскладку клавиатуры можно переключать, нажимая <kbd lang="en">⎇ ⁠Alt</kbd> ⁠+ ⁠<kbd lang="en">⇧ ⁠Shift</kbd> (<kbd lang="en">⌃ ⁠Control</kbd><kbd lang="en">⌥ ⁠Option</kbd><kbd lang="en">Space</kbd>).</li>
+<li>Закройте окно <i lang="en">Keyboard</i> («Клавиатура»), нажав на <i lang="en">Close</i> («Закрыть»).</li>
+<li>В контекстном меню верхней панели выберите пункт <i lang="en">Panel</i>⏵​<i lang="en">Add new items…</i> (Панель⏵​Добавить новые элементы…). Будет открыто окно <i lang="en">Add new items</i> («Добавление новых элементов»).</li>
+<li>С помощью поисковой строки найдите модуль <i lang="en">Keyboard layouts</i> («Раскладки клавиатуры»), установите на нём курсор и подтвердите выбор, нажав на кнопку <i lang="en">Add</i> («Добавить»). На панели появится индикатор, указывающий на выбранную раскладку клавиатуры.</li>
+<li>Закройте окно, нажав на кнопку <i lang="en">Close</i> («Закрыть»).</li>
+</ol>
+</section>
+<section class="level4">
+<h4>Настройка СУБД <i lang="en">MySQL</i></h4>
+<p><i lang="en">MySQL</i> ⁠— это клиент­‑серверная система управления базами данных (СУБД): через графический или текстовый пользовательский интерфейс, встроенный в тот или иной клиент, можно подавать команды серверу; сервер принимает запросы и присылает клиенту результаты их обработки.</p>
+<p>В <i lang="en">Linux</i> сервер <i lang="en">MySQL</i> обычно реализован как демон (программа, выполняемая в фоновом режиме) <code>mysqld</code>, а стандартный клиент ⁠— как утилита <code>mysql</code>. Кроме того, существует одноимённая служба ⁠— <code>/etc/init.d/mysql</code>, которая управляет демоном. Для того, чтобы запустить клиент, достаточно ввести в оболочку команду <code>mysql</code>, однако авторизацию мы не пройдём: мы не знаем ни имени пользователя СУБД, ни его пароля. Придётся заняться настройкой.</p>
+<ol>
+<li><p>Остановите <code>mysqld</code> через службу <code>mysql</code>:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo service mysql stop</code></pre></li>
+<li><p>Запустите <code>mysqld</code> от имени пользователя <code>mysql</code>, отключив авторизацию (<code>--skip-grant-tables</code>) и, для безопасности, сетевое взаимодействие (<code>--skip-networking</code>) <span class="citation" data-cites="MySQL/8.0/Reset_password">[1]</span>. Амперса́нд в конце строки указывает на запуск процесса в фоновом режиме, без привязки к окну.</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo mkdir /var/run/mysqld
+sudo chown mysql:mysql /var/run/mysqld
+sudo --user=mysql mysqld_safe --skip-grant-tables --skip-networking &amp;</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>... mysqld_safe Logging to syslog.
+... mysqld_safe Starting mysqld daemon...</code></pre></li>
+<li><p>Ещё раз нажмите на <kbd lang="en">↵ ⁠Enter</kbd>.</p></li>
+<li><p>Запустите клиент <i lang="en">MySQL</i>.</p>
+<pre class="bash command-line" data-prompt="$"><code>mysql</code></pre>
+<p>Будет выдано приглашение ко вводу команд:</p>
+<pre class="bash uncopyable"><code>MariaDB [(none)]&gt; </code></pre></li>
+<li><p>Уточните, какие пользователи СУБД внесены в базу данных:</p>
+<pre class="sql"><code>SELECT user, password FROM mysql.user;</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>+------+----------+
+| user | password |
++------+----------+
+| root |          |
++------+----------+</code></pre>
+<p>Как видно из таблицы, пароль для <code>root</code> ⁠— единственного пользователя СУБД ⁠— не задан, а авторизация без пароля запрещена.</p></li>
+<li><p>Для манипуляций с учётными записями пользователей СУБД возобновите работу механизма разделения прав, которую для беспрепятственного входа мы прервали посредством <code>--skip-grant-tables</code> <span class="citation" data-cites="MySQL/8.0/Reset_password">[1]</span>:</p>
+<pre class="sql"><code>FLUSH PRIVILEGES;</code></pre></li>
+<li><p>Подайте запрос на изменение пароля пользователя СУБД <span class="citation" data-cites="MySQL/8.0/Reset_password">[1]</span>. Пароль подберите самостоятельно.</p>
+<pre class="sql"><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;новый пароль&#39;;</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>Query OK, 0 rows affected...</code></pre></li>
+<li><p>Убедитесь, что в кортеже пользователя <code>root</code> появился хеш пароля.</p>
+<pre class="sql"><code>SELECT user, password FROM mysql.user;</code></pre></li>
+<li><p>Остановите клиент MySQL.</p>
+<pre class="sql"><code>EXIT;</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>Bye</code></pre></li>
+<li><p>Перезапустите демон:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo service mysql restart</code></pre></li>
+<li><p>Снова запустите клиент <i lang="en">MySQL</i>, используя имя пользователя <code>root</code> и новый пароль:</p>
+<pre class="bash command-line" data-prompt="$"><code>mysql -u root -p</code></pre></li>
+<li><p>Остановите клиент <i lang="en">MySQL</i>.</p>
+<pre class="sql"><code>EXIT;</code></pre>
+<p>Будет выведено:</p>
+<pre class="bash uncopyable"><code>Bye</code></pre></li>
+<li><p>Добавьте службу <code>/etc/init.d/mysql</code> в автозагрузку:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo update-rc.d mysql defaults</code></pre></li>
+<li><p>Перезагрузите операционную систему:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo reboot</code></pre></li>
+<li><p>После следующей перезагрузки операционной системы можно будет проверить, запущен ли демон автоматически.</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo service mysql status</code></pre></li>
+</ol>
+</section>
+<section class="level4">
+<h4>Установка <i lang="en">Java</i></h4>
+<p>Откройте окно терминала и выполните:</p>
+<pre class="bash command-line" data-prompt="$"><code>java --version</code></pre>
+<p>Вывод должен выглядеть приблизительно так:</p>
+<pre class="bash uncopyable"><code>openjdk...
+OpenJDK Runtime Environment...
+OpenJDK 64-Bit Server VM...</code></pre>
+<p>Если команда не была выполнена, введите:</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo apt-get install default-jre</code></pre>
+</section>
+<section class="level4">
+<h4>Установка и запуск <i lang="en">WebGoat</i></h4>
+<p><i lang="en">WebGoat</i> ⁠— это заведомо уязвимое обучающее веб­‑приложение для начинающих тесторов. В дальнейшем Вам предстоит выполнить несколько включённых в <i lang="en">WebGoat</i> заданий, связанных с тестированием на проникновение.</p>
+<p>Откройте браузер <i lang="en">Chromium</i> или <i lang="en">Firefox ESR</i> и обратитесь по веб­‑адресу <a href="https://github.com/WebGoat/WebGoat/releases/latest" class="uri">https://github.com/WebGoat/WebGoat/releases/latest</a>. Сервер перенаправит браузер на страницу, с которой необходимо скачать два файла: <code>webgoat-server-8.0.0.M26.jar</code> и <code>webwolf-8.0.0.M26.jar</code>. Учтите, что в дальнейшем подразумевается, что оба файла размещены в обозначенном символом «<code>~</code>» домашнем каталоге текущего пользователя операционной системы.</p>
+<pre class="bash command-line" data-prompt="$"><code>cd ~/Downloads
+sudo mv webgoat-server-8.0.0.M26.jar /usr/local/bin/webgoat
+sudo mv webwolf-8.0.0.M26.jar        /usr/local/bin/webwolf
+cd /usr/local/bin
+sudo chmod +x webgoat webwolf</code></pre>
+<p>Запуск <i lang="en">WebGoat</i> делает рабочую станцию чрезвычайно уязвимой для внешнего воздействия, и поэтому его рекомендуется запускать исключительно внутри виртуальной машины, не подключённой к каким бы то ни было вычислительным сетям помимо <i lang="en">loopback</i> (<code>127.0.0.0/8</code> или <code>::1/128</code>). В главном меню <i lang="en">VirtualBox</i> выберите пункт Устройства⏵​Сеть⏵​Настроить сеть… и в модальном окне, на вкладке «Сеть», поменяйте тип подключения с <i lang="en">NAT</i> на «Не подключён», после чего убедитесь, что соединение с Интернетом отсутствует. Восстановить соединение после завершения работы с <i lang="en">WebGoat</i> можно в том же меню.</p>
+<p>Запустите <i lang="en">WebGoat</i>.</p>
+<pre class="bash command-line" data-prompt="$"><code>webgoat
+# или
+# java -jar /usr/local/bin/webgoat</code></pre>
+<p>Дождитесь запуска <i lang="en">WebGoat</i> ⁠— в окне появится сообщение <i lang="en">Started <code>StartWebGoat</code></i>, а строчкой выше будет указан номер порта (обычно 8080‑й), занятого встроенным в веб­‑приложение <i lang="en">HTTP</i>­‑сервером <i lang="en">Tomcat</i>. Окно терминала закрывать нельзя. Если потребуется остановить сервер, нажмите <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">C</kbd> (<kbd lang="en">⌘ ⁠Command</kbd><kbd lang="en">C</kbd>) в том экземпляре оболочки командной строки, в котором он запущен.</p>
+<p>Откройте в браузере ресурс <a href="http://localhost:8080/WebGoat/registration" class="uri">http://localhost:8080/WebGoat/registration</a>, на котором размещена форма регистрации нового пользователя <i lang="en">WebGoat</i>. Укажите имя пользователя длиной не менее 6 знаков (например, <code>student</code>) и пароль длиной 6–⁠10 знаков, внимательно прочтите пользовательское соглашение, установите отметку на элементе с надписью <i lang="en">Agree with the terms and conditions</i> («Согласен с условиями») и нажмите на кнопку <i lang="en">Sign up</i> («Зарегистрироваться»).</p>
+</section>
+<section class="level4">
+<h4>Настройка браузера <i lang="en">Chromium</i></h4>
+<p><i lang="en">WebGoat</i> ⁠— англоязычный ресурс, поэтому могут пригодиться средства перевода, встроенные в <i lang="en">Chromium</i>.</p>
+<ol>
+<li>Запустите браузер <i lang="en">Chromium</i>, если он не запущен.</li>
+<li>Выберите «⋮»⏵​<i lang="en">Settings</i>.</li>
+<li>Будет открыто окно <i lang="en">Settings</i>.</li>
+<li>С помощью поисковой строки найдите настройку <i lang="en">Languages</i>.</li>
+<li>Разверните слайдер <i lang="en">Language</i>.</li>
+<li>Нажмите на <i lang="en">Add languages</i>.</li>
+<li>Откроется модальное окно <i lang="en">Add languages</i>.</li>
+<li>Отметьте галочкой <i lang="en">Russian</i> и нажмите на <i lang="en">Add</i>.</li>
+<li>Модальное окно <i lang="en">Add languages</i> закроется.</li>
+<li>На слайдере <i lang="en">Language</i> в перечне языков появится <i lang="en">Russian</i>.</li>
+<li>Нажмите на кнопку «⋮», расположенную напротив него.</li>
+<li>В выпадающем списке выберите элемент <i lang="en">Move to the top</i>, и язык переместится на первую позицию, т. е. станет приоритетным.</li>
+<li>Разверните слайдер <i lang="en">Spell check</i> («Проверка правописания»).</li>
+<li>Установите отметку на элементе с надписью <i lang="en">Russian</i>.</li>
+<li>С помощью поисковой строки найдите настройку <i lang="en">On startup</i> и установите переключатель на радиокнопку <i lang="en">Continue where you left off</i>.</li>
+</ol>
+<p>Теперь, находясь на какой­‑либо странице <i lang="en">WebGoat</i>, нажмите на текст правой кнопкой мыши и в контекстном меню выберите <i lang="en">Translate to English</i>. Появится окно <i lang="en">Translated</i>. Нажмите в нём на <i lang="en">Options</i> и выберите пункт <i lang="en">Change languages</i>. Затем в окне <i lang="en">Options</i> установите как язык страницы (<i lang="en">page language</i>) <i lang="en">English</i>, а как язык перевода (<i lang="en">translation language</i>) ⁠— <i lang="en">Russian</i> и нажмите на кнопку <i lang="en">Translate</i>. Теперь англоязычный текст можно переводить, нажимая на нём правой кнопкой мыши и выбирая из контекстного меню пункт «<i lang="en">Translate to</i> русский».</p>
+<p>Выключите виртуальную машину.</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo shutdown now</code></pre>
+</section>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-MySQL/8.0/Reset_password">
+<p>1. How to reset the root password [Электронный ресурс] // MySQL 8.0 reference manual. URL: <a href="https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html">https://dev.mysql.com/doc/refman/8.0/en/resetting-permissions.html</a> (дата обращения: 19.03.2020).</p>
+</div>
+<div id="ref-Kolegov">
+<p>2. Колегов Д. Н. Лабораторный практикум по основам анализа защищённости веб­‑приложений [Электронный ресурс]  : учеб. пособие. Томск : Изд‑й дом Томского гос. ун‑та, 2014. 59 с. URL: <a href="http://vital.lib.tsu.ru/vital/access/services/Download/vtls:000491133/SOURCE1">http://vital.lib.tsu.ru/vital/access/services/Download/vtls:000491133/SOURCE1</a> (дата обращения: 19.03.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
