@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2017-01-01" />
+	<title>Установка и конфигурирование сервера HTTP, транслятора, СУБД</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css"
+		integrity="sha256-Jk/Lrypj95Ipq97zXBYyL7uBcmozq0IC+m8Fr/POBFU="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2017
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Установка и конфигурирование сервера HTTP, транслятора, СУБД»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться устанавливать и настраивать <i lang="en">Apache</i>, <i lang="en">PHP</i>, <i lang="en">MySQL</i>. Научиться формировать документы <i lang="en">HTML</i> 5.2 согласно рекомендации, разработанной Консорциумом Всемирной паутины (далее ⁠— <i lang="en">W3C</i>) и размещённой по веб­‑адресу: <a href="https://www.w3.org/TR/html52" class="uri">https://www.w3.org/TR/html52</a>.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Установить и настроить <i lang="en">Apache</i>, <i lang="en">PHP</i>, <i lang="en">MySQL</i>.</p>
+<p>Разработать веб­‑сайт, состоящий из трёх­‑четырёх взаимосвязанных документов HTML 5.2, соответствующих рекомендации W3C и успешно проходящих проверку по веб­‑адресу: <a href="https://validator.w3.org" class="uri">https://validator.w3.org</a>. При разработке необходимо использовать как минимум следующие элементы:</p>
+<ul>
+<li>из раздела секционирования: <code>article</code>, <code>aside</code>, <code>footer</code>, <code>h1</code>, <code>h2</code>, <code>header</code>, <code>nav</code>, <code>section</code>;</li>
+<li>из раздела группировки содержимого: <code>li</code>, <code>main</code>, <code>ol</code>, <code>p</code>, <code>ul</code>;</li>
+<li>из раздела семантики уровня текста: <code>a</code>;</li>
+<li>из раздела встроенного содержимого: <code>audio</code>, <code>img</code>, <code>source</code>, <code>video</code>;</li>
+<li>из раздела табличных данных: <code>caption</code>, <code>table</code>, <code>td</code>, <code>th</code>, <code>tr</code>.</li>
+</ul>
+<p>Для получения оценки 3 необходимо выполнить общее задание и 2 дополнительных задания обычной сложности.</p>
+<p>Для получения оценки 4 необходимо выполнить общее задание и все дополнительные задания обычной сложности.</p>
+<p>Для получения оценки 5 необходимо выполнить общее задание, все дополнительные задания обычной сложности, одно дополнительное задание повышенной сложности (с астериском).</p>
+<p>Варианты дополнительных заданий:</p>
+<ol>
+<li>используя элементы <code>li</code>, <code>ol</code>, <code>ul</code>, создайте несколько вложенных друг в друга списков (перечней);</li>
+<li>сверстайте таблицу как минимум с одним объединением граф по горизонтали (<code>colspan</code>) и одним ⁠— по вертикали (<code>rowspan</code>);</li>
+<li>создайте <code>img</code> с thumbnail (миниатюрой, уменьшенной копией изображения) со ссылкой на оригинал;</li>
+<li>примените в своей работе элементы <code>blockquote</code>, <code>figure</code>, <code>figcaption</code> ⁠*;</li>
+<li>примените в своей работе элементы <code>em</code>, <code>i</code>, <code>strong</code>, <code>time</code> ⁠*.</li>
+</ol>
+<p>* ⁠Задание повышенной сложности.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с рекомендацией W3C HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="even">
+<td>Валидатор формата</td>
+<td>The W3C CSS Validation Service (<a href="https://jigsaw.w3.org/css-validator/" class="uri">https://jigsaw.w3.org/css-validator/</a>)</td>
+</tr>
+<tr class="odd">
+<td>Валидатор формата</td>
+<td>The W3C Markup Validation Service (<a href="https://validator.w3.org" class="uri">https://validator.w3.org</a>)</td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td>Рекомендуется Windows Vista и выше или Ubuntu 18.04 и выше</td>
+</tr>
+<tr class="odd">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0 по ГОСТ Р ИСО/⁠МЭК 26300‑2010</td>
+</tr>
+<tr class="even">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера последовательности байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать текстовый редактор <a href="https://code.visualstudio.com/">Visual Studio Code</a>.</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p><em>Гипертекст</em> в современном значении ⁠— это такая форма организации информационных элементов, при которой они объединены ссылками для беспоискового перехода. К <em>аналоговым</em> гипертекстовым системам относятся оглавления книг, библиографические карточки и, безусловно, произведения с нелинейным повествование. Хороший пример <em>цифровой</em> гипертекстовой системы ⁠— Всемирная паутина (англ. <i lang="en">World­‑wide web</i> (<i lang="en">WWW</i>) в целом и любой составляющий её сайт в частности, например, «Википедия».</p>
+<p>Всемирная паутина ⁠— это клиент­‑серверная система, работающая по протоколу передачи гипертекста ⁠— <i lang="en">HyperText Transfer Protocol</i>, <i lang="en">HTTP</i>. Сервера представлены специализированным программным обеспечением ⁠— веб­‑серверами <i lang="en">Apache</i>, <i lang="en">nginx</i> и др. Клиентами обычно являются браузеры, некоторые игровые приложения, пакетные менеджеры и т. п.</p>
+<p>Для того, чтобы некая информация стала полноправным компонентом <i lang="en">WWW</i>, необходимо разместить эту информацию по уникальному веб­‑адресу ⁠— <i lang="en">URL</i>, доступному с любого узла системы, то есть из любой точки мира. <i lang="en">URL</i> обычно состоит из</p>
+<ul>
+<li><em>схемы</em>, указывающей на протокол соединения (например, схема <code>http</code> указывает на протокол <i lang="en">HTTP</i>, схема <code>https</code> ⁠— на <i lang="en">HTTP/⁠TLS</i>);</li>
+<li>доменного имени, ассоциированного с <i lang="en">IP</i>­‑адресом сервера;</li>
+<li>пути на сервере.</li>
+</ul>
+<p>Например, в адресе <a href="https://yandex.ru/maps/213/moscow/" class="uri">https://yandex.ru/maps/213/moscow/</a> компонент <code>https</code> ⁠— схема, <code>yandex.ru</code> ⁠— доменное имя, указывающее на динамический <i lang="en">IP</i>­‑адрес, а <code>/maps/213/moscow/</code> ⁠— путь на сервере.</p>
+<p>Информация, размещаемая во Всемирной паутине, может представлять собой текст, рисунок, фотографию, аудио или видеозапись. Однако если мы намерены использовать гиперссылки или имеем дело с комплексной информацией (не отдельная фотография, а фотоальбом; не простой текст, а размеченный текст с заголовками, внедрёнными видеофонограммами и таблицами и т. п.), нам придётся пояснить основным клиентам системы браузерам структуру предложенной информации.</p>
+<p>Одно из популярных средств</p>
+<p>общения с браузером ⁠— язык гипертекстовой разметки (англ. <i lang="en">HyperText Markup Language</i>, <i lang="en">HTML</i>).</p>
+<p>Разработкой стандартов (т. н. рекомендаций) для множества технологий, которые используют в качестве носителя стек протоколов Интернета, в том числе <i lang="en">HTML</i>, занимается Консорциум Всемирной паутины (англ. <i lang="en">World­‑wide web consortium</i>, сокр. <i lang="en">W3C</i>). Рекомендациями <i lang="en">W3C</i> регулируются технологии <i lang="en">HTML</i>, <i lang="en">XHTML</i>, <i lang="en">CSS</i>, <i lang="en">XML</i> и многие другие. Консорциум также поддерживает службу валидации разметки (<a href="https://validator.w3.org" class="uri">https://validator.w3.org</a>), которая предлагает всем желающим проверить тот или иной документ в формате <i lang="en">HTML</i>, <i lang="en">XHTML</i>, <i lang="en">SMIL</i> или <i lang="en">MathML</i>.</p>
+<p>Перед тем, как размещать сайт во Всемирной паутине, рекомендуется отладить его локально, на своём компьютере. Именно для этих целей предназначен <i lang="en">Open Server Panel Basic</i>, который включает в себя веб­‑сервера <i lang="en">Apache</i> и <i lang="en">nginx</i> (по выбору), интерпретатор языка программирования <i lang="en">PHP</i>, реляционную систему управления базами данных <i lang="en">MySQL</i>.</p>
+<p>Локальному компьютеру соответствует доменное имя <code>localhost</code> и <i lang="en">IP</i>­‑адрес <code>127.0.0.1</code>.</p>
+<section class="level3">
+<h3>Структура документа HTML 5.2</h3>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;title&gt;Привет, мир!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Содержимое тела документа --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<section class="level4">
+<h4><code>!DOCTYPE</code></h4>
+<p><code>!DOCTYPE</code> в некоторых <i lang="en">SGML‑</i> и <i lang="en">XML</i>­‑совместимых языках разметки служит <em>объявлением</em> типа документа (англ. <i lang="en">document type declaration</i>), т. е. указывает на <em>определение</em> типа документа (англ. <i lang="en">document type declaration</i>, <i lang="en">DTD</i>) ⁠— свод правил (синтаксических ограничений), которые пользовательский агент (например, браузер) использует при разборе документа. Разработчики <i lang="en">HTML5</i> отказались от <i lang="en">DTD</i> <span class="citation" data-cites="W3C/HTML/5.2">[1, разд. 9.1]</span>, но сохранили <code>!DOCTYPE</code> как обязательную преамбулу, отсутствие, неправильное оформление или неправильное расположение которой приведёт к разбору документа в нестандартном режиме совместимости с устаревшими браузерами. Правила разбора в режиме совместимости (англ. <i lang="en">quirks mode</i>), «почти стандартном» режиме (англ. <i lang="en">almost­‑standards mode</i>) и т. п. определены разработчиком конкретного браузера, зачастую не документированы и могут повлиять не только на разбор разметки <i lang="en">HTML</i>, но и на работоспособность стилей <i lang="en">CSS</i> и сценариев <i lang="en">JavaScript</i>.</p>
+</section>
+<section class="level4">
+<h4><code>html</code></h4>
+<p><code>html</code> ⁠— корневой элемент, который представлен стартовым тегом <code class="html">&lt;html&gt;</code> и конечным тегом <code class="html">&lt;/html&gt;</code>. Потомками <code>html</code> могут быть только элементы <code>head</code> (метаданные документа: информация о кодировке и т. п.) и <code>body</code> (основной текст документа).</p>
+</section>
+</section>
+<section class="level3">
+<h3>Секционирование</h3>
+<section class="level4">
+<h4><code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code>, <code>h6</code></h4>
+<p>Элементы <code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code>, <code>h6</code> ⁠— заголовки в порядке убывания важности. Нельзя применять менее важный заголовок, если в документе ни разу не встречается более важный заголовок. Элемент <code>h1</code> может фигурировать в документе один и только один раз.</p>
+</section>
+<section class="level4">
+<h4><code>main</code></h4>
+<p>Элемент <code>main</code></p>
+<ul>
+<li>представляет (обозначает) основное содержимое документа;</li>
+<li>в каждом документе встречается не более одного раза (возможно, это ограничение будет снято в следующих версиях языка);</li>
+<li>не включает содержимое, повторяемое в наборе документов. Так, если в электронной библиотеке опубликован текст книги, то внутри элемента <code>main</code> этого документа недопустимы средства навигации по веб­‑сайту, знак охраны авторского права разработчика веб­‑сайта, логотип веб­‑сайта, но вполне уместны средства навигации по книге (оглавление, сноски), знак охраны авторского права писателя, изображение обложки книги. Ещё пример: поисковая форма допустима как потомок <code>main</code>, если поиск ⁠— основная функция веб­‑сайта, как в случае <a href="https://www.google.com/">Google</a>, «<a href="https://ya.ru/">Яндекс</a>» и т. д.;</li>
+<li>не может являться потомком элементов <code>article</code>, <code>aside</code>, <code>footer</code>, <code>header</code>, <code>nav</code>, но может быть их предком;</li>
+<li>может подменить собой элемент <code>article</code>;</li>
+<li>первым получает фокус;</li>
+<li>в отличие от <code>article</code>, <code>aside</code>, <code>footer</code>, <code>header</code>, <code>nav</code>, не является секционным и не фигурирует в содержании (оглавлении) документа.</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>article</code></h4>
+<p>Элемент <code>article</code></p>
+<ul>
+<li>обозначает самодостаточное произведение: книгу, статью, запись в блоге, комментарий, виджет и пр.;</li>
+<li>может быть подменён элементом <code>main</code>, если обозначает основное содержимое документа;</li>
+<li>не может быть предком <code>main</code>.</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>section</code></h4>
+<p>Элемент <code>section</code></p>
+<ul>
+<li>представляет (обозначает) обычный раздел документа: главу, вкладку графического пользовательского интерфейса, раздел диссертации, введение и пр., т. е. несамодостаточное произведение, которое не может быть представлено (обозначено) элементами <code>aside</code>, <code>footer</code>, <code>header</code>, <code>nav</code> (например, элемент <code>section</code> как потомок элемента <code>article</code> может содержать одну главу книги или блок комментариев к этой книге, причём каждый из комментариев представлен элементом <code>article</code>);</li>
+<li>каждый элемент <code>section</code> следует идентифицировать ⁠— как правило, посредством включения в него в качестве прямого потомка элемента <code>h1</code>, <code>h2</code>, <code>h3</code>, <code>h4</code>, <code>h5</code> или <code>h6</code>;</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>header</code></h4>
+<p>Элемент <code>header</code></p>
+<ul>
+<li>не может быть предком <code>main</code>;</li>
+<li>не может быть предком <code>header</code> или <code>footer</code>, если не является предком их предка ⁠— <code>article</code>, <code>aside</code>, <code>nav</code> или <code>section</code>. Например, допустима иерархия <code>header</code> (шапка веб­‑сайта) ⁠⭢ <code>nav</code> (главное меню веб­‑сайта) ⁠⭢ <code>header</code> (шапка главного меню веб­‑сайта), хотя это не лучшее решение;</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>footer</code></h4>
+<p>Элемент <code>footer</code></p>
+<ul>
+<li>в остальном соответствует <code>header</code>.</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>nav</code></h4>
+<p>Элемент <code>nav</code></p>
+<ul>
+<li>обозначает раздел документа, состоящий из основных средств навигации по веб­‑сайту, веб­‑странице или её части, причём средства эти могут представлять собой меню с неупорядоченным перечнем гиперссылок (<code>nav</code> ⁠⭢ <code>ul</code> ⁠⭢ <code>li</code> ⁠⭢ <code>a</code>), сопроводительную записку с гиперссылками и т. п.;</li>
+<li>не может быть предком <code>main</code>.</li>
+</ul>
+</section>
+<section class="level4">
+<h4><code>aside</code></h4>
+<p>Элемент <code>aside</code></p>
+<ul>
+<li>не может быть предком <code>main</code>;</li>
+<li>обозначает раздел, содержимое которого тангенциально (по касательной) соотносится с содержимым родительского секционного элемента;</li>
+<li>обычно обозначает боковые панели, рекламные блоки, группы элементов <code>nav</code>;</li>
+<li>не может быть предком <code>main</code>.</li>
+</ul>
+</section>
+</section>
+<section class="level3">
+<h3>Группировка содержимого</h3>
+<section class="level4">
+<h4><code>li</code>, <code>ol</code>, <code>ul</code></h4>
+<p>В HTML5 несколько видов перечней:</p>
+<ul>
+<li><code>ol</code> (англ. <i lang="en"><strong>o</strong>rdered <strong>l</strong>ist</i>) ⁠— упорядоченные, т. е. нумерованные и литерованные;</li>
+<li><code>ul</code> (англ. <i lang="en"><strong>u</strong>nordered <strong>l</strong>ist</i>) ⁠— неупорядоченные.</li>
+</ul>
+<p>Как <code>ol</code>, так и <code>ul</code> являются контейнерами для элементов <code>li</code> (англ. <i lang="en"><strong>l</strong>ist <strong>i</strong>tem</i>), которые определяют элементы перечня. В качестве элемента перечня может выступить другой перечень.</p>
+<p>Разметку</p>
+<pre class="html"><code>&lt;ol&gt;
+    &lt;li&gt;A&lt;/li&gt;
+    &lt;li&gt;B&lt;/li&gt;
+    &lt;li&gt;C
+        &lt;ul&gt;
+            &lt;li&gt;C‑1&lt;/li&gt;
+            &lt;li&gt;C‑2&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+<p>браузер отобразит следующим образом:</p>
+<pre class="html"><code>1. A
+2. B
+3. C
+       ◦ C‑1
+       ◦ C‑2</code></pre>
+</section>
+<section class="level4">
+<h4><code>p</code></h4>
+<p>Абзац ⁠— одно или несколько логически связанных предложений в основном тексте.</p>
+</section>
+</section>
+<section class="level3">
+<h3>Семантика уровня текста: <code>a</code></h3>
+<p>Элемент <code>a</code> с атрибутом <code>href</code> представляет собой гиперссылку. В качестве значения атрибута <code>href</code> указывают абсолютный или относительный <i lang="en">URL</i>. Между стартовым тегом <code>&lt;a&gt;</code> и конечным тегом <code>&lt;/a&gt;</code> размещают текст или некоторые другие элементы <i lang="en">HTML</i> (например, <code>img</code>).</p>
+<p>Если <i lang="en">URL</i> содержит идентификатор фрагмента ⁠— необязательный компонент, позволяющий сослаться не на документ целиком, а на конкретную его часть. Например, при переходе по гиперссылке вида</p>
+<pre class="html"><code>&lt;a href=&quot;#chapter-6&quot;&gt;Перейти к главе VI&lt;/a&gt;</code></pre>
+<p>браузер стабилизирует полосу прокрутки внутри текущего документа на уровне того элемента, значение атрибута <code>id</code> которого равно <code>chapter-6</code> (без октоторпа). Например, это может быть заголовок:</p>
+<pre class="html"><code>&lt;h2 id=&quot;chapter-6&quot;&gt;Глава VI&lt;/h2&gt;</code></pre>
+</section>
+<section class="level3">
+<h3>Встроенное содержимое</h3>
+<section class="level4">
+<h4><code>audio</code></h4>
+<p>Элемент <code>audio</code> представляет фонограмму. Атрибута <code>src</code> ⁠— абсолютный или относительный непустой URL фонограммы. Атрибут <code>controls</code> включает панель инструментов.</p>
+<pre class="html"><code>&lt;audio src=&quot;01.mp3&quot; controls&gt;
+&lt;/audio&gt;</code></pre>
+<p>Результат в браузере:</p>
+<audio src="../media/2.mp3" controls>
+</audio>
+</section>
+<section class="level4">
+<h4><code>img</code></h4>
+<p>Пустой (без конечного тега) элемент <code>img</code> представляет изображение и резервное содержимое.</p>
+<p>Значение обязательного атрибута <code>src</code> ⁠— абсолютный или относительный непустой <i lang="en">URL</i> ресурса в формате <i lang="en">GIF, JPEG, PNG, SVG</i> и т. п. Если графический файл размещён в одном каталоге с подключающим его документом <i lang="en">HTML</i>, то значение атрибута соответствует имени графического файла.</p>
+<p>Значение атрибута <code>alt</code> ⁠— альтернативное представление изображения (например, текстовое описание по <i lang="en">WCAG 2.0</i>) для слабовидящих и незрячих пользователей, а также пользовательских агентов (браузеров, поисковых роботов), которые не могут скачать и/или обработать изображение.</p>
+<pre class="html"><code>&lt;img alt=&quot;Большая синица&quot; src=&quot;../media/parus_major.jpg&quot;&gt;</code></pre>
+<p>Результат в браузере:</p>
+<figure>
+<img src="../../media/parus_major.jpg" alt="Большая синица. Автор фотоснимка hedera.baltica" /><figcaption>Большая синица. Автор фотоснимка <a href="https://www.flickr.com/photos/hedera_baltica/34112908396">hedera.baltica</a></figcaption>
+</figure>
+</section>
+<section class="level4">
+<h4><code>video</code></h4>
+<pre class="html"><code>&lt;video
+    poster=&quot;night_of_the_living_dead_1968.png&quot;
+    controls
+&gt;
+    &lt;source src=&quot;night_of_the_living_dead_1968.mp4&quot; type=&quot;video/mp4&quot;&gt;
+    &lt;track
+        kind=&quot;subtitles&quot;
+        label=&quot;Русский&quot;
+        src=&quot;night_of_the_living_dead_1968.vtt&quot;
+        srclang=&quot;ru-luna1918&quot;
+        default
+        &gt;
+&lt;/video&gt;</code></pre>
+<p>Файл <code>night-of-the-living-dead-1968.vtt</code> в формате <a href="https://www.w3.org/TR/webvtt1/">WebVTT</a>:</p>
+<pre class="html"><code>WEBVTT
+
+00:01.000 --&gt; 00:04.000
+&lt;v Джон&gt;― ⁠Помнишь, однажды мы маленькими были здесь…&lt;/v&gt;
+
+00:04.500 --&gt; 00:06.500
+&lt;v Джон&gt;Это было прямо вон там ⁠—&lt;/v&gt;
+
+00:06.500 --&gt; 00:08.500
+&lt;v Джон&gt;я напрыгнул на тебя из­‑за дерева,&lt;/v&gt;
+
+00:08.500 --&gt; 00:10.000
+&lt;v Джон&gt;и дедушка так разволновался,&lt;/v&gt;
+
+00:10.000 --&gt; 00:11.500
+&lt;v Джон&gt;что погрозил мне кулаком и сказал:&lt;/v&gt;
+
+00:11.500 --&gt; 00:13.000
+&lt;v Джон&gt;«Чёрт тебя побери, мальчишка!»&lt;/v&gt;
+
+00:14.500 --&gt; 00:15.750
+&lt;v Джон&gt;Помнишь? Прямо вон там.&lt;/v&gt;
+
+00:17.000 --&gt; 00:19.000
+&lt;v Джон&gt;Ты тогда сильно испугалась.&lt;/v&gt;
+
+00:20.000 --&gt; 00:20.750
+&lt;v Барбра&gt;― ⁠Джонни!&lt;/v&gt;
+
+00:21.500 --&gt; 00:23.000
+&lt;v Джон&gt;― ⁠Эй, да ты всё ещё напугана!&lt;/v&gt;
+
+00:23.500 --&gt; 00:24.750
+&lt;v.loud Барбра&gt;― ⁠Прекрати немедленно! Я серьёзно!&lt;/v&gt;
+
+00:29.250 --&gt; 00:31.500
+&lt;v Джон&gt;&lt;i&gt;― ⁠Они идут забрать тебя, Барбра…&lt;/i&gt;&lt;/v&gt;
+</code></pre>
+<p>Результат в браузере:</p>
+<figure>
+<video
+  poster="../../media/night_of_the_living_dead_1968.png"
+  controls
+  >
+  <source src="../../media/night_of_the_living_dead_1968.mp4" type="video/mp4">
+  <track
+    kind="subtitles"
+    label="Русский"
+    src="../../media/night_of_the_living_dead_1968.vtt"
+    srclang="ru-luna1918"
+    default
+    >
+</video>
+</figure>
+</section>
+</section>
+<section class="level3">
+<h3>Табличные данные</h3>
+<p>Для представления табличных данных предназначен элемент <code>table</code>, который служит контейнером для следующих элементов:</p>
+<ul>
+<li><code>caption</code> ⁠— заголовок;</li>
+<li><code>tr</code> (от англ. table row) ⁠— строка, в которую могут быть вложены только <code>td</code> и <code>th</code>;</li>
+<li><code>td</code> (от англ. table data) ⁠— ячейка, содержащая данные;</li>
+<li><code>th</code> (от англ. table header) ⁠— заголовок графы.</li>
+</ul>
+<pre class="html"><code>&lt;table&gt;
+  &lt;caption&gt;Сравнительные характеристики животных и растений&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Характеристика&lt;/th&gt;
+    &lt;th&gt;Животное&lt;/th&gt;
+    &lt;th&gt;Растение&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Питание&lt;/th&gt;
+    &lt;td&gt;Гетеротрофное&lt;/td&gt;
+    &lt;td&gt;Автотрофное&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Строение&lt;/th&gt;
+    &lt;td colspan=&quot;2&quot;&gt;Клеточное&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<table><caption>Сравнительные характеристики животных и растений</caption><tr><th>Характеристика</th><th>Животное</th><th>Растение</th></tr><tr><th>Питание</th><td>Гетеротрофное</td><td>Автотрофное</td></tr><tr><th>Строение</th><td colspan="2">Клеточное</td></tr></table>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<ol>
+<li><p>Скачайте и запустите распаковку <i lang="en">Open Server Panel Basic</i> (<a href="https://ospanel.io/download/" class="uri">https://ospanel.io/download/</a>).</p></li>
+<li><p>Запустите <code>Open Server x64.exe</code> или <code>Open Server x86.exe</code> (в зависимости от битности операционной системы).</p></li>
+<li><p>Согласитесь на установку <i lang="en">Microfost Visual C++ Runtime &amp; Patches</i>.</p></li>
+<li><p>Согласитесь на перезагрузку операционной системы.</p></li>
+<li><p>Повторно запустите <code>Open Server x64.exe</code> или <code>Open Server x86.exe</code> (в зависимости от битности операционной системы).</p></li>
+<li><p>В системном лотке (<i lang="en">system tray</i>), обычно расположенном в правом нижнем углу экрана, найдите красный флажок, нажмите на нём правой кнопкой мыши и выберите пункт «Запустить».</p></li>
+<li><p>Разрешите доступ всем запрашивающим его приложениям.</p></li>
+<li><p>Если флажок стал зелёным, то снова нажмите на нём правой кнопкой мыши и выберите пункт «Мои сайты ⁠⭢ <i lang="en">localhost</i>». Если флажок остался красным, то нажмите на нём правой кнопкой мыши, выберите пункт «Просмотр логов» и проанализируйте сообщение об ошибке. Если не удалось занять тот или иной порт, попробуйте открыть настройки и поменять номер занимаемого порта на вкладке «Сервер». При возникновении сложностей обратитесь за советом к преподавателю.</p></li>
+<li><p>Откроется браузер. В нём автоматически откроется страница <a href="http://localhost" class="uri">http://localhost</a>, сопоставленная с каталогом <code>domains/localhost</code> в месте установки <i lang="en">Open Server Panel</i>. На странице должно быть написано: «Добро пожаловать!»</p></li>
+<li><p>В каталоге <code>domains/localhost</code> создайте каталог с именем, состоящим из Вашей транслитерированной фамилии, записанной строчными английскими буквами, и зоны <code>local</code>. Например, у студента Иванова должен получиться каталог <code>ivanov.local</code>.</p></li>
+<li><p>В указанном каталоге создайте два обычных текстовых файла с именами <code>legs.html</code> и <code>pankin.html</code>.</p></li>
+<li><p>Скопируйте следующие фрагменты и в указанные текстовые файлы в кодировке <i lang="en">UTF‑8</i> без <i lang="en">BOM</i> (англ. <i lang="en">byte order mark</i> ⁠— маркер порядка байтов).</p>
+<p><code>legs.html</code></p>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;О, закрой свои бледные ноги&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Электронная библиотека&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Брюсов В. Я. О, закрой свои бледные ноги&lt;/li&gt;
+            &lt;li&gt;Хармс Д. &lt;a href=&quot;pankin.html&quot;&gt;О том, как Колька Панкин…&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+        &lt;header&gt;
+            &lt;p&gt;
+                &lt;!-- Инициалы и фамилия автора --&gt;
+                &lt;cite&gt;В. Я. Брюсов&lt;/cite&gt;
+            &lt;/p&gt;
+            &lt;h1&gt;⁂&lt;/h1&gt;&lt;!-- Астеризм вместо заголовка стихотворения --&gt;
+        &lt;/header&gt;
+
+        &lt;p&gt;О, закрой свои бледные ноги.&lt;/p&gt;&lt;!-- Единственный стих --&gt;
+        &lt;!-- Элемент section здесь неприменим: нет раздела, нет подзаголовка! --&gt;
+
+        &lt;footer&gt;
+            &lt;p&gt;
+                &lt;!-- Дата написания--&gt;
+                &lt;time datetime=&quot;1894-12-03&quot;&gt;3 дек. 1894&lt;/time&gt;
+            &lt;/p&gt;
+        &lt;/footer&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>pankin.html</code></p>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;О том, как Колька Панкин…&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Электронная библиотека&lt;/h1&gt;
+    &lt;/header&gt;
+
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Брюсов В. Я. &lt;a href=&quot;legs.html&quot;&gt;О, закрой свои бледные ноги&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;Хармс Д. О том, как Колька Панкин…&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;main&gt;
+        &lt;header&gt;
+            &lt;h1&gt;
+            О том, как Колька Панкин летал в Бразилию, а Петька Ершов ничему не верил
+            &lt;/h1&gt;
+            &lt;p&gt;Даниил Хармс&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;nav&gt;
+            &lt;h2&gt;Оглавление&lt;/h2&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;#first-section&quot;&gt;Первая глава&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;#second-section&quot;&gt;Вторая глава&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+
+        &lt;section&gt;
+            &lt;h2 id=&quot;first-section&quot;&gt;I&lt;/h2&gt;
+            &lt;p&gt;Колька Панкин решил прокатиться куда­‑нибудь подальше.&lt;/p&gt;
+            &lt;p&gt;― ⁠Я поеду в Бразилию, ⁠― сказал он Петьке Ершову.&lt;/p&gt;
+            &lt;p&gt;― ⁠А где эта Бразилия находится? ⁠― спросил Петька.&lt;/p&gt;
+            &lt;p&gt;― ⁠Бразилия находится в Южной Америке, ⁠― сказал Колька…&lt;/p&gt;
+            &lt;p&gt;⟨…⟩&lt;/p&gt;
+            &lt;p&gt;Колька Панкин и Петька Ершов решили пойти на следующее утро на
+            аэродром.&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2 id=&quot;second-section&quot;&gt;II&lt;/h2&gt;
+            &lt;p&gt;Колька Панкин и Петька Ершов на следующий день рано утром вышли из
+            дому. Идти на аэродром было далеко, но так как погода была хорошая и денег
+            на трамвай не было, то Колька и Петька пошли пешком.&lt;/p&gt;
+            &lt;p&gt;― ⁠Обязательно поеду в Бразилию, ⁠― сказал Колька.&lt;/p&gt;
+            &lt;p&gt;― ⁠А письма писать мне будешь? ⁠― спросил Петька.&lt;/p&gt;
+            &lt;p&gt;⟨…⟩&lt;/p&gt;
+        &lt;/section&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Комментарии читателей&lt;/h2&gt;
+            &lt;article&gt;
+                &lt;h3&gt;Комментарий&lt;/h3&gt;
+            &lt;/article&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+<li><p>Самостоятельно добавьте или измените файлы на сайте.</p></li>
+<li><p>Посредством браузера перейдите по адресу <a href="http://localhost/ВАША_ФАМИЛИЯ.local/legs.html" class="uri">http://localhost/ВАША_ФАМИЛИЯ.local/legs.html</a> или <a href="http://localhost/ВАША_ФАМИЛИЯ.local/pankin.html" class="uri">http://localhost/ВАША_ФАМИЛИЯ.local/pankin.html</a>.</p></li>
+</ol>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-W3C/HTML/5.2">
+<p>1. HTML 5.2 [Электронный ресурс]  : W3C recommendation // W3C. 2017. 14 декабря. URL: <a href="https://www.w3.org/TR/html52/">https://www.w3.org/TR/html52/</a> (дата обращения: 19.03.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
