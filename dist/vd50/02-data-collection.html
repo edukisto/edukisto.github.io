@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="MobileOptimized" content="0">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="generator" content="pandoc">
+	<meta name="author" content="Караваев С. В.">
+	<meta name="dcterms.date" content="2019-01-01">
+	<title>Сбор информации о веб­‑приложении</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css"
+		integrity="sha256-Jk/Lrypj95Ipq97zXBYyL7uBcmozq0IC+m8Fr/POBFU="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr>
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2019
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br>«Сбор информации о веб­‑приложении»<br>по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br>для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Получить практический опыт</p>
+<ul>
+<li>сбора информации о веб­‑приложении, в отношении которого проводится аудит безопасности;</li>
+<li>анализа угроз информационной безопасности.</li>
+</ul>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Выполнить сбор информации о веб­‑приложении.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Минимальные системные требования</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Операционная система</td>
+<td>Kali Linux 2020.1</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Веб­‑приложения для тестировании</h3>
+<p>Веб­‑приложения, которые могут свободно использоваться при тестировании:</p>
+<ul>
+<li><a href="http://scanme.nmap.org/" class="uri">http://scanme.nmap.org/</a>;</li>
+<li><a href="http://testasp.vulnweb.com/" class="uri">http://testasp.vulnweb.com/</a> (<i lang="en">ASP</i>);</li>
+<li><a href="http://testaspnet.vulnweb.com/" class="uri">http://testaspnet.vulnweb.com/</a> (<i lang="en">ASP.NET</i>);</li>
+<li><a href="http://testhtml5.vulnweb.com/" class="uri">http://testhtml5.vulnweb.com/</a> (<i lang="en">Python</i>);</li>
+<li><a href="http://testphp.vulnweb.com/" class="uri">http://testphp.vulnweb.com/</a> (<i lang="en">PHP</i>);</li>
+<li><a href="http://angular.testsparker.com/" class="uri">http://angular.testsparker.com/</a> (<i lang="en">Angular</i>);</li>
+<li><a href="http://aspnet.testsparker.com/" class="uri">http://aspnet.testsparker.com/</a> (<i lang="en">ASP.NET</i>);</li>
+<li><a href="http://php.testsparker.com/" class="uri">http://php.testsparker.com/</a> (<i lang="en">PHP</i>).</li>
+</ul>
+<p>С осторожностью может применяться <a href="https://example.com/" class="uri">https://example.com/</a>. При разработке применялись <a href="http://scanme.nmap.org/" class="uri">http://scanme.nmap.org/</a> и <a href="http://php.testsparker.com/" class="uri">http://php.testsparker.com/</a>.</p>
+<p><strong>Внимание!</strong> Применяйте выбранное доменное имя вместо строки <code>ДОМЕННОЕ_ИМЯ</code>.</p>
+</section>
+<section class="level3">
+<h3><code>/robots.txt</code></h3>
+<p>Запросите с исследуемого сайта содержимое файла <code>/robots.txt</code>.</p>
+<pre class="bash command-line" data-prompt="$"><code>wget --output-document=- --quiet http://ДОМЕННОЕ_ИМЯ/robots.txt</code></pre>
+<p>Содержимое этого файла разграничивает права поисковых роботов на индексацию ресурсов сайта и дожно выглядеть <strong>примерно</strong> так:</p>
+<pre class="ini"><code>User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-signup.php</code></pre>
+<p>Синтаксис <code>/robots.txt</code> довольно прост: файл содержит одну или несколько записей, разделённых пустыми строками. (В примере представлен случай с одной записью.) Каждая запись содержит строки в формате «поле: значение». Каждая запись начинается с одной или нескольких строк <code>User-agent</code> и завершается строками <code>Allow</code> и (или) <code>Disallow</code>. Строки внутри записи разделяют переносами.</p>
+<p>Поле <code>User-agent</code> содержит наименование поискового робота (<i lang="en">Googlebot</i>, <i lang="en">YandexBot</i> и др.), на который распространяются правила, заданные в текущей записи, или обобщающий квантификатор <code>*</code>. Каждое поле <code>Allow</code> и <code>Disallow</code> содержит <i lang="en">URL</i>, который разрешено или запрещено индексировать, причём веб­‑адрес нередко оказывается относительным путём в файловой системе, который веб­‑разработчик пытается скрыть от поисковой системы, не устраняя указанную уязвимость. Таким образом, файл <code>/robots.txt</code> может раскрывать файловую структуру сайта. Впрочем, эта информация может оказаться заведомо ложной, предназначенной для идентификации злоумышленников.</p>
+<p>Скопируйте и проанализируйте содержимое файла. Включите в отчёт следующую информацию:</p>
+<ol>
+<li><i lang="en">URL</i> карты сайта (при наличии директивы <code>Sitemap</code>);</li>
+<li>примерная файловая структура сайта (иерархия каталогов);</li>
+<li>предположение о системе управления содержимым веб­‑сайта (каталоги и файлы, названия которых начинаются с <code>wp-</code>, могут указывать на использование <a href="https://wordpress.org">WordPress</a>, каталог <code>administrator</code> ⁠— на «<i lang="en">Joomla!</i>», каталоги <code>bitrix</code> ⁠— на программный продукт от «1С­‑Битрикс», совокупность каталогов <code>core</code> и <code>profiles</code> ⁠— на <i lang="en">Drupal</i>; некоторые платформы, такие как <i lang="en">Shopify</i>, прямо указаны в <code>/robots.txt</code>);</li>
+<li>используемые языки программирования (предположение может быть выдвинуто на основании анализа расширений имён файлов и должно согласовываться с предположением о системе управления содержимым веб­‑сайта; расширение <code>php</code> указывает на язык <i lang="en">PHP</i>, <code>aspx</code> и <code>mspx</code> ⁠— на платформу <i lang="en">ASP.NET</i>).</li>
+</ol>
+</section>
+<section class="level3">
+<h3><i lang="en">WAF</i></h3>
+<p>Попробуем применить программное средство для обнаружения <i lang="en">WAF</i> ⁠— аппаратного или программного <em>межсетевого экрана веб­‑приложения</em>. <i lang="en">WAF</i> имеет доступ к дешифрованным пакетам протокола <i lang="en">TLS</i> (используется со схемой <code>https</code>), фильтрует входящий и исходящий трафик, может внедрять в веб­‑страницы защитные сценарии <i lang="en">JavaScript</i>.</p>
+<pre class="bash command-line" data-prompt="$"><code>wafw00f http://ДОМЕННОЕ_ИМЯ/</code></pre>
+<p>При исследовании могут встретиться <i lang="en">AWS WAF</i> (от <i lang="en">Amazon</i>), <i lang="en">Barracuda WAF</i>, <i lang="en">Cloudflare’s WAF</i>, <i lang="en">ModSecurity</i>, <i lang="en">Verizon WAF</i>, программные продукты <i lang="en">Imperva</i>, а также неопознанные <i lang="en">WAF</i> («<i lang="en">some sort of security solution</i>»). Если сетевой экран не обнаружен, то будет выдано сообщение «<i lang="en">No WAF detected</i>».</p>
+<p><strong>Регистрация результатов</strong>. Скопируйте вывод <code>wafw00f</code>. Внесите в отчёт наименование или краткую характеристику <i lang="en">WAF</i>.</p>
+</section>
+<section class="level3">
+<h3><i lang="en">nmap</i></h3>
+<p><i lang="en">nmap</i> ⁠— это сканер сетевых портов.</p>
+<pre class="bash command-line" data-prompt="$"><code>sudo nmap -F -sV ДОМЕННОЕ_ИМЯ
+# Опция -F ограничивает сканирование 100 традиционно используемыми портами.
+# Опция -sV пытается определить серверное ПО, занявшее открытые порты.</code></pre>
+<p><strong>Регистрация результатов</strong>. Скопируйте вывод <code>nmap</code>. Заполните таблицу по образцу.</p>
+<table>
+<caption>Открытые порты и занимающие их службы (образец)</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 11%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Номер порта</th>
+<th>Транспортный протокол</th>
+<th>Прикладной протокол</th>
+<th>Служба</th>
+<th>Программное обеспечение</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+<td>ssh</td>
+<td>OpenSSH 8.0</td>
+</tr>
+<tr class="even">
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+<td>http</td>
+<td>Cowboy</td>
+</tr>
+<tr class="odd">
+<td>443</td>
+<td>TCP</td>
+<td>HTTP/⁠TLS</td>
+<td>https</td>
+<td>Cowboy</td>
+</tr>
+<tr class="even">
+<td>3306</td>
+<td>TCP</td>
+<td>MySQL protocol</td>
+<td>mysql</td>
+<td>MySQL 5.7.27</td>
+</tr>
+<tr class="odd">
+<td>8080</td>
+<td>TCP</td>
+<td>HTTP</td>
+<td>http-proxy</td>
+<td>PHP Development Server</td>
+</tr>
+</tbody>
+</table>
+<p>Примечание. При определении протокола следует учитывать, что один и тот же протокол может соответстовать множеству служб. Например, протокол <i lang="en">HTTP/⁠TLS</i> может оставлять отпечатки <code>https</code> и <code>ssl/http</code>. Для определения протокола рекомендуется обратиться к поисковой системе (например, <i lang="en">Google</i>) с запросом, содержащим название службы и слово «<i lang="en">protocol</i>».</p>
+</section>
+<section class="level3">
+<h3><i lang="en">netcat</i></h3>
+<p><i lang="en">netcat (nc)</i> ⁠— это утилита для <i lang="en">Unix</i>­‑подобных операционных систем, позволяющая связаться с сетевым сокетом (<code>хост:порт</code>) по протоколу <i lang="en">TCP</i> или <i lang="en">UDP</i>.</p>
+<p>Обратимся к перечню открытых портов, обнаруженных посредством <i lang="en">nmap</i> и занятых серверами <i lang="en">HTTP</i>. В приведённом выше примере это 80‑й, 443‑й и 8080‑й порты; в Вашем случае номера портов могут отличаться. Установим с одним из указанных портов соединение по <i lang="en">TCP</i>.</p>
+<pre class="bash command-line" data-prompt="$"><code>nc ДОМЕННОЕ_ИМЯ 80</code></pre>
+<p>Может показаться, что терминал «завис», однако это не так ⁠— он ждёт ввода сообщения, чтобы передать его в сокет. Попробуем мимикрировать под клиент <i lang="en">HTTP</i> (браузер) и запросить у сервера содержимое главной страницы (<code>/</code>). Два переноса подряд в конце сообщения ⁠— требование протокола <i lang="en">HTTP</i>.</p>
+<pre class="ini"><code>GET / HTTP/1.1
+Host: ДОМЕННОЕ_ИМЯ
+
+</code></pre>
+<p>Ответ будет выглядеть примерно так:</p>
+<pre><code>HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/html
+Date: Sat, 28 Feb 1970 11:14:24 GMT
+Server: nginx/1.4.1
+X-Powered-By: PHP/5.3.10-1~lucid+2uwsgi2
+
+</code></pre>
+<p>Повторите процедуру для всех портов, связанных с <i lang="en">HTTP</i>.</p>
+<p><strong>Регистрация результатов</strong>. Скопируйте ответные сообщения <i lang="en">HTTP</i>. По значениям заголовочных полей <code>Server</code>, <code>Via</code>, <code>X-Powered-By</code> (если таковые имеются) идентифицируйте сервер <i lang="en">HTTP</i>, проксирующий сервер и систему программирования. Сравните полученные сведения с теми, которые на предыдущем шаге предоставил <i lang="en">nmap</i>. Результаты внесите в отчёт.</p>
+</section>
+<section class="level3">
+<h3>Методы <i lang="en">HTTP</i></h3>
+<p><code>CONNECT</code>, <code>DELETE</code>, <code>HEAD</code>, <code>PATCH</code>, <code>PUT</code>, <code>TRACE</code> и нестандартные методы <i lang="en">HTTP</i> признаны опасными: <code>CONNECT</code> позволяет клиенту использовать сервер как <i lang="en">proxy</i>, <code>HEAD</code> может ввести в заблуждение маршрутизатор веб­‑приложения, настроенный на отождествление маршрутов с <code>GET</code> и <code>HEAD</code>, <code>TRACE</code> предназначен для отладки, а остальные позволяют внести изменения на стороне сервера. Опасным также следует считать нестандартные методы. Другими словами, защищённый сервер должен ограничиться поддержкой методов <code>GET</code> и <code>POST</code> <span class="citation" data-cites="OWASP/WSTG">[1]</span>.</p>
+<p>Определим стандартные опасные методы <i lang="en">HTTP</i>.</p>
+<pre class="ini"><code>OPTIONS / HTTP/1.1
+Host: ДОМЕННОЕ_ИМЯ
+
+</code></pre>
+<p>Ответ будет выглядеть примерно так:</p>
+<pre><code>HTTP/1.1 200 OK
+Allow: OPTIONS, GET, HEAD, POST
+Content-Type: text/html
+Date: Sat, 28 Feb 1970 11:14:24 GMT
+
+</code></pre>
+<p>По заголовку <code>Allow</code> определите, поддерживает ли главная страница опасные методы <code>CONNECT</code>, <code>DELETE</code>, <code>PATCH</code>, <code>PUT</code>, <code>TRACE</code>.</p>
+<p>Если есть поддержка <code>TRACE</code>, попробуйте его эксплуатацию.</p>
+<pre class="ini"><code>TRACE / HTTP/1.1
+Host: ДОМЕННОЕ_ИМЯ
+
+</code></pre>
+<p>Правильно настроенный сервер должен отказать в обработке запроса и присвоить ответному сообщению статус <code>405 Method Not Allowed</code>. Сервер, уязвимый для атаки <i lang="en">cross­‑site tracing (XST)</i>, вернут отправленное сообщение.</p>
+<p>Определим поддержку нестандартных методов <i lang="en">HTTP</i>. Используем вымышленный метод <code>HELLO</code>.</p>
+<pre class="ini"><code>HELLO / HTTP/1.1
+Host: ДОМЕННОЕ_ИМЯ
+
+</code></pre>
+<p>Правильно настроенный сервер должен отказать в обработке запроса и присвоить ответному сообщению статус <code>501 Not Implemented</code>.</p>
+<p><strong>Регистрация результатов</strong>. Скопируйте ответные сообщения в отчёт.</p>
+</section>
+<section class="level3">
+<h3><i lang="en">Wappalyzer</i></h3>
+<p>Установите расширение браузера <i lang="en">Wappalyzer</i>, перейдите по адресу веб­‑приложения и проанализируйте информацию о компонентах.</p>
+<p><strong>Регистрация результатов</strong>. Перечислите обнаруженное программное обеспечение в отчёте.</p>
+</section>
+<section class="level3">
+<h3><i lang="en">SSL Server Test</i></h3>
+<p>Проверьте веб­‑приложение с помощью <i lang="en">SSL Server Test</i>: <a href="https://www.ssllabs.com/ssltest/" class="uri">https://www.ssllabs.com/ssltest/</a>.</p>
+<p><strong>Регистрация результатов</strong>. Скопируйте полученную информацию в отчёт (например, в виде снимка экрана или таблицы). Проанализируйте результат и внесите в отчёт краткую аннотацию.</p>
+</section>
+<section class="level3">
+<h3>Информация о домене</h3>
+<pre class="bash command-line" data-prompt="$"><code>whois nmap.org</code></pre>
+<p><strong>Регистрация результатов</strong>. Скопируйте в отчёт вывод <code>whois</code>. Проанализируйте результат и внесите в отчёт краткую аннотацию.</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-OWASP/WSTG">
+<p>1. OWASP testing guide [Электронный ресурс]. 4.0 изд. 2014. URL: <a href="https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf">https://owasp.org/www-project-web-security-testing-guide/assets/archive/OWASP_Testing_Guide_v4.pdf</a> (дата обращения: 27.03.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
