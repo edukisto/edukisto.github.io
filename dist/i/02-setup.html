@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2017-01-01" />
+	<title>Пакетный менеджер PHP. Установка и настройка framework’a</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css"
+		integrity="sha256-Jk/Lrypj95Ipq97zXBYyL7uBcmozq0IC+m8Fr/POBFU="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2017
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Пакетный менеджер PHP. Установка и настройка framework’a»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web framework</td>
+<td>Laravel ^7.5.2</td>
+</tr>
+<tr class="even">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="odd">
+<td>Валидатор формата</td>
+<td><a href="https://jigsaw.w3.org/css-validator/">The W3C CSS Validation Service</a></td>
+</tr>
+<tr class="even">
+<td>Валидатор формата</td>
+<td><a href="https://validator.w3.org/">The W3C Markup Validation Service</a></td>
+</tr>
+<tr class="odd">
+<td>Инструмент тестирования</td>
+<td>PHPUnit ^8</td>
+</tr>
+<tr class="even">
+<td>Компилятор</td>
+<td>PHP ^7.2.5</td>
+</tr>
+<tr class="odd">
+<td>Менеджер пакетов программ</td>
+<td>Composer ^1.6.0-RC</td>
+</tr>
+<tr class="even">
+<td>Модули PHP</td>
+<td><code>ctype</code>, <code>json</code>, <code>mbstring</code>, <code>openssl</code>, <code>PDO</code>, <code>tokenizer</code>, <code>xml</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для дополнений</td>
+<td><code>bcmath</code> (Telescope), <code>zip</code> (<code>laravel/installer</code>)</td>
+</tr>
+<tr class="even">
+<td>Модули PHP для MySQL</td>
+<td><code>mysqlnd</code> (не <code>mysqli</code>!), <code>pdo_mysql</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для SQLite</td>
+<td><code>pdo_sqlite</code> (не <code>sqlite3</code>!)</td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td>Windows Vista и выше или Ubuntu 18.04 и выше</td>
+</tr>
+<tr class="odd">
+<td>СУБД</td>
+<td>MySQL Community Server ^8.0.0</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0 по ГОСТ Р ИСО/⁠МЭК 26300‑2010</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Пользователям операционной системы Windows рекомендуется установить <a href="https://ospanel.io/download/">Open Server Panel Basic</a>, который содержит <i lang="en">Apache HTTP Server</i>, <i lang="en">MySQL</i> и <i lang="en">PHP</i>.</p>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Установка <i lang="en">Composer</i></h3>
+<section class="level4">
+<h4>В <i lang="en">Windows</i> с <i lang="en">Open Server Panel</i></h4>
+<p><i lang="en">Composer</i> включён в дистрибутив <i lang="en">Open Server Panel</i>.</p>
+</section>
+<section class="level4">
+<h4>В <i lang="en">Windows</i> без <i lang="en">Open Server Panel</i></h4>
+<ol>
+<li>Посетите веб­‑страницу <a href="https://getcomposer.org/download/" class="uri">https://getcomposer.org/download/</a>.</li>
+<li>Скачайте <a href="https://getcomposer.org/Composer-Setup.exe">Composer-Setup.exe</a>.</li>
+<li>Запустите <code>Composer-Setup.exe</code> от имени администратора.</li>
+<li>Галочку <i lang="en">Developer mode</i> в окне <i lang="en">Installation options</i> отмечать не нужно. Нажмите на кнопку <i lang="en">Next</i>.</li>
+<li>В окне <i lang="en">Settings check</i> нажмите на кнопку <i lang="en">Browse…</i> и укажите путь до интерпретатора <i lang="en">PHP</i>. Например, при использовании <i lang="en">OpenServer</i>, установленного на диск <code>C:</code>, путь будет таким: <code>C:\OSPanel\modules\php\PHP_7.4\php.exe</code>. Затем нажмите на кнопку <i lang="en">Next</i>.</li>
+<li>Если появится окно <i lang="en">PHP configuration error</i>, установите галочку <i lang="en">Create a <code>php.ini</code> file</i> и нажмите на кнопку <i lang="en">Next</i>.</li>
+<li>Окно <i lang="en">Proxy settings</i> пропустите, нажав на кнопку <i lang="en">Next</i>.</li>
+<li>В окне <i lang="en">Ready to install</i> нажмите на кнопку <i lang="en">Install</i>. Необходимо подключение к Интернету.</li>
+<li>В окне <i lang="en">Information</i> Вам предложат перезагрузить компьютер. Нажмите на кнопку <i lang="en">Next</i>.</li>
+<li>В окне <i lang="en">Completing Composer setup</i> нажмите на кнопку <i lang="en">Finish</i>.</li>
+<li>Вызовите <code>composer.phar</code> из консоли и укажите путь до интерпретатора <i lang="en">PHP</i>.</li>
+</ol>
+</section>
+<section class="level4">
+<h4>В <i lang="en">Linux</i></h4>
+<p>Скачайте последнюю версию <code>composer.phar</code> (latest snapshot) с веб­‑страницы <a href="https://getcomposer.org/download/" class="uri">https://getcomposer.org/download/</a> или выполните:</p>
+<pre class="bash command-line" data-prompt="$"><code>wget https://getcomposer.org/composer.phar</code></pre>
+<p>Перемещаем файл, чтобы его можно было вызывать из консоли по имени.</p>
+<pre class="bash command-line" data-prompt="$"><code>mv composer.phar ~/.local/bin/composer</code></pre>
+</section>
+</section>
+<section class="level3">
+<h3>Обновление <i lang="en">Composer</i></h3>
+<p><strong>Запустите эмулятор терминала и выполните следующие команды.</strong> Если Вы используете <i lang="en">Open Server Panel</i>, запустите его, нажмите правой кнопкой мыши на флажок в области уведомлений Windows, в контекстном меню выберите пункт «Дополнительно⏵​Консоль» и введите:</p>
+<pre class="bash command-line" data-prompt="$"><code># Запускаем самообновление Composer’а
+composer self-update
+
+# Убедимся, что установлен Composer самой свежей версии (1.10.5)
+composer -V</code></pre>
+</section>
+<section class="level3">
+<h3>Установка инсталлятора <i lang="en">Laravel</i></h3>
+<p>Выполните в эмуляторе терминала:</p>
+<pre class="bash command-line" data-prompt="$"><code># Устанавливаем инсталлятор Laravel
+composer global require laravel/installer
+
+# Просматривая журнал установки, убедитесь, что Composer работает с PHP 7.4.
+# Если нет, лучше удалить установленный пакет:
+# composer global remove laravel/installer</code></pre>
+</section>
+<section class="level3">
+<h3>Добавление инсталлятора <i lang="en">Laravel</i> в <code>PATH</code></h3>
+<section class="level4">
+<h4>В <i lang="en">Windows</i></h4>
+<p>После успешной установки инсталлятор <i lang="en">Laravel</i> будет размещён в каталоге <code>userdata\composer\vendor\bin</code>. К сожалению, вызвать инсталлятор из консоли по имени файла сразу не получится: потребуется дополнительная настройка. Если Вы пользуетесь <i lang="en">Open Server Panel</i>, последовательность действий такова:</p>
+<ol>
+<li><p>откройте каталог <i lang="en">Open Server Panel</i>;</p></li>
+<li><p>создайте текстовый файл <code>path.txt</code> в каталоге <code>userdata\config</code>;</p></li>
+<li><p>впишите в указанный файл путь до каталога, в котором размещён инсталлятор <i lang="en">Laravel</i> (например, <code>%realprogdir%\userdata\composer\vendor\bin</code>);</p></li>
+<li><p>на вкладке «Сервер» в настройках <i lang="en">Open Server Panel</i> ;</p></li>
+<li><p>сохраните настройки, перезапустите сервер <strong>и консоль</strong>;</p></li>
+<li><p>в консоли выполните:</p>
+<pre class="bash command-line" data-prompt="$"><code>PATH</code></pre>
+<p>Убедитесь, что каталог, в котором размещён инсталлятор <i lang="en">Laravel</i>, указан в перечне.</p></li>
+</ol>
+</section>
+<section class="level4">
+<h4>В <i lang="en">Linux</i></h4>
+<pre class="bash command-line" data-prompt="$"><code>echo &#39;PATH=&quot;$HOME/.config/composer/vendor/bin:$PATH&quot;&#39; &gt;&gt; ~/.profile
+. ~/.profile</code></pre>
+<p>Путь может отличаться. Сверьтесь с <a href="https://laravel.com/docs/7.x/installation#installing-laravel" class="uri">https://laravel.com/docs/7.x/installation#installing-laravel</a>.</p>
+</section>
+</section>
+<section class="level3">
+<h3>Переход в каталог, где будет размещён каталог проекта</h3>
+<pre class="bash command-line" data-prompt="$"><code># Для Open Servel Panel
+cd domains/localhost
+
+# Для XAMPP
+cd htdocs</code></pre>
+</section>
+<section class="level3">
+<h3>Создание проекта на базе <i lang="en">Laravel</i></h3>
+<pre class="bash command-line" data-prompt="$"><code># Убедимся, что установлен инсталлятор самой свежей версии (3.0.1)
+laravel -V
+
+# Выводим перечень команд инсталлятора Laravel
+laravel list
+
+# Нас интересует команда new. Выводим справочную информацию по ней
+laravel new --help
+
+# Разворачиваем проект под названием project на базе каркаса веб­‑приложений Laravel
+laravel new project
+
+# Спускаемся в каталог project, автоматически созданный Composer’ом
+cd project
+
+# Выводим номер установленной версии Laravel (7.5.2)
+php artisan -V</code></pre>
+</section>
+<section class="level3">
+<h3>Проверка</h3>
+<p>Запустите встроенный в <i lang="en">PHP</i> отладочный веб­‑сервер:</p>
+<pre class="bash command-line" data-prompt="$"><code>php artisan serve</code></pre>
+<p>В окно терминала будет выведено сообщение с <i lang="en">IP</i>­‑адресом и портом, которые занял веб­‑сервер. Обычно это <a href="http://127.0.0.1:8000" class="uri">http://127.0.0.1:8000</a>. Запустите браузер и обратитесь по указанному веб­‑адресу. В окне браузера Вы должны увидеть следующую заставку:</p>
+<figure>
+<img src="../../media/laravel.png" alt="Заставка Laravel" /><figcaption>Заставка Laravel</figcaption>
+</figure>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
