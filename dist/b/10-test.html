@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2017-01-01" />
+	<title>Разработка тестового сценария. Автоматизированное тестирование программы</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css"
+		integrity="sha256-Jk/Lrypj95Ipq97zXBYyL7uBcmozq0IC+m8Fr/POBFU="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2020
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Разработка тестового сценария. Автоматизированное тестирование программы»<br />по МДК.02.01 «Технология разработки программного обеспечения»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Получить навыки реализации наборов тестов для инструмента автоматизации тестирования.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Выполнить действия, перечисленные в <a href="#example">примере выполнения задания</a>.</p>
+<p>Реализовать собственный проект, содержащий не менее 3 функций. Повторить действия, перечисленные в <a href="#example">примере выполнения задания</a>, применительно к своему проекту.</p>
+<p>Примерные темы проектов:</p>
+<ol>
+<li>программы записи десятичного числа в двоичной системе счисления;</li>
+<li>программы записи двоичного числа в десятичной системе счисления;</li>
+<li>программы для вычисления наибольшего общего делителя двух целых чисел;</li>
+<li>программы для сдвига элементов списка;</li>
+<li>программы, реализующей сортировки элементов списка «пузырьком»;</li>
+<li>программы, реализующей поиск максимального значения в 2мерном массиве;</li>
+<li>программы, реализующей поиск минимального значения в 2мерном массиве;</li>
+<li>программы, вычисляющей среднее арифметического в 2мерном массиве;</li>
+<li>программы, суммирующей элементы главной диагонали квадратной матрицы;</li>
+<li>программы, реализующей перемешивание элементов списка.</li>
+</ol>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с рекомендацией W3C HTML5</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без BOM</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Обязательное программное обеспечение на платформе Windows</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Операционная система</td>
+<td>Windows 7 (сборка 7600.16385.090713-1255) или выше</td>
+</tr>
+<tr class="even">
+<td>Программная среда</td>
+<td>.NET Framework 4.5.2 ⁠<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> или выше</td>
+</tr>
+<tr class="odd">
+<td>Система программирования</td>
+<td>MinGW Compiler Suite</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Обязательное программное обеспечение на платформе Linux</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Операционная система</td>
+<td>64­‑битная, совместимая с пакетами deb или RPM</td>
+</tr>
+<tr class="even">
+<td>Система программирования</td>
+<td>GCC</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Обязательное программное обеспечение на платформе продуктов Apple</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Операционная система</td>
+<td>OS X 10.10 или выше, macOS 10.12 или выше</td>
+</tr>
+<tr class="even">
+<td>Система программирования</td>
+<td>Clang</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Автоматизация тестирования подразумевает применение специализированного программного обеспечения, называемого <em>инструментами автоматизации тестирования</em> и позволяющего осуществлять следующие операции:</p>
+<ul>
+<li>генерация тестовых данных (например, значений аргументов функции);</li>
+<li>статический анализ (например, контроль оформления исходного кода, который не требует выполнения программы);</li>
+<li>выполнение контрольных примеров по списку.</li>
+</ul>
+<p>Инструменты автоматизации тестирования могут разрабатываться в организации или быть получены извне как коммерческий продукт либо как программное обеспечение с открытым исходным кодом. Например, для тестирования исходного кода на языке <i lang="en">PHP</i> может применяться <i lang="en">PHPUnit</i>, для <i lang="en">C#</i> ⁠— <i lang="en">xUnit.net</i>, для <i lang="en">C</i> и <i lang="en">C++</i> ⁠— <i lang="en">Catch2</i>.</p>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Установка пакетов <i lang="en">MinGW</i></h3>
+<ol>
+<li><p>Посреством браузера перейдите на сайт <a href="http://www.mingw.org/" class="uri">http://www.mingw.org/</a> и обратитесь к разделу <i lang="en">Download</i>. Попав на страницу загрузок, отыщите в перечне пункт <i lang="en">MinGW Installation Manager (mingw-get)</i>, нажмите на расположенную рядом с ним кнопку <i lang="en">Show</i> и во вложенном перечне снова нажмите на <i lang="en">Show</i>, размещённую напротив пункта <i lang="en">MinGW-Get Version 0.6.3 (Beta)</i>. Вам будет предложено несколько дистрибутивов, из которых целесообразно выбрать <a href="https://osdn.net/dl/mingw/mingw-get-setup.exe"><code>mingw-get-setup.exe</code></a>.</p></li>
+<li><p>Скачав <code>mingw-get-setup.exe</code> на свой компьютер, запустите его от имени администратора.</p></li>
+<li><p>Будет запущен инструмент установки и настройки <i lang="en">mingw-get</i> ⁠— <i lang="en">MinGW Installation Manager Setup Tool</i>. В окне, показанном на рисунке 1, нажмите на кнопку <i lang="en">Install</i> («Установить»).</p>
+<figure>
+<img src="../../media/mingw/01.png" alt="Титульный экран MinGW Installation Manager Setup Tool" /><figcaption>Титульный экран <i lang="en">MinGW Installation Manager Setup Tool</i></figcaption>
+</figure></li>
+<li><p>Будет открыто окно, показанное на рисунке 2. Желательно <strong>не</strong> изменять настройки. Нажмите на кнопку <i lang="en">Continue</i> («Далее»).</p>
+<figure>
+<img src="../../media/mingw/02.png" alt="Окно с настройками mingw-get" /><figcaption>Окно с настройками <i lang="en">mingw-get</i></figcaption>
+</figure></li>
+<li><p>Будет открыто окно, показанное на рисунке 3. Дождитесь установки <i lang="en">mingw-get</i> и обновления локального перечня доступных пакетов, после чего нажмите на кнопку <i lang="en">Continue</i> («Далее»).</p>
+<figure>
+<img src="../../media/mingw/03.png" alt="Окно установки mingw-get" /><figcaption>Окно установки <i lang="en">mingw-get</i></figcaption>
+</figure></li>
+<li><p>Будет открыто главное окно <i lang="en">mingw-get</i> с перечнем доступных и (или) установленных пакетов. Для выполнения работы Вам потребуются как минимум пакеты <code>mingw32-base-bin</code> (базовый метапакет, указывающий на компилятор <i lang="en">C</i>, редактор связей, отладчик, несколько библиотек) и <code>mingw32-gcc-g++-bin</code> (компилятор <i lang="en">C++</i>). Если какой­‑либо из указанных пакетов <strong>не</strong> отмечен зна́ком «■» зелёного цвета, нажимите правой кнопкой мыши на соответствующий элемент перечня и выберите из контекстного меню пункт <i lang="en">Mark for installation</i> («Отметить для установки»). Напротив отмеченного пакета должен появиться знак «↪» (рисунок 4).</p>
+<figure>
+<img src="../../media/mingw/04.png" alt="Пакеты, отмеченные для установки" /><figcaption>Пакеты, отмеченные для установки</figcaption>
+</figure></li>
+<li><p>В главном меню выберите пункт <i lang="en">Installation</i>⏵​<i lang="en">Apply Changes</i> (Установка⏵​Принять изменения).</p>
+<figure>
+<img src="../../media/mingw/05.png" alt="Принятие изменений" /><figcaption>Принятие изменений</figcaption>
+</figure></li>
+<li><p>Дождитесь окончания загрузки и установки пакетов и нажмите на кнопку <i lang="en">Close</i> («Закрыть») в окне с журналом установки.</p>
+<figure>
+<img src="../../media/mingw/06.png" alt="Установка пакетов завершена" /><figcaption>Установка пакетов завершена</figcaption>
+</figure></li>
+<li><p>В главном окне <i lang="en">mingw-get</i> будет выведен перечень, в котором установленные пакеты будут отмечены квадратами («■») зелёного цвета.</p></li>
+<li><p>Для завершения установки необходимо добавить в системную переменную <code>Path</code> путь к каталогу, где размещены утилиты <i lang="en">MinGW</i> (по умолчанию ⁠— <code>C:\MinGW\bin</code>). Для этого необходимо открыть редактор системных переменных:</p>
+<ul>
+<li>в <i lang="en">Windows 7</i> откройте Мой компьютер⏵​Свойства⏵​Изменить параметры⏵​Дополнительно⏵​Переменные среды…</li>
+</ul>
+<p>Выберите системную переменную <code>Path</code> и нажмите на кнопку «Изменить…». Если редактор выводит значение <code>Path</code> в строку, то впишите путь к каталогу, где размещены утилиты <i lang="en">MinGW</i> (по умолчанию ⁠— <code>C:\MinGW\bin</code>), перед этой строкой, отделив от следующего пути точкой с запятой.</p></li>
+<li><p>Запустите или перезапустите интерпретатор команд (<code>cmd</code>) и введите в него:</p>
+<pre class="bash command-line" data-prompt="$"><code>g++ --version</code></pre>
+<p>Ожидаемый вывод:</p>
+<pre class="bash uncopyable"><code>g++ (MinGW.org GCC Build-20200227-1) 9.2.0
+Copyright (C) 2019 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</code></pre></li>
+</ol>
+</section>
+<section class="level3">
+<h3>Реализация проекта на языке <i lang="en">C++</i></h3>
+<p>Создайте в домашнем каталоге каталог <code>my-project</code>, а уже в нём воссоздайте следующую иерархию каталогов:</p>
+<ul>
+<li><code>bin</code> ⁠— для загрузочных модулей;</li>
+<li><code>include</code> ⁠— для заголовков исходных модулей;</li>
+<li><code>obj</code> ⁠— для объектных модулей;</li>
+<li><code>src</code> ⁠— для реализации исходных модулей;</li>
+<li><code>tests</code> ⁠— для наборов тестов.</li>
+</ul>
+<p>В каталогах <code>include</code> и <code>src</code> будут размещены файлы с расширениями имён <code>hpp</code> и <code>cpp</code> ⁠— исходные модули, содержащие код на языке <i lang="en">C++</i>. В результате их компиляции появятся соответствующие объектные модули ⁠— эти файлы с расширением имени <code>o</code> будут размещены в каталоге <code>obj</code>. Как известно, объектные модули уже не содержат кода <i lang="en">C++</i>, но и не могут быть выполнены операционной системой, а предназначены для компоновки посредством редактора связей (<i lang="en">link</i>’ера) в один или несколько загрузочных модулей. Загрузочные модули ⁠— это файлы, исполняемые операционной системой; они будут размещены в каталоге <code>bin</code> и получат расширение имени в зависимости от назначения и операционной системы (<code>exe</code>, <code>dll</code>, <code>so</code> и т. п.).</p>
+<p>Проект направлен на реализацию одной­‑единственной функции ⁠— функции вычисления факториала. Факториал вычисляется только для неотрицательных чисел. Факториал числа <em>n</em> ⁠= ⁠0 равен единице. Факториал натуального числа <em>n</em> определяется как произведение всех натуральных чисел от 1 до <em>n</em> включительно:</p>
+<p><em>n</em>! = 1 ⁠× ⁠… ⁠×n</p>
+<p>Реализуйте функцию, вписав приведённый ниже исходный код в указанные файлы.</p>
+<section class="level4">
+<h4>Создание файла <code>include/factorial.hpp</code></h4>
+<pre class="cpp line-numbers"><code>#ifndef FACTORIAL_HPP
+#define FACTORIAL_HPP
+
+unsigned int factorial(unsigned int number);
+
+#endif
+</code></pre>
+</section>
+<section class="level4">
+<h4>Создание файла <code>include/factorial.cpp</code></h4>
+<pre class="cpp line-numbers"><code>#include &quot;factorial.hpp&quot;
+
+unsigned int factorial(unsigned int number) {
+    if (number &lt;= 1) {
+        return 1;
+    }
+    return factorial(number - 1) * number;
+}
+</code></pre>
+</section>
+<section class="level4">
+<h4>Компиляция</h4>
+<p>Компилируем (опция <code>-c</code>) исходный модуль <code>src/factorial.cpp</code> и создаём объектный модуль <code>obj/factorial.o</code> (опция <code>-o</code>). Опция <code>-I</code> указывает, в каком каталоге компилятору следует искать файлы, подключаемые посредством макроса <code class="cpp">#include</code>.</p>
+<pre class="bash command-line" data-prompt="$"><code>g++ -c -I include -o obj/factorial.o src/factorial.cpp</code></pre>
+</section>
+</section>
+<section class="level3">
+<h3>Компиляция тестовой среды</h3>
+<p>Скомпилируем тестовую среду́ (англ. <i lang="en">test environment</i> по <a href="http://protect.gost.ru/v.aspx?control=8&amp;id=195502&amp;pageK=24C062B4-9DFF-4B68-B269-814533AB3502">ГОСТ Р 56920‑2016</a>), основанную на каркасе <i lang="en">Catch2</i>.</p>
+<ol>
+<li><p>Посредством браузера скачайте с веб­‑страницы <a href="https://github.com/catchorg/Catch2/releases/" class="uri">https://github.com/catchorg/Catch2/releases/</a> файл <code>catch.hpp</code> последней версии.</p></li>
+<li><p>Разместите файл <code>catch.hpp</code> в каталоге <code>tests</code>.</p></li>
+<li><p>Создайте файл <code>tests/main.cpp</code> со следующим содержимым:</p>
+<pre class="cpp line-numbers"><code>#define CATCH_CONFIG_MAIN
+#include &quot;catch.hpp&quot;
+</code></pre></li>
+<li><p>Скомпилируйте файл <code>tests/main.cpp</code>:</p>
+<pre class="bash command-line" data-prompt="$"><code>g++ -c -o obj/tests/main.o tests/main.cpp</code></pre></li>
+<li><p>Убедитесь, что в каталоге <code>obj</code> появился каталог <code>tests</code> с файлом <code>main.o</code> внутри.</p></li>
+</ol>
+<p>Необходимо отметить, что нет необходимости заново компилировать тестовую среду при добавлении, изменении или удалении наборов тестов: достаточно скомпилировать обновлённые наборы тестов и скомпоновать результат с объектным модулем <code>obj/tests/main.o</code>.</p>
+<section class="level4">
+<h4>Реализация набора тестов</h4>
+<ol>
+<li><p>Составляем таблицу с тестовыми вариантами для функции <code>factorial()</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Входные данные</th>
+<th>Ожидаемые выходные данные</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>120</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>720</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>5040</td>
+</tr>
+<tr class="odd">
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>Конечно, этот набор тестов, основанный на последовательном переборе значений аргументов, крайне неэффективен. Выполняя следующие работы, Вы научитесь сводить количество тестовых вариантов к минимуму, достаточному для достижения целей тестирования.</p></li>
+<li><p>Реализуем тестовый набор для <i lang="en">Catch2</i> ⁠— создаём файл <code>tests/factorial.cpp</code> со следующим содержимым:</p>
+<pre class="cpp line-numbers"><code>#include &quot;catch.hpp&quot;
+
+#include &quot;factorial.cpp&quot;
+
+TEST_CASE(&quot;Factorials are computed&quot;, &quot;[factorial]&quot;) {
+    REQUIRE(factorial(0) == 1);
+    REQUIRE(factorial(1) == 1);
+    REQUIRE(factorial(2) == 2);
+    REQUIRE(factorial(3) == 6);
+    REQUIRE(factorial(4) == 24);
+    REQUIRE(factorial(5) == 120);
+    REQUIRE(factorial(6) == 720);
+    REQUIRE(factorial(7) == 5040);
+}
+</code></pre></li>
+<li><p>Компилируем (опция <code>-c</code>) исходный модуль <code>tests/factorial.cpp</code> для создания объектного модуля <code>obj/tests/factorial.o</code> (опция <code>-o</code>). Опция <code>-I</code> указывает на каталог <code>src</code>, в котором компилятору следует искать файлы, подключаемые к <code>tests/factorial.cpp</code> посредством макроса <code class="cpp">#include</code>.</p>
+<pre class="bash command-line" data-prompt="$"><code>g++ -c -I src -o obj/tests/factorial.o tests/factorial.cpp</code></pre></li>
+<li><p>Компонуем объектные модули <code>obj/tests/main.o</code> и <code>obj/tests/factorial.o</code> для создания тестовой среды ⁠— загрузочного модуля <code>bin/testrunner.exe</code> (опция <code>-o</code>).</p>
+<pre class="bash command-line" data-prompt="$"><code>g++ obj/tests/main.o obj/tests/factorial.o -o bin/testrunner.exe</code></pre></li>
+<li><p>Запускаем тестовую среду:</p>
+<pre class="bash command-line" data-prompt="$"><code>bin/testrunner.exe</code></pre></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://dotnet.microsoft.com/download/thank-you/net452-offline" class="uri">https://dotnet.microsoft.com/download/thank-you/net452-offline</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩</a></p></li>
+</ol>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
