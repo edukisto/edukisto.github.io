@@ -60,7 +60,7 @@
 		></script>
 </head>
 <body>
-
+	
 	<header id="header">
 		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
 		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
@@ -218,27 +218,27 @@
 <li><p>Скачав <code>mingw-get-setup.exe</code> на свой компьютер, запустите его от имени администратора.</p></li>
 <li><p>Будет запущен инструмент установки и настройки <i lang="en">mingw-get</i> ⁠— <i lang="en">MinGW Installation Manager Setup Tool</i>. В окне, показанном на рисунке 1, нажмите на кнопку <i lang="en">Install</i> («Установить»).</p>
 <figure>
-<img src="../../media/mingw/01.png" alt="Титульный экран MinGW Installation Manager Setup Tool" /><figcaption>Титульный экран <i lang="en">MinGW Installation Manager Setup Tool</i></figcaption>
+<img src="../media/mingw/01.png" alt="Титульный экран MinGW Installation Manager Setup Tool" /><figcaption>Титульный экран <i lang="en">MinGW Installation Manager Setup Tool</i></figcaption>
 </figure></li>
 <li><p>Будет открыто окно, показанное на рисунке 2. Желательно <strong>не</strong> изменять настройки. Нажмите на кнопку <i lang="en">Continue</i> («Далее»).</p>
 <figure>
-<img src="../../media/mingw/02.png" alt="Окно с настройками mingw-get" /><figcaption>Окно с настройками <i lang="en">mingw-get</i></figcaption>
+<img src="../media/mingw/02.png" alt="Окно с настройками mingw-get" /><figcaption>Окно с настройками <i lang="en">mingw-get</i></figcaption>
 </figure></li>
 <li><p>Будет открыто окно, показанное на рисунке 3. Дождитесь установки <i lang="en">mingw-get</i> и обновления локального перечня доступных пакетов, после чего нажмите на кнопку <i lang="en">Continue</i> («Далее»).</p>
 <figure>
-<img src="../../media/mingw/03.png" alt="Окно установки mingw-get" /><figcaption>Окно установки <i lang="en">mingw-get</i></figcaption>
+<img src="../media/mingw/03.png" alt="Окно установки mingw-get" /><figcaption>Окно установки <i lang="en">mingw-get</i></figcaption>
 </figure></li>
 <li><p>Будет открыто главное окно <i lang="en">mingw-get</i> с перечнем доступных и (или) установленных пакетов. Для выполнения работы Вам потребуются как минимум пакеты <code>mingw32-base-bin</code> (базовый метапакет, указывающий на компилятор <i lang="en">C</i>, редактор связей, отладчик, несколько библиотек) и <code>mingw32-gcc-g++-bin</code> (компилятор <i lang="en">C++</i>). Если какой­‑либо из указанных пакетов <strong>не</strong> отмечен зна́ком «■» зелёного цвета, нажимите правой кнопкой мыши на соответствующий элемент перечня и выберите из контекстного меню пункт <i lang="en">Mark for installation</i> («Отметить для установки»). Напротив отмеченного пакета должен появиться знак «↪» (рисунок 4).</p>
 <figure>
-<img src="../../media/mingw/04.png" alt="Пакеты, отмеченные для установки" /><figcaption>Пакеты, отмеченные для установки</figcaption>
+<img src="../media/mingw/04.png" alt="Пакеты, отмеченные для установки" /><figcaption>Пакеты, отмеченные для установки</figcaption>
 </figure></li>
 <li><p>В главном меню выберите пункт <i lang="en">Installation</i>⏵​<i lang="en">Apply Changes</i> (Установка⏵​Принять изменения).</p>
 <figure>
-<img src="../../media/mingw/05.png" alt="Принятие изменений" /><figcaption>Принятие изменений</figcaption>
+<img src="../media/mingw/05.png" alt="Принятие изменений" /><figcaption>Принятие изменений</figcaption>
 </figure></li>
 <li><p>Дождитесь окончания загрузки и установки пакетов и нажмите на кнопку <i lang="en">Close</i> («Закрыть») в окне с журналом установки.</p>
 <figure>
-<img src="../../media/mingw/06.png" alt="Установка пакетов завершена" /><figcaption>Установка пакетов завершена</figcaption>
+<img src="../media/mingw/06.png" alt="Установка пакетов завершена" /><figcaption>Установка пакетов завершена</figcaption>
 </figure></li>
 <li><p>В главном окне <i lang="en">mingw-get</i> будет выведен перечень, в котором установленные пакеты будут отмечены квадратами («■») зелёного цвета.</p></li>
 <li><p>Для завершения установки необходимо добавить в системную переменную <code>Path</code> путь к каталогу, где размещены утилиты <i lang="en">MinGW</i> (по умолчанию ⁠— <code>C:\MinGW\bin</code>). Для этого необходимо открыть редактор системных переменных:</p>
@@ -261,7 +261,10 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</cod
 <ul>
 <li><code>bin</code> ⁠— для загрузочных модулей;</li>
 <li><code>include</code> ⁠— для заголовков исходных модулей;</li>
-<li><code>obj</code> ⁠— для объектных модулей;</li>
+<li><code>obj</code> ⁠— для объектных модулей;
+<ul>
+<li><code>tests</code> ⁠— для объектных модулей тестовых наборов;</li>
+</ul></li>
 <li><code>src</code> ⁠— для реализации исходных модулей;</li>
 <li><code>tests</code> ⁠— для наборов тестов.</li>
 </ul>
@@ -366,7 +369,7 @@ unsigned int factorial(unsigned int number) {
 <li><p>Реализуем тестовый набор для <i lang="en">Catch2</i> ⁠— создаём файл <code>tests/factorial.cpp</code> со следующим содержимым:</p>
 <pre class="cpp line-numbers"><code>#include &quot;catch.hpp&quot;
 
-#include &quot;factorial.cpp&quot;
+#include &quot;../src/factorial.cpp&quot;
 
 TEST_CASE(&quot;Factorials are computed&quot;, &quot;[factorial]&quot;) {
     REQUIRE(factorial(0) == 1);
@@ -402,6 +405,9 @@ TEST_CASE(&quot;Factorials are computed&quot;, &quot;[factorial]&quot;) {
 <li>исходный код;</li>
 <li>результаты работы.</li>
 </ul>
+</section>
+<section id="bibliography" class="level2">
+<h2>Список использованных источников</h2>
 </section>
 <section class="footnotes" role="doc-endnotes">
 <hr />
