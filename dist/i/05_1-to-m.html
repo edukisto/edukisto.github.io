@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2017-01-01" />
+	<title>Реализация отношения „многие­‑ко­‑многим“ на уровне БД средствами web framework’а</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css"
+		integrity="sha256-lsTHTgXNEIj9zkzaYzK8EJBtqND4qQOGNnZxpjk8Pn0="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2017
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Реализация отношения „многие­‑ко­‑многим“ на уровне БД средствами web framework’а»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться создавать отношения «один­‑ко­‑многим» на уровне БД в <i lang="en">Laravel</i>.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Реализовать отношения «один­‑ко­‑многим» на уровне БД в <i lang="en">Laravel</i>.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web framework</td>
+<td>Laravel ^7.9.2</td>
+</tr>
+<tr class="even">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="odd">
+<td>Валидатор формата</td>
+<td><a href="https://jigsaw.w3.org/css-validator/">The W3C CSS Validation Service</a></td>
+</tr>
+<tr class="even">
+<td>Валидатор формата</td>
+<td><a href="https://validator.w3.org/">The W3C Markup Validation Service</a></td>
+</tr>
+<tr class="odd">
+<td>Инструмент тестирования</td>
+<td>PHPUnit ^8</td>
+</tr>
+<tr class="even">
+<td>Компилятор</td>
+<td>PHP ^7.2.5</td>
+</tr>
+<tr class="odd">
+<td>Менеджер пакетов программ</td>
+<td>Composer ^1.6.0-RC</td>
+</tr>
+<tr class="even">
+<td>Модули PHP</td>
+<td><code>ctype</code>, <code>json</code>, <code>mbstring</code>, <code>openssl</code>, <code>PDO</code>, <code>tokenizer</code>, <code>xml</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для дополнений</td>
+<td><code>bcmath</code> (Telescope), <code>zip</code> (<code>laravel/installer</code>)</td>
+</tr>
+<tr class="even">
+<td>Модули PHP для MySQL</td>
+<td><code>mysqlnd</code> (не <code>mysqli</code>!), <code>pdo_mysql</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для SQLite</td>
+<td><code>pdo_sqlite</code> (не <code>sqlite3</code>!)</td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td>Windows Vista и выше или Ubuntu 18.04 и выше</td>
+</tr>
+<tr class="odd">
+<td>СУБД</td>
+<td>MySQL Community Server ^8.0.0</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0 по ГОСТ Р ИСО/⁠МЭК 26300‑2010</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Пользователям операционной системы Windows рекомендуется установить <a href="https://ospanel.io/download/">Open Server Basic</a>, который содержит <i lang="en">Apache HTTP Server</i>, <i lang="en">MySQL</i> и <i lang="en">PHP</i>.</p>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Моделирование пользователя</h3>
+<p><strong>Откроем на чтение файл миграции.</strong> Внутри него определён класс миграции <code class="php">CreateUsersTable</code> с двумя публичными методами: <code class="php">up()</code> и <code class="php">down()</code>. Как Вы помните, первый из них описывает процесс создания таблицы БД, второй ⁠— процесс её удаления. По умолчанию эти методы реализованы следующим образом:</p>
+<pre class="php"><code>public function up()
+{
+    Schema::create(&#39;users&#39;, function (Blueprint $table) {
+        $table-&gt;id();
+        $table-&gt;string(&#39;name&#39;);
+        $table-&gt;string(&#39;email&#39;)-&gt;unique();
+        $table-&gt;timestamp(&#39;email_verified_at&#39;)-&gt;nullable();
+        $table-&gt;string(&#39;password&#39;);
+        $table-&gt;rememberToken();
+        $table-&gt;timestamps();
+    });
+}</code></pre>
+<pre class="php"><code>public function down()
+{
+    Schema::dropIfExists(&#39;users&#39;);
+}</code></pre>
+</section>
+<section class="level3">
+<h3>Моделирование комментария</h3>
+<p>Вызовы методов <code>create()</code> и <code>drop()</code> встроенного в <i lang="en">Laravel</i> класса <code>Schema</code> формируют <i lang="en">SQL</i>­‑запросы на создание таблицы (<code>CREATE TABLE</code>) и её удаление (<code>DROP TABLE</code>) соответственно.</p>
+<p>Метод <code>create</code> класса <code>Schema</code> принимает два параметра: имя создаваемой таблицы (<code>users</code>) и анонимную функцию обратного вызова, которая автоматически принимает в качестве параметра объект <code>$table</code> класса <code>Blueprint</code> ⁠— его методы позволяют добавлять в таблицу атрибуты.</p>
+<p>Выражение <code>$table-&gt;id()</code> создаст атрибут <code>id</code> беззнакового целого типа <code>INT</code> с запретом пустых значений, автоинкрементом и первичным ключом. Выражение <code>$table-&gt;timestamps()</code> создаст сразу два атрибута типа <code>DATETIME</code>, которые Laravel заполняет автоматически: <code>created_at</code> (дата и время создания кортежа) и <code>updated_at</code> (дата и время последнего изменения кортежа).</p>
+<p><strong>Добавим ещё один атрибут ⁠— название производителя ⁠— и запретим повторы значений:</strong></p>
+<pre class="php"><code>$table-&gt;string(&#39;title&#39;, 191)
+      -&gt;unique();</code></pre>
+<p>Как результат, метод <code>up()</code> примет следующий вид:</p>
+<pre class="php"><code>public function up()
+{
+    Schema::create(&#39;manufacturers&#39;, function (Blueprint $table) {
+        $table-&gt;increments(&#39;id&#39;);
+        $table-&gt;string(&#39;title&#39;, 191)
+              -&gt;unique();
+        $table-&gt;timestamps();
+    });
+}</code></pre>
+<p><strong>Сохраним файл и запустим миграцию:</strong></p>
+<pre class="bash"><code># Убедимся, что Artisan подготовил правильные SQL­‑запросы
+php artisan migrate --pretend
+
+# Запустим миграцию, которая внесёт изменения в структуру БД
+php artisan migrate</code></pre>
+<p>Используя консоль, убедимся в существовании таблицы <code>manufacturers</code> и правильности её структуры:</p>
+<pre class="sql"><code># Переходим в БД laravel
+USE laravel;
+
+# Выводим список таблиц в используемой БД
+SHOW TABLES;
+
+# Выводим описание структуры таблицы tags
+DESCRIBE manufacturers;</code></pre>
+</section>
+<section class="level3">
+<h3>Создание внешнего ключа в подчинённой таблице «Сообщения»</h3>
+<p><strong>Метод <code class="php">up()</code> в файле <code>database/migrations/YYYY_MM_DD_hhmmss_create_messages_table.php</code> нужно привести к следующему виду:</strong></p>
+<pre class="php line-numbers" data-start="14" data-line="18-25"><code>public function up()
+{
+    Schema::create(&#39;messages&#39;, function (Blueprint $table) {
+        $table-&gt;id();
+        $table-&gt;bigInteger(&#39;user_id&#39;) // Атрибут user_id целого типа,
+              -&gt;unsigned();           // беззнаковый.
+        $table-&gt;index(&#39;user_id&#39;);     // Индексация user_id.
+        $table-&gt;foreign(&#39;user_id&#39;)    // Внешний ключ на атрибуте user_id
+              -&gt;references(&#39;id&#39;)      // ссылается на атрибут id
+              -&gt;on(&#39;users&#39;)           // в таблице users.
+              -&gt;onDelete(&#39;CASCADE&#39;)   // Записи удаляются с пользователем.
+              -&gt;onUpdate(&#39;RESTRICT&#39;); // Изменять id в users нельзя.
+        $table-&gt;string(&#39;title&#39;, 255)
+              -&gt;unique();
+        $table-&gt;text(&#39;content&#39;);
+        $table-&gt;timestamps();
+    });
+}</code></pre>
+<p>Вызов <code class="php">index()</code> необязателен для новых версий <i lang="en">MySQL</i>, которые автоматически индексируют атрибут перед созданием внешнего ключа.</p>
+<p><strong>Сохраним файл и сначала откатим, а потом запустим заново все миграции</strong> (иначе <code class="sql">messages</code> не обновится, т. к. <code class="bash">migrate</code> работает только для вновь созданных миграций):</p>
+<pre class="bash"><code>php artisan migrate:fresh</code></pre>
+<p>Используя консоль, убедимся в существовании таблицы <code>messages</code> и правильности её структуры:</p>
+<pre class="sql"><code># Переходим в БД.
+USE blog;
+
+# Выводим список таблиц в используемой БД.
+SHOW TABLES;</code></pre>
+<pre class="bash uncopyable"><code>+----------------+
+| Tables_in_blog |
++----------------+
+| failed_jobs    |
+| messages       |
+| migrations     |
+| users          |
++----------------+</code></pre>
+<pre class="sql"><code># Выводим описание структуры таблицы messages.
+DESCRIBE messages;</code></pre>
+<pre class="bash uncopyable"><code>+------------+-----------------+------+-----+---------+----------------+
+| Field      | Type            | Null | Key | Default | Extra          |
++------------+-----------------+------+-----+---------+----------------+
+| id         | bigint unsigned | NO   | PRI | NULL    | auto_increment |
+| user_id    | bigint unsigned | NO   | MUL | NULL    |                |
+| title      | varchar(255)    | NO   | UNI | NULL    |                |
+| content    | text            | NO   |     | NULL    |                |
+| created_at | timestamp       | YES  |     | NULL    |                |
+| updated_at | timestamp       | YES  |     | NULL    |                |
++------------+-----------------+------+-----+---------+----------------+</code></pre>
+<pre class="sql"><code># Выводим описание ключей таблицы messages.
+SHOW KEYS FROM messages;</code></pre>
+<pre class="bash uncopyable"><code>+----------+------------+------------------------+--------------+-------------+-----+
+| Table    | Non_unique | Key_name               | Seq_in_index | Column_name | ... |
++----------+------------+------------------------+--------------+-------------+-----+
+| messages |          0 | PRIMARY                |            1 | id          | ... |
+| messages |          0 | messages_title_unique  |            1 | title       | ... |
+| messages |          1 | messages_user_id_index |            1 | user_id     | ... |
++----------+------------+------------------------+--------------+-------------+-----+</code></pre>
+</section>
+<section class="level3">
+<h3>Настройка моделей</h3>
+<p>Осталась одна проблема: <i lang="en">Laravel</i> не знает, как именно требуется использовать указанное отношение. Например, может потребоваться извлекать из БД комментарий вместе с его автором, а может произойти обратное: извлекая пользователя, программисту захочется одновременно извлечь все его записи. В любом случае, чтобы управлять отношениями, потребуется проделать следующее.</p>
+<p>Как Вы помните, одновременно с файлами миграции мы создавали файлы модели.</p>
+<p>Напомню, что в <i lang="en">Laravel</i> файл (класс) миграции ⁠— это описание на языке <i lang="en">PHP</i> структуры таблицы БД; этот файл (класс) используется только при создании и удалении таблицы и при работе с кортежами (создании, выборке, изменении, удалении) не задействован.</p>
+<p>Модель же, напротив,⁠— это файл (класс), который отвечает за управление кортежами, а не таблицей и её структурой. Через модель выполняется создание, выборка, изменение, удаление кортежей. Каждый класс модели расширяет (берёт за основу) системный класс <code class="php">Illuminate\Database\Eloquent\Model</code>, наследуя его защищённые и публичные методы, в том числе <code class="php">save()</code> (создание или обновление кортежа) и <code class="php">delete()</code> (удаление кортежа). Об этих методах мы поговорим в следующей работе, а пока следует разобраться с отношениями.</p>
+<p>Моделей задействовано две: <code>app/Message.php</code> и <code>app/User.php</code>. <strong>Откроем на редактирование первую из них и увидим следующее:</strong></p>
+<pre class="php"><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Message extends Model
+{
+    //
+}</code></pre>
+<p><strong>Теперь допишем класс, добавив метод <code>user()</code>:</strong></p>
+<pre class="php"><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Message extends Model
+{
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class);
+        // Строку следует читать так:
+        // «Эта сущность (запись в блоге) относится к одному автору;
+        // вернуть этого автора.
+
+        // То же самое можно было бы записать иначе:
+        // return $this-&gt;belongsTo(&#39;App\User&#39;);
+    }
+}</code></pre>
+<p>Имя метода представляет собой форму единственного числа слова <code class="php">user</code>. Это необязательная, но рекомендуемая практика.</p>
+<p><strong>Сохраним изменения в файле <code>app/Message.php</code> и возьмёмся за редактирование <code>app/User.php</code>.</strong> Добавим в него метод:</p>
+<pre class="php"><code>public function messages()
+{
+    return $this-&gt;hasMany(Message::class);
+    // Строку следует читать так:
+    // «Эта сущность (пользователь) относится ко многим записям в блоге;
+    // вернуть множество этих записей»
+
+    // То же самое можно было бы записать иначе:
+    // $this-&gt;hasMany(&#39;App\Message&#39;);
+}</code></pre>
+<p>Имя метода представляет собой форму множественного числа слова <code class="sql">messages</code>. Это необязательная, но рекомендуемая практика.</p>
+<p><strong>Сохраним изменения в файле <code>app/User.php</code>.</strong></p>
+</section>
+<section class="level3">
+<h3>Что в итоге?</h3>
+<p>Что же мы получили в итоге? Мы получили возможность делать так (пока не переписываем следующий код, а только вникаем):</p>
+<pre class="php"><code>$ivanov = new User();         // Создаём пользователя.
+$ivanov-&gt;username = &#39;Иванов&#39;; // Даём ему имя.
+
+
+$message = new Message();         // Создаём запись в блоге.
+$message-&gt;title = &#39;Привет, мир!&#39;; // Даём ей заголовок.
+
+// Строим связь «один­‑ко­‑многим»:
+
+// Способ 1 (ни автор, ни его комментарий пока не сохранены в БД).
+$message-&gt;user() = $ivanov; // «Автором комментария является Иванов».
+$message-&gt;push();           // Сохраняем всё в БД.
+
+// Способ 2 (ни автор, ни его комментарий пока не сохранены в БД).
+$user-&gt;messages()            // «Среди сообщений пользователя…
+     -&gt;attach($message-&gt;id); // …есть и это».
+$user-&gt;push();               // Сохраняем всё в БД.
+
+// Следующие способы сработали бы,
+// если бы мы не создавали запись о пользователе, а извлекали бы её из БД
+
+// Способ 3 (автор существует в БД, а его сообщение ⁠— необязательно).
+$ivanov-&gt;messages()-&gt;save($message); // Сохранение продукта и связи в БД
+
+// Способ 4 (то же самое, только сохранение в БД отложено)
+$message-&gt;user()-&gt;associate($ivanov); // Связь на уровне PHP.
+$message-&gt;save();                     // Сохранение продукта и связи в БД</code></pre>
+<p>Убедитесь, что приведённый выше код понятен Вам полностью.</p>
+<p>Схему БД мы создали. Однако сами по себе модели не заработают. Согласно шаблону проектирования <i lang="en">MVC</i>, работу модели инициирует контроллер ⁠— в <i lang="en">Laravel</i> это ещё один класс, в одном из методов которого можно было бы разместить рассмотренный исходный текст.</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
