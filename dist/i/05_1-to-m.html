@@ -204,40 +204,6 @@
 }</code></pre>
 </section>
 <section class="level3">
-<h3>Моделирование комментария</h3>
-<p>Вызовы методов <code>create()</code> и <code>drop()</code> встроенного в <i lang="en">Laravel</i> класса <code>Schema</code> формируют <i lang="en">SQL</i>­‑запросы на создание таблицы (<code>CREATE TABLE</code>) и её удаление (<code>DROP TABLE</code>) соответственно.</p>
-<p>Метод <code>create</code> класса <code>Schema</code> принимает два параметра: имя создаваемой таблицы (<code>users</code>) и анонимную функцию обратного вызова, которая автоматически принимает в качестве параметра объект <code>$table</code> класса <code>Blueprint</code> ⁠— его методы позволяют добавлять в таблицу атрибуты.</p>
-<p>Выражение <code>$table-&gt;id()</code> создаст атрибут <code>id</code> беззнакового целого типа <code>INT</code> с запретом пустых значений, автоинкрементом и первичным ключом. Выражение <code>$table-&gt;timestamps()</code> создаст сразу два атрибута типа <code>DATETIME</code>, которые Laravel заполняет автоматически: <code>created_at</code> (дата и время создания кортежа) и <code>updated_at</code> (дата и время последнего изменения кортежа).</p>
-<p><strong>Добавим ещё один атрибут ⁠— название производителя ⁠— и запретим повторы значений:</strong></p>
-<pre class="php"><code>$table-&gt;string(&#39;title&#39;, 191)
-      -&gt;unique();</code></pre>
-<p>Как результат, метод <code>up()</code> примет следующий вид:</p>
-<pre class="php"><code>public function up()
-{
-    Schema::create(&#39;manufacturers&#39;, function (Blueprint $table) {
-        $table-&gt;increments(&#39;id&#39;);
-        $table-&gt;string(&#39;title&#39;, 191)
-              -&gt;unique();
-        $table-&gt;timestamps();
-    });
-}</code></pre>
-<p><strong>Сохраним файл и запустим миграцию:</strong></p>
-<pre class="bash"><code># Убедимся, что Artisan подготовил правильные SQL­‑запросы
-php artisan migrate --pretend
-
-# Запустим миграцию, которая внесёт изменения в структуру БД
-php artisan migrate</code></pre>
-<p>Используя консоль, убедимся в существовании таблицы <code>manufacturers</code> и правильности её структуры:</p>
-<pre class="sql"><code># Переходим в БД laravel
-USE laravel;
-
-# Выводим список таблиц в используемой БД
-SHOW TABLES;
-
-# Выводим описание структуры таблицы tags
-DESCRIBE manufacturers;</code></pre>
-</section>
-<section class="level3">
 <h3>Создание внешнего ключа в подчинённой таблице «Сообщения»</h3>
 <p><strong>Метод <code class="php">up()</code> в файле <code>database/migrations/YYYY_MM_DD_hhmmss_create_messages_table.php</code> нужно привести к следующему виду:</strong></p>
 <pre class="php line-numbers" data-start="14" data-line="18-25"><code>public function up()
