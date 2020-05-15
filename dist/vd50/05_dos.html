@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="HandheldFriendly" content="true">
+	<meta name="MobileOptimized" content="0">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="generator" content="pandoc">
+	<meta name="author" content="Караваев С. В.">
+	<meta name="dcterms.date" content="2019-01-01">
+	<title>Тестирование на устойчивость к атакам отказа в обслуживании</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.1"
+		integrity="sha256-WlvgUjDa6Xc4I05jWKeKldYF/yUvveu9JeVGNKkWXa4="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2020
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Тестирование на устойчивость к атакам отказа в обслуживании»<br />по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться смягчать воздействие (англ.<i lang="en">mitigate</i>) <i lang="en">DoS</i>­‑атак на веб­‑приложения.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Смягчить воздействие <i lang="en">DoS</i>­‑атак на свой программный продукт.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td>Windows Vista и выше или Ubuntu 18.04 и выше</td>
+</tr>
+<tr class="odd">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="even">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Как известно, безопасность информации (данных) ⁠— это состояние защищённости информации (данных), при котором обеспечены её (их) конфиденциальность, доступность и целостность, при этом доступность определяется как состояние информации (ресурсов информационной системы), при котором субъекты, имеющие права доступа, могут реализовать их беспрепятственно (ГОСТ Р 50922‑2006). В таком контексте задачей атаки, известной как <i lang="en">DoS</i> (англ. <i lang="en">denial of service</i>), обычно является препятствование субъектам в реализации их прав доступа к веб­‑приложению посредством истощения вычислительных ресурсов сервера. Последнее обычно достигается путём одновременной подачи множества небольших по объёму запросов, в т. ч. требующих отправки более объёмного ответа или длительной обработки (хеширование, работа с загруженными файлами, их синтаксический анализ и т. п.).</p>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<p>Естественно, на прикладном уровне стека протоколов Интернета невозможно предотвратить атаку <i lang="en">DoS</i>, но возможно смягчить (англ. <i lang="en">mitigate</i>) её воздействие. Для защиты на других уровнях применяют межсетевые экраны для веб­‑приложений (англ. <i lang="en">web application firewall</i>, <i lang="en">WAF</i>).</p>
+<section class="level3">
+<h3>Реализация смягчения в <i lang="en">Laravel</i></h3>
+<ol>
+<li><p>Точкой входа в веб­‑приложение, написанное на <i lang="en">Laravel</i>, является файл <code>public/index.php</code> ⁠— при запросе именно он инициализирует ядро системы, обрабатывает с его помощью запрос, отправляет ответ клиенту и затем финализирует работу ядра.</p>
+<p>Откройте файл <code>app/Http/Kernel.php</code>, содержащий класс ядра, и найдите в нём следующий фрагмент:</p>
+<pre class="php uncopyable"><code>protected $routeMiddleware = [
+    // ...
+    &#39;throttle&#39; =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    // ...
+];</code></pre>
+<p>Он свидетельствует, что среди промежуточного программного обеспечения присутствует компонент, обеспечивающий <i lang="en">throttling</i> ⁠— преднамеренный отказ выполнять запрос при соблюдении некоторого условия. Например, можно блокировать одновременные или слишком частые запросы с одного <i lang="en">IP</i>­‑адреса к требовательным ресурсам, к которым в частности относятся ресурсы для регистрации и аутентификации пользователей.</p></li>
+<li><p>Применим <i lang="en">throttle</i> (в переводе с английского ⁠— дроссель, что намекает на назначение компонента). <strong>Откройте <code>routes/web.php</code></strong> ⁠— файл, в котором регистрируют маршруты веб­‑приложения.</p>
+<p>Если Вы выполняли предыдущие работы, то содержимое файла имеет примерно следующий вид:</p>
+<pre class="php uncopyable"><code>&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get(&#39;/&#39;, function () {
+    return view(&#39;welcome&#39;);
+});
+
+Route::resource(&#39;messages&#39;, &#39;MessageController&#39;);</code></pre>
+<p><strong>Приведите его к следующему виду:</strong></p>
+<pre class="php line-numbers" data-line="5,11"><code>&lt;?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::middleware([&#39;throttle:3,1&#39;])-&gt;group(function () {
+    Route::get(&#39;/&#39;, function () {
+        return view(&#39;welcome&#39;);
+    });
+
+    Route::resource(&#39;messages&#39;, &#39;MessageController&#39;);
+});</code></pre>
+<p>Строка <code class="php">'throttle:3,1'</code> означает, что компонент будет допускать не более 3 запросов за 1 минуту с одного и того же <i lang="en">IP</i>­‑адрес.</p>
+<p><strong>Сохраните изменения в файле.</strong></p></li>
+<li><p><strong>Выполните</strong> в интерпретаторе команд:</p>
+<pre class="bash"><code># Переход в каталог проекта.
+cd путь/к/каталогу/проекта
+
+# Запуск отладочного сервера HTTP.
+php artisan serve</code></pre>
+<p>При выполнении последней команды будет выведен <i lang="en">IP</i>­‑адрес и порт, занятый отладочным сервером <i lang="en">HTTP</i>. Обычно это <a href="http://127.0.0.1:8000" class="uri">http://127.0.0.1:8000</a>.</p></li>
+<li><p>Запустите браузер и <strong>перейдите по гиперссылке, выведенной на предыдущем шаге</strong>.</p></li>
+<li><p>В браузере <strong>откройте инструменты разработчика</strong> (<kbd>F12</kbd> или <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">⇧ ⁠Shift</kbd> ⁠+ ⁠<kbd lang="en">J</kbd>) и перейдите на вкладку <i lang="en">Network</i> («Сеть»).</p></li>
+<li><p>В браузере <strong>четыре раза нажмите</strong> <kbd>F5</kbd>. Первые три запроса приведут к выводу в окно браузера главной страницы веб­‑приложения. В ответ на четвёртый запрос сервер пришлёт браузеру сообщение со статусом <code>429 Too Many Requests</code>. Код 429 указывает клиенту, что тот отправил слишком много запросов в заданный сервером промежуток времени, и сервер применил «ограничение скорости».</p></li>
+<li><p>В отладчике нажмите на строчку, соответствующую отклонённому запросу (эта строка содержит код 429 и обычно отмечена красным). Откроется окно, в котором необходимо перейти на вкладку <i lang="en">Headers</i> («Заголовки»). Убедитесь, что среди заголовков ответа (<i lang="en">response</i>) есть <code>Retry-After</code> ⁠— его значение представлено либо количеством секунд, либо меткой времени; так или иначе, это указание на время, которое клиенту следует выждать до повторного выполнения запроса <span class="citation" data-cites="RFC/6585">[1]</span>. Конечно, не каждый клиент будет соблюдать рекомендацию, но сервер в любом случае не ответит до указанного срока.</p></li>
+<li><p>Откройте файл <code>vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php</code> и найдите метод <code class="php">resolveRequestSignature()</code>. Он выглядит примерно так:</p>
+<pre class="php uncopyable"><code>protected function resolveRequestSignature($request)
+{
+    if ($user = $request-&gt;user()) {
+        return sha1($user-&gt;getAuthIdentifier());
+    }
+
+    if ($route = $request-&gt;route()) {
+        return sha1($route-&gt;getDomain().&#39;|&#39;.$request-&gt;ip());
+    }
+
+    throw new RuntimeException(&#39;Unable to generate the request signature. Route unavailable.&#39;);
+}</code></pre>
+<p>Строка <code class="php">sha1($route-&gt;getDomain().'|'.$request-&gt;ip())</code> свидетельствует, что компонент осуществляет блокировку по сочетанию <i lang="en">IP</i>­‑адреса сетевого узла, с которого подан запрос, и доменного имени сайта в запросе. Этого мало для надёжной идентификации ⁠— так можно заблокировать целые <i lang="en">NAT</i>­‑подсети; лучше считать вредоносными только те запросы, которые идут на один и тот же <i lang="en">URL</i> одним и тем же методом. Чтобы изменить поведение компонента, нужно создать класс­‑наследник <code class="php">ThrottleRequests</code> и переопределить метод <code class="php">resolveRequestSignature()</code>.</p></li>
+<li><p><strong>Создайте файл</strong> <code>app/Http/Middleware/ThrottleRequests.php</code> и разместите в нём следующий исходный код:</p>
+<pre class="php"><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Illuminate\Routing\Middleware\ThrottleRequests as Middleware;
+
+class ThrottleRequests extends Middleware
+{
+    protected function resolveRequestSignature($request)
+    {
+        if ($user = $request-&gt;user()) {
+            return sha1($user-&gt;getAuthIdentifier());
+        }
+
+        if ($route = $request-&gt;route()) {
+            return sha1(
+                implode(&#39;|&#39;, $route-&gt;methods()) // Методы
+                . &#39;|&#39; .
+                implode(&#39;|&#39;, [
+                    $route-&gt;getDomain(), 
+                    $route-&gt;uri(), // Шаблон URL
+                    $request-&gt;ip(),
+                ])
+            );
+        }
+
+        throw new RuntimeException(&#39;Unable to generate the request signature. Route unavailable.&#39;);
+    }
+}</code></pre></li>
+<li><p><strong>В файле <code>app/Http/Kernel.php</code> замените строку</strong></p>
+<pre class="php"><code>&#39;throttle&#39; =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,</code></pre>
+<p>на строку</p>
+<pre class="php"><code>&#39;throttle&#39; =&gt; \App\Http\Middleware\ThrottleRequests::class,</code></pre></li>
+<li><p>Повторно выполните шаг 6.</p></li>
+</ol>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-RFC/6585">
+<p>1. Nottingham M., Fielding R.T. 2012. апреля. № 6585. (Request for comments). ISSN 2070-1721. URL: <a href="https://tools.ietf.org/html/rfc6585">https://tools.ietf.org/html/rfc6585</a> (дата обращения: 15.05.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
