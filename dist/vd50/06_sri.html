@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2020-01-01" />
+	<title>Применение стандартов Subresource integrity и Content security policy</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.1"
+		integrity="sha256-WlvgUjDa6Xc4I05jWKeKldYF/yUvveu9JeVGNKkWXa4="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-chtml-full.js"
+		integrity="sha256-G6LKmWqxdCa6I8w4fhp58X9L2sJv//luLfR82Ojfmho="
+		crossorigin="anonymous"
+		>
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [
+					['\\(', '\\)']
+				],
+				processEscapes: true
+			}
+		});
+	</script>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2020
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Применение стандартов Subresource integrity и Content security policy»<br />по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<section class="level3">
+<h3><i lang="en">Subresource spoofing</i>, или Подмена субресурса</h3>
+<section class="level4">
+<h4>Атака</h4>
+<p>Нередко веб­‑разработчики размещают таблицы стилей <i lang="en">CSS</i>, сценарии <i lang="en">JavaScript</i> и другие субресурсы в сетях доставки контента ⁠— <i lang="en">content delivery network</i>, сокращённо <i lang="en">CDN</i>. Сайты, которые ссылаются на один и тот же ресурс в одной и той же <i lang="en">CDN</i>, позволяют пользовательскому агенту ⁠— браузеру единожды скачать, а затем кешировать содержимое ресурса на срок, установленный <i lang="en">CDN</i>, и при последующих запросах по тому же <i lang="en">URL</i> заменить скачивание извлечением из кеша, с локального носителя, что ускорит отображение.</p>
+<p>Однако злоумышленник (например, администратор <i lang="en">CDN</i>) способен изменить содержимое ресурса на сервере или вовсе перенаправить запрос на другой узел. Такую атаку называют <i lang="en">subresource spoofing</i> («подмена субресурса»; если быть точным, происходит подмена не самого ресурса, размещённого на хостинге, в репозитории или в <i lang="en">CDN</i>, а его содержимого, так как <i lang="en">URL</i> остаётся прежним). Объектом атаки является пользовательский агент (браузер), который получает и выполняет вредоносное содержимое субресурса.</p>
+<p>Субъектами атаки могут выступать как третьи лица (взломщики хостинга или <i lang="en">CDN</i>), так и сопроводители субресурсов ⁠— другими словами, ничто не мешает автору изменить исходный код библиотеки, не изменяя гиперссылку на неё. Злонамеренность авторов ⁠— не редкость. Авторов нескольких пакетов <i lang="en">Node.js</i> уличили в размещении в своих творениях кода для <i lang="en">cryptojacking</i>’а ⁠— несанкционированного использования вычислительных мощностей устройств, на которых выполняется сценарий, для майнинга криптовалют; координация расчётов велась через сервисы <a href="https://coinhive.com">Coinhive</a>, <a href="https://www.coinimp.com/">CoinIMP</a> и т. п.</p>
+<p>Протокол <i lang="en">TLS</i> не пресечёт атаку, поскольку гарантирует подлинность <em>узла</em>, но не целостность <em>контента</em>, а подложный узел наверняка предъявит годный сертификат.</p>
+<p><a href="https://www.jefftk.com/p/shared-cache-is-going-away">Изолированный кеш</a>, который разработчики браузеров внедряют в связи с <a href="https://sirdarckcat.blogspot.com/2019/03/http-cache-cross-site-leaks.html">реализацией в 2019 г.</a> атаки <i lang="en">HTTP cache cross­‑site leaks (XSLeaks)</i>, в значительной мере обесценивает идею <i lang="en">CDN</i>. Теперь библиотека (например, <i lang="en">jQuery</i>), подключённая двумя разными сайтами из одной и той же <i lang="en">CDN</i> по одной и той же гиперссылке, хранится у клиента в виде двух изолированных копий и будет заново скачана, а не взята из кеша, если подключена к третьему сайту, посещённому тем же клиентом. Однако это не решает проблему <i lang="en">resource spoofing</i>, так как подмена ресурса не обязательно связана с использованием <i lang="en">CDN</i>.</p>
+</section>
+<section class="level4">
+<h4>Защита посредством реализации <i lang="en">Subresource integrity</i></h4>
+<p>Для борьбы с <i lang="en">resource spoofing</i> Консорциум Всемирной паутины издал рекомендацию по контролю целостности субресурсов ⁠— <i lang="en">Subresource integrity</i>. Согласно спецификации, пользовательский агент отказывает в обработке субресурса, контрольная сумма которого не совпадает со значения атрибута <code>integrity</code>. <a href="https://www.w3.org/TR/2016/REC-SRI-20160623/">Рекомендация 2016 г.</a> и редакторский черновик за 26.08.2017 г. обязывают пользовательский агент (браузер) обеспечить расчёт контрольных сумм посредством хеш­‑функций <i lang="en">SHA‑256</i>, <i lang="en">SHA‑384</i>, <i lang="en">SHA‑512</i> для ресурсов, подключаемых через элементы HTML <code>link</code> и <code>script</code>. Поддержка <code>a</code>, <code>audio</code>, <code>embed</code>, <code>iframe</code>, <code>img</code>, <code>object</code>, <code>source</code>, <code>track</code>, <code>video</code> ожидается в последующих ревизиях спецификации.</p>
+<p>Естественно, для полноценной работы <i lang="en">SRI</i> необходимы:</p>
+<ul>
+<li>отсутствие уязвимости для атаки <i lang="en">MiTM</i>, в результате которой и содержимое субресурса, и значение атрибута <code>inregrity</code> могут быть подменены во время передачи по каналу связи;</li>
+<li>отсутствие у злоумышленника возможности воздействовать на объектную модель документа <i lang="en">HTML</i> в пользовательском агенте (браузере). Например, посредством <i lang="en">XSS</i> злоумышленник может добавить на веб­‑страницу элемент <code>script</code> со ссылкой на вредоносный сценарий и соответствующей контрольной суммой. Такие приёмы выходят за рамки ответственности <i lang="en">SRI</i> ⁠— потребуется устранить уязвимости для <i lang="en">XSS</i> и вести белый список источников посредством <code>Content-Security-Policy: script-src</code> или фильтра наподобие <a href="https://github.com/snipsco/yett/">Yett</a>;</li>
+<li>оценка безопасности субресурсов: <i lang="en">SRI</i> не поможет, если разработчик веб­‑сайта опрометчиво или умышленно создаст ссылку на вредоносный сценарий и укажет правильную контрольную сумму.</li>
+</ul>
+<p>Пример использования с элементом <i lang="en">HTML</i> <code class="html">link</code>:</p>
+<pre class="html"><code>&lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;путь/к/стилю.css&quot;
+    integrity=&quot;sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;
+    crossorigin=&quot;anonymous&quot;
+&gt;</code></pre>
+<p>Пример использования с элементом <i lang="en">HTML</i> <code class="html">script</code>:</p>
+<pre class="html"><code>&lt;script
+    defer
+    src=&quot;путь/к/сценарию.js&quot;
+    integrity=&quot;sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;
+    crossorigin=&quot;anonymous&quot;
+    &gt;&lt;/script&gt;</code></pre>
+<p>Пример использования в сценарии <i lang="en">JavaScript</i>:</p>
+<pre class="javascript"><code>$(&#39;&lt;script&gt;&lt;/script&gt;&#39;)
+  .prop(&#39;defer&#39;, true)
+  .attr(
+    &#39;src&#39;,
+    &#39;https://www.google.com/jsapi?callback=alert&#39;
+  )
+  .attr(
+    &#39;integrity&#39;,
+    &#39;sha256-vYB3Q28wUc47y7iwAofCwTjTFeh924wxaDdkWXd4jrE=&#39;
+  )
+  .attr(&#39;crossorigin&#39;, &#39;anonymous&#39;)
+  .appendTo($(&#39;head&#39;))
+  ;</code></pre>
+<p>Сначала пользовательский агент (браузер) обрабатывает атрибут <code class="html attribute">crossorigin</code>, который <em>обычно</em> имеет значение <code>anonymous</code> (ресурс размещён на другом доменном имени, т. е. используется <i lang="en">cross­‑origin resource sharing, CORS</i>, без аутентификации клиента). <i lang="en">CORS</i> позволяет загружать содержимое ресурсов только по ограниченному набору схем: <code>data</code> (не рекомендуется), <code>http</code> (не рекомендуется), <code>https</code>, поэтому <i lang="en">URL</i> со схемой <code>file</code> просто не будет обработан (см. консоль по <kbd>F12</kbd>):</p>
+<pre><code>Access to CSS stylesheet at &#39;file:///путь/к/стилю.css&#39; from origin &#39;null&#39; has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.</code></pre>
+<pre><code>Access to script at &#39;file:///путь/к/сценарию.js&#39; from origin &#39;null&#39; has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.</code></pre>
+<p>Можно попробовать полностью убрать атрибут <code class="html attribute">crossorigin</code>, но без него перестанет работать <i lang="en">SRI</i>:</p>
+<pre><code>Subresource Integrity: The resource &#39;file:///путь/к/стилю.css&#39; has an integrity attribute, but the resource requires the request to be CORS enabled to check the integrity, and it is not. The resource has been blocked because the integrity cannot be enforced.</code></pre>
+<pre><code>Subresource Integrity: The resource &#39;file:///путь/к/сценарию.js&#39; has an integrity attribute, but the resource requires the request to be CORS enabled to check the integrity, and it is not. The resource has been blocked because the integrity cannot be enforced.</code></pre>
+<p>После скачивания содержимого ресурса пользовательский агент (браузер) анализирует значение атрибута <i lang="en">integrity</i>. Фрагмент значения, расположенный после дефиса, содержит ожидаемую контрольную сумму, а префикс (фрагмент до дефиса) указывает на хеш­‑функцию, посредством которой вычислена эта сумма. Пользовательский агент (браузер) самостоятельно рассчитывает контрольную сумму полученного содержимого ресурса и сверяет результат с ожидаемым. Если хеши не совпали, ресурс не будет применён, а в консоль (<kbd>F12</kbd>) будет выведено сообщение с тем хешем, который вычислил пользовательский агент (браузер):</p>
+<pre><code>Failed to find a valid digest in the &#39;integrity&#39; attribute for resource &#39;http://127.0.0.1:8000/style.css&#39; with computed SHA-256 integrity &#39;WwvhFMMGzGuT3vWhT1U/DIrGBH0hL/MIurzYJonkfpQ=&#39;. The resource has been blocked.</code></pre>
+<pre><code>Failed to find a valid digest in the &#39;integrity&#39; attribute for resource &#39;http://127.0.0.1:8000/script.js&#39; with computed SHA-256 integrity &#39;A77/FIoHOGjeI5i/rPLyY3QGTSXkJ3r+pbdozEsKtTg=&#39;. The resource has been blocked.</code></pre>
+</section>
+<section class="level4">
+<h4><i lang="en">SHA‑256</i>, <i lang="en">SHA‑384</i> или <i lang="en">SHA‑512</i>?</h4>
+<p><i lang="en">SHA‑512</i>, возможно, более устойчив к коллизиям (может понадобиться в будущем при развитии квантовых компьютеров) и быстрее на 64­‑битных процессорах (доказательство: <code class="bash">openssl speed sha256 sha512</code>), однако хеши <i lang="en">SHA‑256</i> в два раза короче, что экономит сетевой трафик.</p>
+<p>$$len(base64(256 б = 32 Б)) = |^ 32 / 3 * 4 ^| + '=' = 44 Б$$</p>
+<p>$$len(base64(512 б = 64 Б)) = |^ 64 / 3 * 4 ^| + '==' = 88 Б$$</p>
+<p>Это 44 ГБ (гигабайта!) на каждый миллион пользователей.</p>
+</section>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<ol>
+<li><p>Выберите любую веб­‑страницу своего проекта, к которой подключены ресурсы, представляющие собой таблицы стилей (файлы с расширением имени <code>css</code>) или сценарии <i lang="en">JavaScript</i> (файлы с расширением имени <code>js</code>). В настоящей инструкции этот файл будет называться <code>index.html</code>.</p></li>
+<li><p>Рассчитайте контрольную сумму для одного из этих ресурсов:</p>
+<pre class="bash command-line" data-prompt="$"><code>openssl dgst -binary -sha256 FILE.js | openssl base64 -A</code></pre>
+<p>Вместо <code class="bash">FILE.js</code> нужно подставить путь в файловой системе к файлу, контрольную сумму которого необходимо рассчитать. Будет выведено примерно следующее:</p>
+<pre class="bash"><code>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</code></pre></li>
+<li><p>Приведите тег, используемый для подключения ресурса к веб­‑странице, к следующему виду:</p>
+<pre class="html"><code>&lt;link
+  rel=&quot;stylesheet&quot;
+  href=&quot;путь/к/стилю.css&quot;
+  integrity=&quot;sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;
+  crossorigin=&quot;anonymous&quot;
+&gt;</code></pre>
+<pre class="html"><code>&lt;script
+  defer
+  src=&quot;путь/к/сценарию.js&quot;
+  integrity=&quot;sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;
+  crossorigin=&quot;anonymous&quot;
+&gt;&lt;/script&gt;</code></pre></li>
+<li><p>Из каталога, где находится <code>index.html</code>, запустите отладочный сервер <i lang="en">HTTP</i>:</p></li>
+</ol>
+<pre class="bash"><code>php -S 127.0.0.1:8080</code></pre>
+<ol>
+<li><p>Запустите браузер и обратитесь по веб­‑адресу: <a href="http://localhost:8080/index.html" class="uri">http://localhost:8080/index.html</a>.</p></li>
+<li><p>В браузере откройте панель разработчика (<kbd>F12</kbd>) и перейдите на вкладку «Консоль».</p></li>
+<li><p>Через браузер обратитесь по веб­‑адресу: <a href="http://localhost:8080/index.html" class="uri">http://localhost:8080/index.html</a>.</p></li>
+<li><p>Проверьте консоль в панели разработчика. Исправьте ошибки, если о них сообщается.</p></li>
+<li><p>Повторите шаги 1–⁠8 для каждого <i lang="en">CSS</i>‑ и <i lang="en">JavaScript</i>­‑ресурса в Вашем проекте.</p></li>
+</ol>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2">
+<h2>Список использованных источников</h2>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
