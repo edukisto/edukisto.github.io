@@ -227,7 +227,8 @@
 <p>Вызов <code class="php">index()</code> необязателен для новых версий <i lang="en">MySQL</i>, которые автоматически индексируют атрибут перед созданием внешнего ключа.</p>
 <p><strong>Сохраним файл и сначала откатим, а потом запустим заново все миграции</strong> (иначе <code class="sql">messages</code> не обновится, т. к. <code class="bash">migrate</code> работает только для вновь созданных миграций):</p>
 <pre class="bash"><code>php artisan migrate:fresh</code></pre>
-<p>Используя консоль, убедимся в существовании таблицы <code>messages</code> и правильности её структуры:</p>
+<p>Используя консоль, убедимся в существовании таблицы <code>messages</code> и правильности её структуры.</p>
+<p><mark>Следующие предложения <i lang="en">SQL</i> можно выполнить через штатный клиент <i lang="en">MySQL</i> (<code class="bash">mysql -u root -p</code> в эмуляторе терминала; пароль <code>root</code>) или через средство администрирования <i lang="en">phpMyAdmin</i> («Дополнительно⏵​<i lang="en">phpMyAdmin</i>» в контекстном меню <i lang="en">Open Server</i>).</mark></p>
 <pre class="sql"><code># Переходим в БД.
 USE blog;
 
