@@ -107,9 +107,11 @@
 </section>
 <section id="purpose" class="level2">
 <h2>Цель работы</h2>
+<p>Научиться применять стандарты Subresource integrity и Content security policy.</p>
 </section>
 <section id="task" class="level2">
 <h2>Задание</h2>
+<p>Применять стандарты Subresource integrity и Content security policy к своему проекту.</p>
 </section>
 <section id="wares" class="level2">
 <h2>Обязательное техническое и программное обеспечение</h2>
@@ -200,14 +202,16 @@
 <section class="level4">
 <h4><i lang="en">SHA‑256</i>, <i lang="en">SHA‑384</i> или <i lang="en">SHA‑512</i>?</h4>
 <p><i lang="en">SHA‑512</i>, возможно, более устойчив к коллизиям (может понадобиться в будущем при развитии квантовых компьютеров) и быстрее на 64­‑битных процессорах (доказательство: <code class="bash">openssl speed sha256 sha512</code>), однако хеши <i lang="en">SHA‑256</i> в два раза короче, что экономит сетевой трафик.</p>
-<p>$$len(base64(256 б = 32 Б)) = |^ 32 / 3 * 4 ^| + '=' = 44 Б$$</p>
-<p>$$len(base64(512 б = 64 Б)) = |^ 64 / 3 * 4 ^| + '==' = 88 Б$$</p>
-<p>Это 44 ГБ (гигабайта!) на каждый миллион пользователей.</p>
+<p>Длину контрольной суммы, которая представляет собой представление хеша в <i lang="en">base64</i>, можно определить по формуле:</p>
+<p>$$\Bigg \lfloor \frac{c + c - 6 \times \big \lfloor \frac{c}{6} \big \rfloor}{3} \Bigg \rfloor \times 4,$$</p>
+<p>где \(c\) ⁠— разрядность в байтах. Таким образом, длина контрольной суммы на основе <i lang="en">SHA‑512</i> и <i lang="en">SHA‑256</i> составит 88 и 44 Б соответственно. Это 44 ГБ сэкономленного трафика на каждый миллион пользователей.</p>
 </section>
 </section>
 </section>
 <section id="example" class="level2">
 <h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Реализация <i lang="en">Subresource intergity</i></h3>
 <ol>
 <li><p>Выберите любую веб­‑страницу своего проекта, к которой подключены ресурсы, представляющие собой таблицы стилей (файлы с расширением имени <code>css</code>) или сценарии <i lang="en">JavaScript</i> (файлы с расширением имени <code>js</code>). В настоящей инструкции этот файл будет называться <code>index.html</code>.</p></li>
 <li><p>Рассчитайте контрольную сумму для одного из этих ресурсов:</p>
@@ -227,16 +231,140 @@
   integrity=&quot;sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&quot;
   crossorigin=&quot;anonymous&quot;
 &gt;&lt;/script&gt;</code></pre></li>
-<li><p>Из каталога, где находится <code>index.html</code>, запустите отладочный сервер <i lang="en">HTTP</i>:</p></li>
-</ol>
-<pre class="bash"><code>php -S 127.0.0.1:8080</code></pre>
-<ol>
+<li><p>Из каталога, где находится <code>index.html</code>, запустите отладочный сервер <i lang="en">HTTP</i>:</p>
+<pre class="bash"><code>php -S 127.0.0.1:8080
+# или
+python -m http.server 8080</code></pre></li>
 <li><p>Запустите браузер и обратитесь по веб­‑адресу: <a href="http://localhost:8080/index.html" class="uri">http://localhost:8080/index.html</a>.</p></li>
 <li><p>В браузере откройте панель разработчика (<kbd>F12</kbd>) и перейдите на вкладку «Консоль».</p></li>
 <li><p>Через браузер обратитесь по веб­‑адресу: <a href="http://localhost:8080/index.html" class="uri">http://localhost:8080/index.html</a>.</p></li>
 <li><p>Проверьте консоль в панели разработчика. Исправьте ошибки, если о них сообщается.</p></li>
 <li><p>Повторите шаги 1–⁠8 для каждого <i lang="en">CSS</i>‑ и <i lang="en">JavaScript</i>­‑ресурса в Вашем проекте.</p></li>
 </ol>
+</section>
+<section class="level3">
+<h3>Реализация <i lang="en">Content security policy</i></h3>
+<ol>
+<li><p>Выберите любую веб­‑страницу своего проекта. Предполагается, что отладочный сервер <i lang="en">HTTP</i> запущен:</p>
+<pre class="bash"><code>php -S 127.0.0.1:8080
+# или
+python -m http.server 8080</code></pre>
+<p>Страница, используемая для примера:</p>
+<pre class="html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Пример&lt;/title&gt;
+    &lt;meta
+        http-equiv=&quot;Content-Security-Policy&quot;
+        content=&quot;default-src &#39;none&#39;; frame-src https://www.rea.ru/&quot;
+    &gt;
+    &lt;base href=&quot;http://localhost:8080/&quot;&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f0fff0;
+        }
+    &lt;/style&gt;
+    &lt;script&gt;
+        (function () {
+            &#39;use strict&#39;;
+            window.addEventListener(&#39;load&#39;, function () {
+                console.log(&#39;Привет, мир!&#39;);
+            });
+        }());
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Реализация &lt;i lang=&quot;en&quot;&gt;CSP&lt;/i&gt;&lt;/h1&gt;
+
+        &lt;section&gt;
+            &lt;h2&gt;Фрейм&lt;/h2&gt;
+            &lt;iframe src=&quot;https://www.rea.ru/&quot;&gt;&lt;/iframe&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></li>
+<li><p>Запустите браузер и обратитесь по веб­‑адресу: <a href="http://localhost:8080/index.html" class="uri">http://localhost:8080/index.html</a>.</p></li>
+<li><p>В браузере откройте панель разработчика (<kbd>F12</kbd>) и перейдите на вкладку «Консоль».</p></li>
+<li><p>Добавьте к элементу <code>head</code> (между тегами <code class="html">&lt;head&gt;</code> и <code class="html">&lt;/head&gt;</code>, желательно после <code class="html">&lt;meta charset="utf-8"&gt;</code>):</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;&quot;
+&gt;</code></pre></li>
+<li><p>Обновите отображение веб­‑страницы в браузере, нажав <kbd>F5</kbd>.</p></li>
+<li><p>В панели разработчика (<kbd>F12</kbd>), на вкладке «Консоль», увидите сообщения о запрете выполнения встроенных сценариев и стилей оформления:</p>
+<pre><code>Refused to apply inline style...
+Refused to execute inline script...</code></pre></li>
+<li><p>Перенесите встроенные сценарии в отдельные файлы и подключите их к странице как ресурсы. Например, фрагмент</p>
+<pre class="html"><code>(function () {
+    &#39;use strict&#39;;
+    window.addEventListener(&#39;load&#39;, function () {
+        console.log(&#39;Привет, мир!&#39;);
+    });
+}());</code></pre>
+<p>можно разместить в файле <code>script.js</code>, а в <code>index.html</code> заменить фрагмент</p>
+<pre class="html"><code>(function () {
+    &#39;use strict&#39;;
+    window.addEventListener(&#39;load&#39;, function () {
+        console.log(&#39;Привет, мир!&#39;);
+    });
+}());</code></pre>
+<p>фрагментом</p>
+<pre class="html"><code>&lt;script
+    defer
+    src=&quot;script.js&quot;
+    integrity=&quot;...&quot;
+    crossorigin=&quot;anonymous&quot;
+    &gt;&lt;/script&gt;</code></pre></li>
+<li><p>Перенесите встроенные стили оформления в отдельные файлы и подключите их к странице как ресурсы. Например, фрагмент</p>
+<pre class="html"><code>body {
+  background-color: #f0fff0; /* Зелёный */
+}</code></pre>
+<p>можно разместить в файле <code>style.css</code>, а в <code>index.html</code> заменить фрагмент</p>
+<pre class="html"><code>&lt;style&gt;
+    body {
+      background-color: #f0fff0; /* Зелёный */
+    }
+&lt;/style&gt;</code></pre>
+<p>фрагментом</p>
+<pre class="html"><code>&lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;style.css&quot;
+    integrity=&quot;...&quot;
+    crossorigin=&quot;anonymous&quot;
+    &gt;</code></pre></li>
+<li><p>Обновите отображение веб­‑страницы в браузере, нажав <kbd>F5</kbd>.</p></li>
+<li><p>В панели разработчика (<kbd>F12</kbd>), на вкладке «Консоль», увидите сообщения о запрете загрузки содержимого ресурсов со стилями оформления и сценариями:</p>
+<pre><code>Refused to load the stylesheet...
+Refused to load the script...</code></pre></li>
+<li><p>Введём послабление, разрешив загрузку содержимого ресурсов со стилями оформления и сценариями из текущего источника (<code>'self'</code>), то есть с нашего сайта:</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+&gt;</code></pre></li>
+<li><p>Обновите отображение веб­‑страницы в браузере, нажав <kbd>F5</kbd>.</p></li>
+<li><p>Сообщения о запрете загрузки содержимого ресурсов со стилями оформления и сценариями должны пропасть со вкладки «Консоль» панели разработчика (<kbd>F12</kbd>).</p></li>
+<li><p>Если в консоли есть сообщение</p>
+<pre><code>Refused to frame,</code></pre>
+<p>то на веб­‑странице есть фреймы. Желательно от них избавиться в принципе. Если это невозможно, разрешите загрузку из доверенного источника. В рассматриваемом примере это могло бы выглядеть так (не рекомендуется):</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;; frame-src https://www.rea.ru/; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+&gt;</code></pre>
+<p>В остальных случаях лучше явно запретить фреймы:</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;; frame-src &#39;none&#39;; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+&gt;</code></pre></li>
+<li><p>Запретим использование тега <code>base</code>:</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;; base-uri &#39;none&#39;; frame-src &#39;none&#39;; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+&gt;</code></pre></li>
+<li><p>Распространите действие политики на все страницы сайта.</p></li>
+</ol>
+</section>
 </section>
 <section id="report" class="level2">
 <h2>Структура отчёта</h2>
@@ -252,9 +380,7 @@
 <li>результаты работы.</li>
 </ul>
 </section>
-<section id="bibliography" class="level2">
-<h2>Список использованных источников</h2>
-</section></main>
+</main>
 
 	<footer></footer>
 
