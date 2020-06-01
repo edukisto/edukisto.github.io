@@ -284,7 +284,8 @@ DESCRIBE roles;</code></pre>
         // Атрибут с внешним ключом на таблицу users
         $table-&gt;bigInteger(&#39;user_id&#39;) // Атрибут user_id
               -&gt;unsigned()            // беззнакового целого типа
-              -&gt;foreign()             // с внешним ключом,
+        ;
+        $table-&gt;foreign(&#39;user_id&#39;)    // с внешним ключом,
               -&gt;references(&#39;id&#39;)      // ссылающимся на атрибут id
               -&gt;on(&#39;users&#39;)           // таблицы users,
               -&gt;onDelete(&#39;CASCADE&#39;)   // допускающим удалять кортежи role_user
@@ -295,7 +296,8 @@ DESCRIBE roles;</code></pre>
         // Атрибут с внешним ключом на таблицу roles
         $table-&gt;bigInteger(&#39;role_id&#39;) // Атрибут role_id
               -&gt;unsigned()            // беззнакового целого типа
-              -&gt;foreign()             // с внешним ключом,
+        ;
+        $table-&gt;foreign(&#39;role_id&#39;)    // с внешним ключом,
               -&gt;references(&#39;id&#39;)      // ссылающимся на атрибут id
               -&gt;on(&#39;roles&#39;)           // таблицы roles,
               -&gt;onDelete(&#39;CASCADE&#39;)   // допускающим удалять кортежи role_user
