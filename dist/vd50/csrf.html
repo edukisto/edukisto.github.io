@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2020-01-01" />
+	<title>Поиск и устранение уязвимостей для атак CSRF</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.1"
+		integrity="sha256-WlvgUjDa6Xc4I05jWKeKldYF/yUvveu9JeVGNKkWXa4="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-chtml-full.js"
+		integrity="sha256-G6LKmWqxdCa6I8w4fhp58X9L2sJv//luLfR82Ojfmho="
+		crossorigin="anonymous"
+		>
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [
+					['\\(', '\\)']
+				],
+				processEscapes: true
+			}
+		});
+	</script>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+
+
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2019
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Поиск и устранение уязвимостей для атак <i lang="en">CSRF</i>»<br />по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Получить практический опыт обнаружения и устранения уязвимостей для <i lang="en">CSRF</i> в веб­‑приложениях.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<ol>
+<li>Запустить <i lang="en">WebGoat</i> и решить задачи №⁠№ 3, 4, 8 из подраздела <i lang="en">Request forgeries ⁠⭢ <a href="http://localhost:8080/WebGoat/start.mvc#lesson/CSRF.lesson/">Cross­‑site request forgeries</a></i>.</li>
+<li>Изучить веб­‑приложение <a href="https://github.com/edukisto/attacks/tree/master/src/CSRF/CSRF" class="uri">https://github.com/edukisto/attacks/tree/master/src/CSRF/CSRF</a> и устранить в нём уязвимости для <i lang="en">CSRF</i>, используя возможности языков <i lang="en">HTML</i> и <i lang="en">PHP</i>.</li>
+<li>Устранить уязвимости для <i lang="en">CSRF</i> в своём ранее разработанном веб­‑приложении, используя возможности языка программирования, языка разметки <i lang="en">HTML</i>, <i lang="en">web framework</i>’а или библиотеки.</li>
+</ol>
+<p>Для получения оценки 3 необходимо выполнить задачу 3.</p>
+<p>Для получения оценки 4 необходимо выполнить задачи 2–⁠3.</p>
+<p>Для получения оценки 5 необходимо выполнить задачи 1–⁠3.</p>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<section class="level3">
+<h3>Общие сведения о <i lang="en">CSRF</i></h3>
+<p>Межсайтовая подделка запроса (англ. <i lang="en">cross­‑site request forgery</i>), известная также как <i lang="en">CSRF</i> /ˌsiː ˈsɜːrf/ <span class="citation" data-cites="Longman">[3]</span>, <i lang="en">XSRF</i>, <i lang="en">one­‑click attack</i> и <i lang="en">session riding</i>, ⁠— это слепая атака, при осуществлении которой вредоносная программа заставляет клиент (например, браузер) без ведома пользователя подать нежелательный запрос на сервер, где клиент авторизован <span class="citation" data-cites="OWASP/OCSS/CSRF">[1]</span>. Таким образом, в отличие от <i lang="en">XSS</i>, эксплуатирующего доверие <em>пользователя</em> к ссылке или сайту, <i lang="en">CSRF</i> эксплуатирует доверие <em>сервера авторизованному клиенту</em>.</p>
+<p>Рассмотрим пример. Пусть пользователи вымышленной социальной сети <i lang="en">Fakebook</i>, которая никак не защищена от <i lang="en">CSRF</i>, имеют возможность поставить на том или ином сообщении отметку «<i lang="en">Like!</i>», для чего из авторизованного клиента на ресурс <a href="https://fakebook.example.com/like" class="uri">https://fakebook.example.com/like</a> необходимо подать запрос с идентификатором выбранного сообщения. Тогда злоумышленнику в целях «накрутки» рейтинга определённого сообщения достаточно заманить достаточное количество пользователей <i lang="en">Fakebook</i> на заранее подготовленную стороннюю веб­‑страницу, содержимое которой без дальнейшего участия пользователя инициирует подачу клиентом запроса на <a href="https://fakebook.example.com/like" class="uri">https://fakebook.example.com/like</a>. Естественно, для выполнения операции требуется, чтобы эксплуатируемые таким образом клиенты были авторизованы в сети <i lang="en">Fakebook</i>. Содержимое вредоносного сценария, проводящего <i lang="en">CSRF</i>, может выглядеть примерно так:</p>
+<pre class="html"><code>&lt;!-- Форма по умолчанию не имеет визуального представления… --&gt;
+&lt;form action=&quot;https://fakebook.example.com/like&quot; method=&quot;post&quot;&gt;
+  &lt;!-- …а поле ввода скрыто. --&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;message_id&quot; value=&quot;1337&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;window.onload = document.forms[0].submit();&lt;/script&gt;</code></pre>
+<p>Рассмотрим другой пример. Пусть пользователи электронной платёжной системы, которая никак не защищена от <i lang="en">CSRF</i>, имеют возможность переводить денежные средства, подавая запросы из авторизованных клиентов на ресурс <a href="https://bank.example.com/transfer/?account=R&amp;amount=A">https://bank.example.com/transfer/?account=<var>R</var>&amp;amount=<var>A</var></a>, где <var>R</var> ⁠— номер счёта получателя, <var>A</var> ⁠— размер перевода. Тогда для похищения денежных средств достаточно осуществить переход авторизованного клиента по гиперссылке, содержащей номер счёта получателя и произвольное положительное число в качестве суммы перевода. <i lang="en">URI</i> мог бы выглядеть примерно так:</p>
+<pre class="html"><code>&lt;a href=&quot;https://bank.example.com/transfer/?account=260602&amp;amount=100500&quot;&gt;
+  Скачать бесплатно, без регистрации и &lt;i lang=&quot;en&quot;&gt;SMS&lt;/i&gt;!
+&lt;/a&gt;</code></pre>
+</section>
+<section class="level3">
+<h3>Противодействие <i lang="en">CSRF</i></h3>
+<section class="level4">
+<h4>Общие рекомендации разработчикам</h4>
+<p>Во­‑первых, клиент (например, браузер), подавая запрос по протоколу <i lang="en">HTTP</i>, всегда предлагает серверу применить один из <em>методов</em>. В рассмотренной электронной платёжной системе клиент выбрал метод <code>GET</code> и ожидает создания записи о денежном переводе. Это ошибка: <code>GET</code> определён в стандарте протокола как безопасный и, следовательно, идемпотентный метод, поскольку предназначен для получения клиентом содержимого того ресурса, на который указывает <i lang="en">URI</i>. Другими словами, стандартный клиент, предлагая серверу применить <code>GET</code>, не ожидает создания целевого ресурса и полагает, что повторные идентичные запросы также не дадут такого эффекта <span class="citation" data-cites="RFC/7231">[2, пп. 4.2.1, 4.2.2]</span>, т. е. установка веб­‑страницы с <i lang="en">URI</i> <a href="https://bank.example.com/transfer/?account=260602&amp;amount=100500" class="uri">https://bank.example.com/transfer/?account=260602&amp;amount=100500</a> в качестве стартовой (домашней), а равно автоматическое восстановление вкладок приведут к повторному списанию денежных средств при каждом запуске браузера. Уязвимость можно устранить, используя неидемпотентный метод <code>POST</code>, предназначенный для создания ресурсов.</p>
+<p>Во­‑вторых, допускается требовать подтверждения для наиболее важных операций, высылая проверочный код на телефонный номер пользователя, однако не злоупотребляйте этим методом: он не решает проблему <i lang="en">CSRF</i> коренным образом и досаждает пользователям.</p>
+<p>В­‑третьих, можно внедрить в каждый <i lang="en">URI</i> идентификатор, связанный с пользователем, от имени которого подаётся запрос. <i lang="en">URI</i> <a href="https://fakebook.example.com/like/" class="uri">https://fakebook.example.com/like/</a> и <a href="https://bank.example.com/transfer/" class="uri">https://bank.example.com/transfer/</a> универсальны для всех пользователей ⁠— очевидно, идентификатор пользователя, ставящего отметку «<i lang="en">Like!</i>», и номер счёта отправителя денежного перевода извлекаются сервером из <i lang="en">cookie</i>, и злоумышленник не обязан их знать. Как только <i lang="en">URI</i> приобретут вид <a href="https://fakebook.example.com/имя­‑пользователя­‑ставящего­‑отметку/like/" class="uri">https://fakebook.example.com/имя­‑пользователя­‑ставящего­‑отметку/like/</a> и <a href="https://bank.example.com/номер­‑счёта­‑отправителя/transfer/" class="uri">https://bank.example.com/номер­‑счёта­‑отправителя/transfer/</a>, злоумышленнику придётся сосредоточиться на эксплуатации только известных ему учётных записей.</p>
+<p>В­‑четвёртых, следует ограничить 15–⁠20 минутами сеанса работы с веб­‑приложением в условиях бездействия пользователя. Конечно, для социальной сети это требование чрезмерно, но для онлайн­‑банков оно приемлемо.</p>
+</section>
+<section class="level4">
+<h4>Общие рекомендации пользователям</h4>
+<p>Общие рекомендации пользователям можно свести к следующему перечню:</p>
+<ul>
+<li>выходите из веб­‑приложения по окончании работы;</li>
+<li>не разрешайте браузеру запоминать имена пользователей и пароли;</li>
+<li>для доступа к важным веб­‑приложениям используйте отдельный регулярно обновляемый браузер без расширений или только с расширением <i lang="en">NoScript</i>, которое остановит выполнение сценариев <i lang="en">JavaScript</i> (злоумышленнику придётся довольствоваться приёмами социальной инженерии, чтобы заставить пользователя подать запрос с полезной нагрузкой для <i lang="en">CSRF</i>).</li>
+</ul>
+</section>
+<section class="level4">
+<h4>Определение источника происхождения запроса по заголовкам <code>Origin</code> и <code>Referer</code></h4>
+<p>Поле <code>Referer</code> в заголовке <i lang="en">HTTP</i>­‑запроса позволяет клиенту указать абсолютный (без фрагмента, т. е. без сегмента, расположенного после знака <code>#</code>) или относительный <i lang="en">URI</i> ресурса, с которого подан запрос.</p>
+<ol>
+<li><p>Клиент запрашивает у сайта <a href="http://evil.example.com">evil.example.com</a> содержимое файла <code>trap.html</code>:</p>
+<pre class="http"><code>GET /trap.html HTTP/1.1
+Host: evil.example.com</code></pre></li>
+<li><p>Сайт злоумышленника отправляет клиенту содержимое файла <code>trap.html</code>. В документе размещена <i lang="en">HTML</i>­‑форма с полями <code>account</code> (номер счёта получателя) и <code>amount</code> (сумма денежного перевода), а также средства <i lang="en">JavaScript</i> для автоматического предъявления формы сайту <a href="http://bank.example.com">bank.example.com</a>:</p>
+<pre class="http"><code>HTTP/1.1 200 OK
+Date: Tue, 19 Jan 2038 03:14:08 GMT
+Content-Length: 212
+
+&lt;form action=&quot;http://bank.example.com/transfer/&quot; method=&quot;post&quot;&gt;
+  &lt;input name=&quot;account&quot; value=&quot;260602&quot;&gt;
+  &lt;input name=&quot;amount&quot; value=&quot;100500&quot;&gt;
+&lt;/form&gt;
+&lt;script&gt;window.onload = document.forms[0].submit();&lt;/script&gt;</code></pre></li>
+<li><p>Получив содержимое файла <code>trap.html</code>, клиент автоматически предъявляет заполненную форму сайту <a href="http://bank.example.com">bank.example.com</a> и указывает <a href="http://evil.example.com/trap.html" class="uri">http://evil.example.com/trap.html</a> как значение заголовочного поля <code>Referer</code>.</p>
+<pre class="http"><code>POST /transfer/ HTTP/1.1
+Host: bank.example.com
+Referer: http://evil.example.com/trap.html
+Content-Length: 28
+
+account=260602&amp;amount=100500</code></pre></li>
+<li><p>Сопоставив значение поля <code>Referer</code> со своим доменным именем, сайт <a href="http://bank.example.com">bank.example.com</a> отказывается выполнять запрос:</p>
+<pre class="http"><code>HTTP/1.1 403 Forbidden</code></pre></li>
+</ol>
+<p>Заголовочное поле <code>Referer</code> отсутствует в запросах, отправная точка которых не имеет <i lang="en">URI</i>: <em>ссылающийся</em> ресурс получен пользовательским агентом по схеме <code>file</code> или <code>data</code>; запрос стал результатом ручного ввода в адресную строку; запрос стал результатом манипуляций с <code>window.location</code>; осуществлён переход по гиперссылке, присланной по электронной почте и т. п.</p>
+<p>Однако эксплуатацию <code>Referer</code> затрудняет ряд других технических ограничений, также лежащих вне области контроля веб­‑разработчика:</p>
+<ul>
+<li>поля <code>Referer</code> нет в запросах по схеме <code>https</code>;</li>
+<li>поле <code>Referer</code> может быть очищено или удалено некоторыми аппаратными и программными средствами: межсетевыми экранами, проксирующими серверами, расширениями браузера;</li>
+<li>некоторые версии браузеров и встраиваемых сред выполнения (<i lang="en">Flash Player</i>, <i lang="en">JVM</i> и пр.) уязвимы для подмены значения <code>Referer</code> (англ. <i lang="en">referrer spoofing</i>).</li>
+</ul>
+</section>
+<section class="level4">
+<h4>Использование <i lang="en">cookie</i> с атрибутом <code>SameSite</code></h4>
+<p>Установка <i lang="en">cookie</i> с атрибутом <code>SameSite</code>, равным <code>Strict</code>, запрещает пользовательскому агенту внедрять содержимое данной <i lang="en">cookie</i> в запрос, если веб­‑адреса (<i lang="en">URI</i>) ресурса­‑отправителя и ресурса­‑получателя содержат разные доменные имена <span class="citation" data-cites="RFC/6265bis-04">[<span class="citeproc-not-found" data-reference-id="RFC/6265bis-04"><strong>???</strong></span>]</span>. Например, при подаче запроса с <a href="https://evil.example.com/trap.html" class="uri">https://evil.example.com/trap.html</a> на <a href="https://bank.example.com/transfer" class="uri">https://bank.example.com/transfer</a> браузер игнорирует аутентификационную <i lang="en">cookie</i> с флагом <code>SameSite=Strict</code>, а в неавторизованном денежном переводе банк должен отказать.</p>
+<p>Пример установки <i lang="en">cookie</i> с атрибутом <code>SameSite</code>, равным <code>Strict</code>.</p>
+<pre class="php"><code>&lt;?php
+setcookie(
+    &#39;имя&#39;,
+    &#39;значение&#39;,
+    [
+        // Срок действия ⁠— 7 суток.
+        &#39;expires&#39; =&gt; time() + 60 * 60 * 24 * 7,
+
+        // Передача разрешена только при запросах к указанным разделам сайта.
+        &#39;path&#39; =&gt; &#39;/какой/нибудь/раздел/сайта/&#39;,
+
+        // Передача разрешена только на указанный домен и его поддомены.
+        &#39;domain&#39; =&gt; &#39;www.example.com&#39;,
+
+        // Передача разрешена только по безопасным каналам связи (HTTP/⁠TLS).
+        &#39;secure&#39; =&gt; true,
+
+        // Область видимости ограничена запросами HTTP.
+        // Доступ из Flash, JavaScript и т. п. запрещён.
+        &#39;httponly&#39; =&gt; true,
+
+        // Защита от CSRF.
+        &#39;samesite&#39; =&gt; &#39;Strict&#39;,
+    ]
+);</code></pre>
+<p>Впрочем, излишняя строгость при работе с <i lang="en">cookie</i> не всегда оправдана. Представим, что существует веб­‑портал <a href="https://example.com">example.com</a>, сервисы которого размещены на поддоменах. Пользователь проходит авторизацию на <a href="https://example.com">example.com</a>, переходит по гиперссылке в сервис электронной почты <a href="https://mail.example.com">mail.example.com</a>, и сервер <i lang="en">HTTP</i></p>
+<p>404 to avoid</p>
+<p><code>Lax</code>, ещё одно возможное значение атрибута <code>SameSite</code>, разрешает пользовательскому агенту внедрять содержимое <i lang="en">cookie</i> в межсайтовые запросы при использовании безопасных методов <i lang="en">HTTP</i>: <code>GET</code> («получить содержимое ресурса»), <code>HEAD</code> («получить метаданные ресурса»), <code>OPTIONS</code> («получить метаданные соединения»), <code>TRACE</code> («получить для отладки копию запроса») <span class="citation" data-cites="RFC/6265bis-04 RFC/7231">[<span class="citeproc-not-found" data-reference-id="RFC/6265bis-04"><strong>???</strong></span>; 2, п. 4.2.1]</span>. Таким образом, аутентификационная <i lang="en">cookie</i> <strong>будет</strong> задействована при переходе по гиперссылке с <a href="https://drive.google.com" class="uri">https://drive.google.com</a> на <a href="https://mail.google.com" class="uri">https://mail.google.com</a>. При этом желательно использовать две <i lang="en">cookie</i>: одну, с <code>SameSite=Strict</code>, <span class="citation" data-cites="RFC/6265bis-04">[<span class="citeproc-not-found" data-reference-id="RFC/6265bis-04"><strong>???</strong></span>]</span>.</p>
+</section>
+<section class="level4">
+<h4>Смягчение на основе токенов</h4>
+<p>Смягчение <i lang="en">CSRF</i> посредством токена (англ. <i lang="en">token­‑based CSRF mitigation</i>) подразумевает использование токена ⁠— конфиденциального проверочного кода, создаваемого криптографически стойким генератором псевдослучайных чисел (далее ⁠— КСГПСЧ) для каждого сеанса в отдельности. Генерация токенов под каждый запрос применяется в особо важных веб­‑приложениях, например онлайн­‑банках, хотя преимущество этого подхода не доказано.</p>
+<p>Каждый запрос, который может повлечь изменение состояния сервера, должен содержать две копии токена.</p>
+<p>Один токен рекомендуется размещать в скрытом поле формы, а при использовании технологии <i lang="en">AJAX</i> ⁠— в метаданных документа <i lang="en">HTML</i> или в параметрах запроса. Ни в коем случае не размещайте токен в <i lang="en">URI</i>: во­‑первых, браузер вносит их в журнал посещений, а во­‑вторых, пользователь может случайно скопировать <i lang="en">URI</i> вместе с токеном и передать его третьим лицам.</p>
+<p>Другой токен должен быть размещён в <i lang="en">cookie</i> или, как вариант, в сеансовых данных, к которым сервер может получить доступ через <i lang="en">cookie</i> с идентификатором сеанса.</p>
+<p>Приняв запрос, сервер сравнивает два токена. Если один из них отсутствует, сервер отклоняет запрос и направляет клиенту ответ с состоянием <i lang="en">403 Forbidden</i> («Запрещено»). Защита построена на том, что злоумышленник, подделывая запрос, не сможет угадать правильный токен.</p>
+<p>Естественно, метод требует, чтобы веб­‑приложение было неуязвимо для <i lang="en">XSS</i> и (желательно) шифровало трафик.</p>
+<p>Известны три способа формирования токена <span class="citation" data-cites="OWASP/OCSS/CSRF">[1]</span>:</p>
+<ul>
+<li><p><em>шаблон токена­‑синхронизатора</em> (англ. <i lang="en">synchronizer token pattern</i>);</p></li>
+<li><p><em>шаблон токена, основанного на шифровании</em> (англ. <i lang="en">encryption­‑based token pattern</i>). В качестве алгоритма шифрования OWASP рекомендует AES‑256‑GCM. Пример реализации шаблона на PHP 7.1 и OpenSSL 1.0.1:</p>
+<p><code>encryption_based_csrf_token_manager.php</code></p>
+<pre class="php line-numbers"><code>&lt;?php
+
+declare(strict_types=1);
+
+class Encryption_Based_CSRF_Token_Manager
+{
+    private $cryptographer;
+
+    public function __construct($cryptographer)
+    {
+        $this-&gt;cryptographer = $cryptographer;
+    }
+
+    // Метод генерации CSRF­‑токена.
+    function make(int $expires, string $key): string
+    {
+        $encryptedMessage = $this-&gt;cryptographer-&gt;encrypt(
+            // Конкатенируем ID сеанса с меткой времени,
+            // используя «|» как разделитель.
+            session_id() . &#39;|&#39; . $expires,
+
+            // Указываем секретный ключ.
+            $key
+        );
+
+        // Кодируем кортеж в base64 (английские буквы, цифры, «+», «/», «=»).
+        return base64_encode(&quot;$encryptedMessage|$expires&quot;);
+    }
+
+    // Метод проверки CSRF­‑токена.
+    function check(string $token, string $key): bool
+    {
+        // Декодируем нешифрованный кортеж из base64.
+        $unencTuple = base64_decode($token);
+
+        // Извлекаем шифрованный кортеж и нешифрованную метку времени.
+        list($encTuple, $unenc_expires) = explode(&#39;|&#39;, $unencTuple);
+
+        // Дешифруем кортеж.
+        $decTuple = $this-&gt;cryptographer-&gt;decrypt($encTuple, $key);
+
+        // Извлекаем из дешифрованного кортежа ID сеанса и метку времени.
+        list($dec_session_id, $dec_expires) = explode(&#39;|&#39;, $decTuple);
+
+        // Если метки времени не совпадают или сеанс окончен,
+        if (($unenc_expires !== $dec_expires) || (time() &gt; $dec_expires)) {
+            // то признаём токен недействительным.
+            return false;
+        }
+
+        // Сравниваем дешифрованный ID сеанса с текущим.
+        return $dec_session_id === session_id();
+    }
+}
+</code></pre>
+<p><code>aes256gcm.php</code></p>
+<pre class="php line-numbers"><code>&lt;?php
+
+declare(strict_types=1);
+
+class AES256GCM
+{
+    private $iv;
+    private $ivLength;
+    private $method;
+    private $options;
+    private $tag;
+    private $tagLength;
+
+    public function __construct(int $options = OPENSSL_RAW_DATA,
+                                string $iv = &#39;&#39;,
+                                string &amp;$tag = &#39;&#39;,
+                                string $aad = &#39;&#39;)
+    {
+        $this-&gt;aad = $aad;
+        $this-&gt;method = &#39;aes-256-gcm&#39;;
+        $this-&gt;ivLength = openssl_cipher_iv_length($this-&gt;method);
+        $this-&gt;iv = openssl_random_pseudo_bytes($this-&gt;ivLength);
+        $this-&gt;options = $options;
+        $this-&gt;tag = $tag;
+        $this-&gt;tagLength = 16;
+    }
+
+    public function decrypt(string $data, string $key): string
+    {
+        $data = base64_decode($data);
+        $iv = substr($data, 0, $this-&gt;ivLength);
+        $tag = substr($data, $this-&gt;ivLength, $this-&gt;tagLength);
+        $message = substr($data, $this-&gt;ivLength + $this-&gt;tagLength);
+        return openssl_decrypt(
+            $message, $this-&gt;method, $key, $this-&gt;options, $iv, $tag, $this-&gt;aad
+        );
+    }
+
+    public function encrypt(string $message, string $key): string
+    {
+        $encryptedMessage = openssl_encrypt(
+            $message, $this-&gt;method, $key, $this-&gt;options, $this-&gt;iv,
+            $this-&gt;tag, $this-&gt;aad, $this-&gt;tagLength
+        );
+        return base64_encode($this-&gt;iv . $this-&gt;tag . $encryptedMessage);
+    }
+}
+</code></pre></li>
+<li><p><em>шаблон токена, основанного на HMAC</em> (англ. <i lang="en">HMAC­‑based token pattern</i>), предполагает размещение в токене срока окончания сеанса и <em>кода аутентификации сообщения на основе хеша</em>. Код задан криптографической хеш­‑функцией, например HMAC‑SHA‑512‑256 или HMAC‑SHA3‑256, от секретного ключа и сообщения ⁠— идентификатора сеанса и той же метки времени. Секретный ключ хранится на сервере. Пример реализации шаблона на PHP:</p>
+<p><code>hmac_based_csrf_token_manager.php</code></p>
+<pre class="php line-numbers"><code>&lt;?php
+
+declare(strict_types=1);
+
+class HMAC_Based_CSRF_Token_Manager
+{
+    // Метод генерации CSRF­‑токена.
+    function make(int $expires, string $key): string
+    {
+        $hmac = hash_hmac(
+            // Указываем желаемый алгоритм.
+            &#39;sha3-256&#39;,
+            
+            // Кодируем ID сеанса в base64 (английские буквы, цифры, «+», «/», «=»)
+            // и конкатенируем с меткой времени, используя «|» как разделитель.
+            base64_encode(session_id()) . &#39;|&#39; . $expires,
+
+            // Указываем секретный ключ.
+            $key
+        );
+        return base64_encode(&quot;$hmac|$expires&quot;);
+    }
+
+    // Метод проверки CSRF­‑токена.
+    function check(string $token, string $key): bool
+    {
+        // Декодируем сообщение из base64.
+        $message = base64_decode($token);
+
+        // Извлекаем из сообщения метку времени.
+        list(, $expires) = explode(&#39;|&#39;, $message);
+
+        // Если сеанс окончен,
+        if (time() &gt; $expires) {
+            // то признаём токен недействительным.
+            return false;
+        }
+
+        // Сравниваем токен с эталоном.
+        return $token === $this-&gt;make((int) $expires, $key);
+    }
+}
+</code></pre></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Решения к задачам из <i lang="en">WebGoat</i></h3>
+<section class="level4">
+<h4>Решение задачи № 3</h4>
+<ol>
+<li><p>Создайте файл <code>3.html</code> со следующим содержимым:</p>
+<pre class="html"><code>&lt;form action=&quot;http://localhost:8080/WebGoat/csrf/basic-get-flag&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</code></pre></li>
+<li><p>Запустите из каталога, где размещён файл <code>3.html</code>, сервер <i lang="en">HTTP</i>:</p>
+<pre class="bash command-line" data-prompt="$"><code>php -S 127.0.0.1:8008 # Номер порта должен отличаться от порта WebGoat!</code></pre></li>
+<li><p>Откройте в браузере веб­‑страницу <a href="http://127.0.0.1:8008/3.html" class="uri">http://127.0.0.1:8008/3.html</a> и нажмите на кнопку.</p></li>
+<li><p>Скопируйте число из поля <i lang="en">Flag</i> и вставьте его в поле ввода на странице с заданием.</p></li>
+<li><p>Остановите сервер <i lang="en">HTTP</i>.</p></li>
+</ol>
+</section>
+<section class="level4">
+<h4>Решение задачи № 4</h4>
+<ol>
+<li><p>Создайте файл <code>4.html</code> со следующим содержимым:</p>
+<pre class="html"><code>&lt;form action=&quot;http://localhost:8080/WebGoat/csrf/review&quot; method=&quot;post&quot; name=&quot;review-form&quot;&gt;
+  &lt;input name=&quot;reviewText&quot; value=&quot;Привет, мир!&quot;&gt;
+  &lt;input name=&quot;stars&quot; value=&quot;5&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;validateReq&quot; value=&quot;2aa14227b9a13d0bede0388a7fba9aa9&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Добавить отзыв&quot;&gt;
+&lt;/form&gt;</code></pre>
+<p>Разметка скопирована со страницы с заданием.</p></li>
+<li><p>Запустите из каталога, где размещён файл <code>4.html</code>, сервер <i lang="en">HTTP</i>:</p>
+<pre class="bash command-line" data-prompt="$"><code>php -S 127.0.0.1:8008 # Номер порта должен отличаться от порта WebGoat!</code></pre></li>
+<li><p>Откройте в браузере веб­‑страницу <a href="http://127.0.0.1:8008/4.html" class="uri">http://127.0.0.1:8008/4.html</a> и нажмите на кнопку.</p></li>
+<li><p>Сообщение появится на странице с заданием.</p></li>
+<li><p>Остановите сервер <i lang="en">HTTP</i>.</p></li>
+</ol>
+</section>
+<section class="level4">
+<h4>Решение задачи № 8</h4>
+<ol>
+<li>Выйти из <i lang="en">WebGoat</i>.</li>
+<li>Зарегистрировать нового пользователя с именем, состоящим из префикса <code>csrf-</code> и Вашего имени пользователя.</li>
+<li>Войти в <i lang="en">WebGoat</i>.</li>
+</ol>
+</section>
+</section>
+<section class="level3">
+<h3>Пример устранения уязвимости для <i lang="en">CSRF</i> посредством <i lang="en">PHP</i></h3>
+<section class="level4">
+<h4>Содержимое файла <code>generate_key.php</code></h4>
+<p>Этот сценарий необходимо выполнить единожды до выполнения <code>index.php</code>, чтобы создать файл <code>.key.txt</code> с секретным ключом.</p>
+<pre class="php line-numbers"><code>&lt;?php
+
+$filename = &#39;.key.txt&#39;;
+
+try {
+    if (file_exists($filename)) {
+        throw new Exception(&quot;Ключ уже записан в файл $filename.&quot;);
+    }
+
+    // Секретный ключ ⁠— 256­‑битное значение, выданное КСГПСЧ.
+    $key = base64_encode(random_bytes(32));
+
+    if (false === file_put_contents($filename, $key, LOCK_EX)) {
+        throw new Exception(&quot;Не удалось записать ключ в файл $filename.&quot;);
+    } else {
+        echo &quot;Ключ записан в файл $filename.&quot;;
+    }
+} catch (Exception $exception) {
+    echo $exception-&gt;getMessage();
+}
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>add.php</code></h4>
+<p>Как класс, создающий и проверяющий значение токена, в данном примере использован <code>Encryption_Based_CSRF_Token_Manager</code>, но вместо него можно применять любой из тех, исходный код которых приведён в теоретических сведениях. Имя файла с классом должно состоять из имени класса, приведённого к нижнему регистру, точки и расширения <code>php</code>. Файл нужно разместить в текущем каталоге. Вызов класса осуществляется как в <code>add.php</code>, так и в <code>index.php</code>.</p>
+<pre class="php line-numbers"><code>&lt;?php
+
+declare(strict_types=1);
+
+spl_autoload_register();
+
+try {
+    // Если токена нет в cookie или в теле запроса,
+    if (empty($_COOKIE[&#39;csrf_token&#39;]) || empty($_POST[&#39;csrf_token&#39;])) {
+        // то генерируем исключительную ситуацию.
+        throw new Exception();
+    }
+
+    // Если токен из cookie не совпадает с токеном из тела запроса,
+    if ($_COOKIE[&#39;csrf_token&#39;] !== $_POST[&#39;csrf_token&#39;]) {
+        // то генерируем исключительную ситуацию.
+        throw new Exception();
+    }
+
+    // Считываем секретный ключ.
+    $key = base64_decode(trim(file_get_contents(&#39;.key.txt&#39;)));
+
+    $manager = new Encryption_Based_CSRF_Token_Manager(new AES256GCM());
+
+    // Проверяем CSRF­‑токен.
+    if (!$manager-&gt;check($_POST[&#39;csrf_token&#39;], $key)) {
+        throw new Exception();
+    }
+
+    echo &#39;Токен правильный. Сообщение можно записывать в БД.&#39;;
+} catch (Exception $exception) {
+    // Обработка исключительных ситуаций. Отказ в обработке запроса.
+    header(&quot;$_SERVER[SERVER_PROTOCOL] 403 Forbidden&quot;);
+}
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>index.php</code></h4>
+<pre class="php line-numbers"><code>&lt;?php
+
+declare(strict_types=1);
+
+spl_autoload_register();
+
+// Вывод перечня хеш­‑функций, подходящих для создания HMAC.
+// print_r(hash_hmac_algos());
+
+if (empty($_COOKIE[&#39;csrf_token&#39;])) {
+
+    // Срок окончания сеанса в формате метки времени Unix.
+    $expires = time() + 60 * 60 * 24 * 7;
+
+    // Считываем секретный ключ.
+    $key = base64_decode(trim(file_get_contents(&#39;.key.txt&#39;)));
+
+    $manager = new Encryption_Based_CSRF_Token_Manager(new AES256GCM());
+
+    // Генерируем CSRF­‑токен.
+    $csrf_token = $manager-&gt;make($expires, $key);
+
+    setcookie(&#39;csrf_token&#39;, $csrf_token, [
+        &#39;expires&#39; =&gt; $expires,
+        &#39;path&#39; =&gt; &#39;/&#39;,
+        &#39;domain&#39; =&gt; null, // Только для тестов!
+        &#39;secure&#39; =&gt; false, // Только для тестов!
+        &#39;httponly&#39; =&gt; true,
+        &#39;samesite&#39; =&gt; &#39;Strict&#39;,
+    ]);
+} else {
+    $csrf_token = $_COOKIE[&#39;csrf_token&#39;];
+}
+
+// Подключаем шаблон формы.
+require_once &#39;form.php&#39;;
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>form.php</code></h4>
+<pre class="html line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta
+        name=&quot;viewport&quot;
+        content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;
+        &gt;
+    &lt;title&gt;Отправка сообщения на сервер&lt;/title&gt;
+    &lt;link
+        rel=&quot;stylesheet&quot;
+        href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot;
+        integrity=&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot;
+        crossorigin=&quot;anonymous&quot;
+        &gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;h1&gt;Отправка сообщения на сервер&lt;/h1&gt;
+
+        &lt;form action=&quot;add.php&quot; method=&quot;post&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label for=&quot;message&quot;&gt;Текст сообщения&lt;/label&gt;
+
+                &lt;input
+                    class=&quot;form-control&quot;
+                    id=&quot;message&quot;
+                    name=&quot;message&quot;
+                    required
+                    value=&quot;Привет, мир!&quot;
+                    &gt;
+            &lt;/div&gt;
+
+            &lt;input
+                name=&quot;csrf_token&quot;
+                type=&quot;hidden&quot;
+                value=&quot;&lt;?= $csrf_token ?&gt;&quot;
+                &gt;
+
+            &lt;input
+                class=&quot;btn btn-block btn-primary&quot;
+                type=&quot;submit&quot;
+                value=&quot;Отправить&quot;
+                &gt;
+        &lt;/form&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</section>
+</section>
+<section class="level3">
+<h3>Пример устранения уязвимости для <i lang="en">CSRF</i> посредством компонентов <i lang="en">Symfony</i></h3>
+<pre class="bash command-line" data-prompt="$"><code># Устанавливаем защитный компонент из состава Symfony и шаблонизатор Twig.
+composer require symfony/security-csrf
+composer require twig/twig</code></pre>
+<section class="level4">
+<h4>Содержимое файла <code>composer.json</code></h4>
+<pre class="json line-numbers"><code>{
+    &quot;require&quot;: {
+        &quot;symfony/security-csrf&quot;: &quot;^5.0&quot;,
+        &quot;twig/twig&quot;: &quot;^3.0&quot;
+    }
+}
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>templates/base.html.twig</code></h4>
+<pre class="twig line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+    &lt;title&gt;{% block title %}{% endblock %}&lt;/title&gt;
+    &lt;link
+        rel=&quot;stylesheet&quot;
+        href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot;
+        integrity=&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot;
+        crossorigin=&quot;anonymous&quot;
+        &gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main class=&quot;container&quot;&gt;
+        &lt;h1&gt;{{ block(&#39;title&#39;) | e(&#39;html&#39;) }}&lt;/h1&gt;
+        {% block body %}{% endblock %}
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>templates/form.html.twig</code></h4>
+<pre class="twig line-numbers"><code>{% extends &quot;base.html.twig&quot; %}
+
+{% block title %}Отправка сообщения на сервер{% endblock %}
+
+{%- block body -%}
+    &lt;form action=&quot;add.php&quot; method=&quot;post&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;message&quot;&gt;Текст сообщения&lt;/label&gt;
+
+            &lt;input
+                class=&quot;form-control&quot;
+                id=&quot;message&quot;
+                name=&quot;message&quot;
+                required
+                value=&quot;Привет, мир!&quot;
+                &gt;
+        &lt;/div&gt;
+
+        &lt;input
+            type=&quot;hidden&quot;
+            name=&quot;{{ token.getId() | e(&#39;html_attr&#39;) }}&quot;
+            value=&quot;{{ token.getValue() | e(&#39;html_attr&#39;) }}&quot;
+            &gt;
+
+        &lt;input
+            class=&quot;btn btn-block btn-primary&quot;
+            type=&quot;submit&quot;
+            value=&quot;Отправить&quot;
+            &gt;
+    &lt;/form&gt;
+{% endblock %}
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>index.php</code></h4>
+<pre class="php line-numbers"><code>&lt;?php
+
+require __DIR__ . &#39;/vendor/autoload.php&#39;;
+
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator;
+use Symfony\Component\Security\Csrf\TokenStorage\NativeSessionTokenStorage;
+
+// Начинаем или возобновляем (по cookie с PHPSESSID) сеанс.
+session_start();
+
+// Генерируем токен.
+$generator = new UriSafeTokenGenerator();
+$value = $generator-&gt;generateToken();
+$token = new CsrfToken(&#39;csrf_token&#39;, $value);
+
+// Сохраняем токен в данных сеанса.
+$storage = new NativeSessionTokenStorage();
+$storage-&gt;setToken($token-&gt;getId(), $token-&gt;getValue());
+
+// Указываем загрузчику каталог, в котором размещены шаблоны веб­‑страниц.
+$loader = new \Twig\Loader\FilesystemLoader(&#39;templates&#39;);
+// Создаём объёкт Twig, передаём ему ссылку на загрузчик.
+$twig = new \Twig\Environment($loader);
+// Заполняем шаблон, передавая в него токен.
+echo $twig-&gt;render(&#39;form.html.twig&#39;, [
+    &#39;token&#39; =&gt; $token,
+]);
+</code></pre>
+</section>
+<section class="level4">
+<h4>Содержимое файла <code>add.php</code></h4>
+<pre class="php line-numbers"><code>&lt;?php
+
+require __DIR__ . &#39;/vendor/autoload.php&#39;;
+
+use Symfony\Component\Security\Csrf\CsrfTokenManager;
+
+// Начинаем или возобновляем (по cookie с PHPSESSID) сеанс.
+session_start();
+
+try {
+
+    // Извлекаем токен из сеансовых данных.
+    $manager = new CsrfTokenManager();
+    $token = $manager-&gt;getToken(&#39;csrf_token&#39;);
+
+    // Если токен не передан с запросом,
+    if (empty($_POST[&#39;csrf_token&#39;])) {
+        // то генерируем исключительную ситуацию.
+        throw new Exception();
+    }
+
+    // Если токен из сеансовых данных не совпадает с токеном из запроса,
+    if ($token-&gt;getValue() !== $_POST[&#39;csrf_token&#39;]) {
+        // то генерируем исключительную ситуацию.
+        throw new Exception();
+    }
+
+    echo &#39;Токен правильный. Сообщение можно записывать в БД.&#39;;
+} catch (Exception $exception) {
+    // Обработка исключительных ситуаций. Отказ в обработке запроса.
+    header(&quot;$_SERVER[SERVER_PROTOCOL] 403 Forbidden&quot;);
+}
+</code></pre>
+</section>
+</section>
+<section class="level3">
+<h3>Пример устранения уязвимости для <i lang="en">CSRF</i> посредством <i lang="en">Laravel</i></h3>
+<p>В шаблонах <i lang="en">Blade</i> достаточно использовать директиву <code>@csrf</code> или посредством <code>{{ csrf_field() }}</code> внутри форм <i lang="en">HTML</i>. Например, следующий шаблон, размещённый в файле <code>resources\views\messages\create.blade.php</code>,</p>
+<pre class="html"><code>&lt;h1&gt;Создание записи в блоге&lt;/h1&gt;
+
+&lt;form action=&quot;{{ route(&#39;messages.store&#39;) }}&quot; method=&quot;post&quot;&gt;
+  {{ csrf_field() }}
+
+  &lt;label&gt;
+    Заголовок записи в блоге:
+    &lt;input name=&quot;title&quot;&gt;
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    Заголовок записи в блоге:
+    &lt;textarea name=&quot;content&quot;&gt;&lt;/textarea&gt;
+  &lt;/label&gt;
+
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</code></pre>
+<p>будет преобразован в форму <i lang="en">HTML</i> вида</p>
+<pre class="html"><code>&lt;h1&gt;Создание записи в блоге&lt;/h1&gt;
+&lt;form action=&quot;http://localhost:8000/messages&quot; method=&quot;post&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;AJgfP1Fa5Qx9ct6ph2DxaA7wMyy6LeHoi4ig8CVJ&quot;&gt;
+
+  &lt;label&gt;
+    Заголовок:
+    &lt;input name=&quot;title&quot;&gt;
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    Содержимое:
+    &lt;textarea name=&quot;content&quot;&gt;&lt;/textarea&gt;
+  &lt;/label&gt;
+
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;</code></pre>
+<p>Эта форма может быть увидена в браузере по нажатии на <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">U</kbd>. Поле <code class="html">&lt;input type="hidden" name="_token" value="AJgfP1Fa5Qx9ct6ph2DxaA7wMyy6LeHoi4ig8CVJ"&gt;</code> и является полем с <i lang="en">CSRF</i>­‑токеном, который будет автоматически сверяться при предъявлении формы на сервер.</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-OWASP/OCSS/CSRF">
+<p>1. Cross­‑site request forgery (CSRF) prevention cheat sheet [Электронный ресурс]. (OWASP cheat sheet series). URL: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</a> (дата обращения: 10.05.2020).</p>
+</div>
+<div id="ref-RFC/7231">
+<p>2. Hypertext transfer protocol (HTTP/1.1): semantics and content [Электронный ресурс] / под ред. R.T. Fielding, J.F. Reschke. 2014. июня. № 7231. (Request for comments). ISSN 2070-1721. URL: <a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>.</p>
+</div>
+<div id="ref-Longman">
+<p>3. Longman dictionary of contemporary English online [Электронный ресурс]. URL: <a href="https://www.ldoceonline.com/">https://www.ldoceonline.com/</a>.</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
