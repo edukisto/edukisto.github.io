@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2017-01-01" />
+	<title>Контроллеры</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.1"
+		integrity="sha256-WlvgUjDa6Xc4I05jWKeKldYF/yUvveu9JeVGNKkWXa4="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2017
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Контроллеры»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться создавать и использовать контроллеры.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>На базе <i lang="en">web framework</i>’а <i lang="en">Laravel</i> реализовать и маршрутизировать</p>
+<ol>
+<li>контроллер для модели <code class="php">Message</code> (по методическим указаниям);</li>
+<li>контроллер для модели <code class="php">Role</code> (самостоятельно).</li>
+</ol>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web framework</td>
+<td>Laravel ^7.9.2</td>
+</tr>
+<tr class="even">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="odd">
+<td>Валидатор формата</td>
+<td><a href="https://jigsaw.w3.org/css-validator/" class="uri">https://jigsaw.w3.org/css-validator/</a></td>
+</tr>
+<tr class="even">
+<td>Валидатор формата</td>
+<td><a href="https://validator.w3.org/" class="uri">https://validator.w3.org/</a></td>
+</tr>
+<tr class="odd">
+<td>Инструмент тестирования</td>
+<td>PHPUnit ^8</td>
+</tr>
+<tr class="even">
+<td>Компилятор</td>
+<td>PHP ^7.2.5</td>
+</tr>
+<tr class="odd">
+<td>Менеджер пакетов программ</td>
+<td>Composer ^1.6.0-RC</td>
+</tr>
+<tr class="even">
+<td>Модули PHP</td>
+<td><code>ctype</code>, <code>json</code>, <code>mbstring</code>, <code>openssl</code>, <code>PDO</code>, <code>tokenizer</code>, <code>xml</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для дополнений</td>
+<td><code>bcmath</code> (Telescope), <code>zip</code> (<code>laravel/installer</code>)</td>
+</tr>
+<tr class="even">
+<td>Модули PHP для MySQL</td>
+<td><code>mysqlnd</code> (не <code>mysqli</code>!), <code>pdo_mysql</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для SQLite</td>
+<td><code>pdo_sqlite</code> (не <code>sqlite3</code>!)</td>
+</tr>
+<tr class="even">
+<td>СУБД</td>
+<td>MySQL Community Server ^8.0.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="even">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+<section class="level3">
+<h3>Примечания для <i lang="en">Windows</i></h3>
+<p>Пользователям операционной системы <i lang="en">Windows</i> рекомендуется установить <a href="https://ospanel.io/download/">Open Server Basic</a>, который содержит <i lang="en">Apache HTTP Server</i>, <i lang="en">MySQL</i>, <i lang="en">nginx</i> и <i lang="en">PHP</i>.</p>
+<table>
+<caption>Минимальные требования для <i lang="en">MySQL 8.0.2</i></caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Библиотека</td>
+<td><i lang="en">Microsoft C Runtime Library (CRT) 14.2</i></td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td><i lang="en">Windows Vista SP2 (?), Windows 7 SP1</i></td>
+</tr>
+</tbody>
+</table>
+<p>Для установки <i lang="en">CRT</i> рекомендуется установить последнюю версию <i lang="en"><a href="https://support.microsoft.com/ru-ru/help/2977003/the-latest-supported-visual-c-downloads">Microsoft Visual C++ 2015–2019 Redistributable</a></i> <span class="citation" data-cites="PHP/Windows">[1]</span>.</p>
+<table>
+<caption>Минимальные требования для <i lang="en">PHP 7.4.6</i></caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Библиотека</td>
+<td><i lang="en">Microsoft C Runtime Library (CRT) 14.16</i></td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td><i lang="en">Windows Vista SP2 (?), Windows 7 SP1</i></td>
+</tr>
+</tbody>
+</table>
+<p>Для установки <i lang="en">CRT</i> рекомендуется установить последнюю версию <i lang="en"><a href="https://support.microsoft.com/ru-ru/help/2977003/the-latest-supported-visual-c-downloads">Microsoft Visual C++ 2015–2019 Redistributable</a></i> <span class="citation" data-cites="PHP/Windows">[1]</span>.</p>
+</section>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Контроллер (<i lang="en">controller</i>) в шаблоне проектирования программных систем <i lang="en">Model ⁠— view ⁠— controller</i> (<i lang="en">MVC</i>) передаёт команды клиента в модель (<i lang="en">model</i>). В веб­‑приложениях контроллер взаимодействует с программным маршрутизатором, который сопоставляет веб­‑адреса и методы (функции) контроллера.</p>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Доработка ресурсного контроллера</h3>
+<p>Ранее мы создали ресурсный контроллер. <i lang="en">Artisan</i> размещает контроллеры в каталоге <code>app/Http/Controllers</code>.</p>
+<p><strong>Откроем на редактирование файл <code>app/Http/Controllers/MessageController.php</code>.</strong> Файл содержит исходный код класса <code class="php">MessageController</code> с семью публичными методами. Каждый метод отвечает за определённую операцию над таблицей <code class="sql">messages</code> базы данных:</p>
+<ul>
+<li><code class="php">index()</code> ⁠— вывод пользовательского интерфейса для просмотра всех кортежей (например, в виде перечня с разбиением по страницам);</li>
+<li><code class="php">create()</code> ⁠— вывод пользовательского интерфейса (например, формы <i lang="en">HTML</i> с полями ввода и кнопкой предъявления) для создания нового кортежа;</li>
+<li><code class="php">store()</code> ⁠— приёмник для ввода данных из пользовательского интерфейса, выведенного методом <code class="php">create()</code>, и запрос к СУБД для создания нового кортежа;</li>
+<li><code class="php">show()</code> ⁠— вывод одного кортежа;</li>
+<li><code class="php">edit()</code> ⁠— вывод пользовательского интерфейса для редактирования одного кортежа;</li>
+<li><code class="php">update()</code> ⁠— приёмник для ввода данных из пользовательского интерфейса, выведенного методом <code class="php">edit()</code>, и запрос к СУБД для обновления кортежа;</li>
+<li><code class="php">destroy()</code> ⁠— удаление одного кортежа.</li>
+</ul>
+<p>Разработчики <i lang="en">Laravel</i> не предусмотрели метода, выводящего пользовательский интерфейс для удаления кортежа, поэтому <strong>добавим следующий фрагмент исходного кода в тело класса и сохраним изменения.</strong></p>
+<pre class="php"><code>    /**
+     * Показать форму для удаления указанного ресурса.
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Message $message)
+    {
+        //
+    }</code></pre>
+<p>Для проверки работоспособности контроллера добавим в некоторые методы вывод:</p>
+<pre class="php line-numbers" data-start="?" data-line="3"><code>    public function index()
+    {
+        return &#39;Здесь будет перечень сообщений.&#39;;
+    }</code></pre>
+<pre class="php line-numbers" data-start="?" data-line="3"><code>    public function create()
+    {
+        return &#39;Здесь будет форма для создания сообщения.&#39;;
+    }</code></pre>
+<p>Обратите внимание, что у всех методов, кроме <code class="php">index()</code>, <code class="php">create()</code> и <code class="php">store()</code>, есть параметр <code class="php">$message</code> класса <code class="php">Message</code>. Это объект, связанный с кортежем в таблице БД. Ниже рассказано, как именно <i lang="en">Laravel</i></p>
+</section>
+<section class="level3">
+<h3>Маршрутизация</h3>
+<p>Клиент, в т. ч. браузер, может вызвать тот или иной метод контроллера, подав запрос к <i lang="en">web framework</i>’у через стек протоколов. Для этого необходим <em>интерфейс программирования приложений</em> (<i lang="en">API</i>), который ассоциирует (сопоставляет, связывает) метод контроллера с некоторым <em>универсальным идентификатором ресурса</em> (<i lang="en">URI</i>), или, проще говоря, веб­‑адресом, который указывают в адресной строке браузера, гиперссылке и т. п. При этом желательно <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D0%BC%D0%B0%D0%BD%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_URL">оптимизировать URI для поисковых систем</a>.</p>
+<p>Одним из популярных архитектурных шаблонов <i lang="en">API</i> является <i lang="en">REST</i> (англ. <i lang="en">representational state transfer</i>). Системы, реализующие <i lang="en">REST</i>, получают определение <i lang="en">RESTful</i>. Современные <i lang="en">RESTful</i>­‑системы позволяют клиентам манипулировать ресурсами, т. е. кортежами в таблице реляционной БД, файлами на сервере и т. п., используя четыре метода <i lang="en">HTTP</i>: <code>DELETE</code> ⁠— удаление, <code>GET</code> ⁠— выдача клиенту, <code>POST</code> ⁠— создание, <code>PUT</code> ⁠— замена. Веб­‑адреса в <i lang="en">RESTful</i>­‑системах начинаются с названия множества однотипных ресурсов (во множественном числе). Обращение по одному и тому же веб­‑адресу разными методами даёт разные результаты:</p>
+<ul>
+<li><code>GET /сообщения/</code> ⁠— выдача клиенту множества ресурсов <code>сообщения</code>;</li>
+<li><code>GET /сообщения/id/</code> ⁠— выдача клиенту ресурса с идентификатором <code>id</code> из множества ресурсов <code>сообщения</code>;</li>
+<li><code>POST /сообщения/</code> ⁠— создание нового ресурса во множестве <code>сообщения</code>;</li>
+<li><code>PUT /сообщения/</code> ⁠— замена множества ресурсов <code>сообщения</code>;</li>
+<li><code>PUT /сообщения/id/</code> ⁠— замена ресурса с идентификатором <code>id</code> во множестве ресурсов <code>сообщения</code>;</li>
+<li><code>DELETE /сообщения/</code> ⁠— удаление множества ресурсов <code>сообщения</code>;</li>
+<li><code>DELETE /сообщения/id/</code> ⁠— удаление ресурса с идентификатором <code>id</code> из множества ресурсов <code>сообщения</code>.</li>
+</ul>
+<p>Конечно, каждая <i lang="en">RESTful</i>­‑системах вольна ограничивать набор операций над тем или иным ресурсом. Например, контроллер <i lang="en">Laravel</i> по умолчанию не содержит методов для замены и удаления всего множества ресурсов, но содержит методы для вывода <i lang="en">HTML</i>­‑форм. В целом, контроллеру <code class="php">MessageController</code> потребуется восемь веб­‑адресов, указанных в следующей таблице.</p>
+<table>
+<caption>Проект <i lang="en">RESTful API</i> для контроллера <code class="php">MessageController</code></caption>
+<thead>
+<tr class="header">
+<th>Метод HTTP</th>
+<th>URI</th>
+<th>Метод <code class="php">MessageController</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>GET</code></td>
+<td><code>/messages/</code></td>
+<td><code class="php">index()</code></td>
+</tr>
+<tr class="even">
+<td><code>POST</code></td>
+<td><code>/messages/</code></td>
+<td><code class="php">store()</code></td>
+</tr>
+<tr class="odd">
+<td><code>GET</code></td>
+<td><code>/messages/create/</code></td>
+<td><code class="php">create()</code></td>
+</tr>
+<tr class="even">
+<td><code>GET</code></td>
+<td><code>/messages/{message}/</code></td>
+<td><code class="php">show()</code></td>
+</tr>
+<tr class="odd">
+<td><code>PUT</code></td>
+<td><code>/messages/{message}/</code></td>
+<td><code class="php">update()</code></td>
+</tr>
+<tr class="even">
+<td><code>DELETE</code></td>
+<td><code>/messages/{message}/</code></td>
+<td><code class="php">destroy()</code></td>
+</tr>
+<tr class="odd">
+<td><code>GET</code></td>
+<td><code>/messages/{message}/edit/</code></td>
+<td><code class="php">edit()</code></td>
+</tr>
+<tr class="even">
+<td><code>GET</code></td>
+<td><code>/messages/{message}/remove/</code></td>
+<td><code class="php">remove()</code></td>
+</tr>
+</tbody>
+</table>
+<p>К счастью, <i lang="en">Laravel</i> настроен для реализации <i lang="en">REST</i>. <strong>Откройте на редактирование файл <code>routes/web.php</code>, допишите в него следующий фрагмент исходного кода и сохраните изменения.</strong></p>
+<pre class="php"><code>// Объявляем маршруты для всех стандартных методов
+// ресурсного контроллера MessageController,
+// назначая слово messages префиксом URI
+// (все создаваемые веб­‑адреса будут начинаться с /messages/)
+Route::resource(&#39;messages&#39;, &#39;MessageController&#39;);
+
+// Т. к. метод remove() не предусмотрен в ресурсных контроллерах,
+// объявляем маршрут самостоятельно.
+Route::get(&#39;messages/{message}/remove&#39;, &#39;MessageController@remove&#39;)
+     -&gt;name(&#39;messages.remove&#39;);</code></pre>
+<p><strong>В эмуляторе консоли выполните следующую команду:</strong></p>
+<pre class="bash"><code>php artisan route:list</code></pre>
+<p>В эмулятор терминала будет выведена таблица примерно следующего содержания:</p>
+<table>
+<caption>Результат выполнения <code class="bash">php artisan route:list</code> (с сокращениями)</caption>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 12%" />
+<col style="width: 31%" />
+<col style="width: 20%" />
+<col style="width: 32%" />
+<col style="width: 1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>…</th>
+<th>Method</th>
+<th>URI</th>
+<th>Name</th>
+<th>Action</th>
+<th>…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>…</td>
+<td><code>GET|HEAD</code></td>
+<td><code>messages</code></td>
+<td><code>messages.index</code></td>
+<td>…<code>MessageController@index</code></td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td><code>POST</code></td>
+<td><code>messages</code></td>
+<td><code>messages.store</code></td>
+<td>…<code>MessageController@store</code></td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td><code>GET|HEAD</code></td>
+<td><code>messages/create</code></td>
+<td><code>messages.create</code></td>
+<td>…<code>MessageController@create</code></td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td><code>GET|HEAD</code></td>
+<td><code>messages/{message}</code></td>
+<td><code>messages.show</code></td>
+<td>…<code>MessageController@show</code></td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td><code>PUT|PATCH</code></td>
+<td><code>messages/{message}</code></td>
+<td><code>messages.update</code></td>
+<td>…<code>MessageController@update</code></td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td><code>DELETE</code></td>
+<td><code>messages/{message}</code></td>
+<td><code>messages.destroy</code></td>
+<td>…<code>MessageController@destroy</code></td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td><code>GET|HEAD</code></td>
+<td><code>messages/{message}/edit</code></td>
+<td><code>messages.edit</code></td>
+<td>…<code>MessageController@edit</code></td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td><code>GET|HEAD</code></td>
+<td><code>messages/{message}/remove</code></td>
+<td><code>messages.remove</code></td>
+<td>…<code>MessageController@remove</code></td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+<p>Как видно из последней таблицы, при обращении методом <i lang="en">HTTP</i> <code>GET</code> по веб­‑адресу <code>/messages/</code> произойдёт вызов метода <code class="php">index()</code> из контроллера <code class="php">MessageController</code>, при обращении методом <i lang="en">HTTP</i> <code>POST</code> по тому же веб­‑адресу произойдёт вызов метода <code class="php">store()</code> из того же контроллера и т. д.</p>
+<p>Обратите внимание на графу <i lang="en">Name</i>, где указаны имена маршрутов,⁠— они позволяют сослаться на тот или иной веб­‑адрес, используя вспомогательную функцию <code class="php">route()</code>. Например, вызов <code class="php">route('messages.index')</code> вернёт веб­‑адрес <code>/messages/</code>.</p>
+<p>Также обратите внимание на фигурные скобки. Они выполняют две важнейших функции. Во­‑первых, они обозначают место размещения идентификатора ресурса (например, первичного ключа). Во­‑вторых, они содержат приведённое к нижнему регистру имя класса, объект которого будет автоматически создан при извлечении ресурса и передан в сопоставленный метод. Рассмотрим эту технологию на примере.</p>
+<p>Как отмечалось выше, у всех стандартных методов контроллера <code class="php">MessageController</code>, кроме <code class="php">index()</code>, <code class="php">create()</code> и <code class="php">store()</code>, есть параметр <code class="php">$message</code> класса <code class="php">Message</code>. В таблице маршрутизации со всеми методами, кроме перечисленных, сопоставлены веб­‑адреса с фигурными скобками. Это означает, что запрос по веб­‑адресу, в котором на месте фигурных кавычек вставлено значение первичного ключа, заставит <i lang="en">Laravel</i> <em>автоматически</em> выполнить запрос на выборку кортежа с указанным идентификатором (<code class="sql">SELECT * FROM messages WHERE id = значение_первичного_ключа</code>), создать объект указанного класса и заполнить его данными из кортежа.</p>
+</section>
+<section class="level3">
+<h3>Проверка</h3>
+<ol>
+<li><p>Запустите отладочный сервер:</p>
+<pre class="bash"><code>php artisan serve</code></pre>
+<p>В консоль будет выведен веб­‑адрес, по которому отладочный сервер принимает запросы.</p></li>
+<li><p>Запустите браузер, обратитесь по указанному адресу (например, <a href="http://127.0.0.1:8080/" class="uri">http://127.0.0.1:8080/</a>) и убедитесь в работоспособности Laravel.</p></li>
+<li><p>Установите курсор в адресную строку браузера и отредактируйте веб­‑адрес, дополнив его справа строкой <code>/messages/</code>. Должно получиться <a href="http://127.0.0.1:8080/messages/" class="uri">http://127.0.0.1:8080/messages/</a>. Нажмите <kbd lang="en">↵ ⁠Enter</kbd>, чтобы подать запрос.</p></li>
+<li><p>Убедитесь, что запрос выполнен, и в браузер выводится сообщение «Здесь будет перечень сообщений».</p></li>
+<li><p>Проверьте ещё один веб­‑адрес ⁠— <a href="http://127.0.0.1:8080/messages/create/" class="uri">http://127.0.0.1:8080/messages/create/</a>. Должно быть выведено сообщение «Здесь будет форма для создания сообщения».</p></li>
+</ol>
+<p>Так мы проверим все веб­‑адреса, которые мы можем проверить без дополнительного кодирования и без ввода идентификаторов ресурсов.</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-PHP/Windows">
+<p>1. Install requirements [Электронный ресурс] // PHP.net. URL: <a href="https://www.php.net/manual/en/install.windows.requirements.php">https://www.php.net/manual/en/install.windows.requirements.php</a> (дата обращения: 17.05.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
