@@ -371,6 +371,8 @@
 
 &lt;form action=&quot;/messages/&quot; method=&quot;post&quot;&gt;
 
+    {{ csrf_field() }}
+
     &lt;label&gt;
         Заголовок:
         &lt;input type=&quot;text&quot; name=&quot;title&quot;&gt;
