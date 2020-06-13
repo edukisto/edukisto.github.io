@@ -111,14 +111,10 @@
 <td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
 </tr>
 <tr class="even">
-<td>Операционная система</td>
-<td>Windows Vista и выше или Ubuntu 18.04 и выше</td>
-</tr>
-<tr class="odd">
 <td>Текстовый процессор</td>
 <td>Совместимый с OpenDocument v1.0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Текстовый редактор</td>
 <td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
 </tr>
@@ -133,6 +129,38 @@
 <section id="example" class="level2">
 <h2>Пример выполнения задания</h2>
 <p>Естественно, на прикладном уровне стека протоколов Интернета невозможно предотвратить атаку <i lang="en">DoS</i>, но возможно смягчить (англ. <i lang="en">mitigate</i>) её воздействие. Для защиты на других уровнях применяют межсетевые экраны для веб­‑приложений (англ. <i lang="en">web application firewall</i>, <i lang="en">WAF</i>).</p>
+<section class="level3">
+<h3>Реализация смягчения в <i lang="en">nginx</i> (без <i lang="en">ModSecurity</i>)</h3>
+<ol>
+<li><p><strong>Запустите <i lang="en">nginx</i>.</strong> Если Вы пользуетесь <i lang="en">Open Server</i>, то необходимо выбрать в контекстном меню пункт «Настройки», на вкладке «Модули» выбрать из выпадающего списка под заголовком «<i lang="en">HTTP</i>» элемент <i lang="en">Nginx_1.17</i> и подтвердить выбор, нажав на кнопку «Сохранить».</p></li>
+<li><p><strong>Откройте на редактирование файл конфигурации <i lang="en">nginx</i>.</strong> Если Вы пользуетесь <i lang="en">Open Server</i>, то это файл <code>userdata\config\Nginx_1.17_vhost.conf</code>.</p>
+<p>Файлы конфигурации заполнены директивами. Директивы делятся на простые и блочные. Простая директива состоит из имени и параметров, разделённых пробелами, и заканчивается точкой с запятой (<code>;</code>). Блочная директива имеет ту же структуру, что и простая, но вместо точки с запятой заканчивается набором дополнительных инструкций, заключённых в фигурные скобки (<code>{</code> и <code>}</code>).</p>
+<p>Если блочная директива может содержать другие директивы в фигурных скобках, её называют контекстом: <code>events</code>, <code>http</code>, <code>server</code>, <code>location</code>. Размещать директиву в контексте ⁠— значит размещать её между фигурных скобок контекста. И наоборот, размещать директиву вне контекста ⁠— значит размещать её до имени директивы или после относящейся к ней закрывающей фигурной скобки.</p></li>
+<li><p>Ограничьте частоту запросов значением, типичным для пользователей, а не для ботов <span class="citation" data-cites="nginx/DDoS">[1]</span>. Для этого создайте зону разделяемой памяти, которая будет хранить массив информации о количестве чрезмерных запросов. <strong>Добавьте</strong></p>
+<pre class="bash"><code># В контексте http, т. е. вне блока server:
+limit_req_zone $binary_remote_addr zone=MY_RATE_ZONE:10m rate=1r/s;</code></pre>
+<p>Параметр <code class="bash">$binary_remote_addr</code> указывает, что ключами массива являются <i lang="en">IP</i>­‑адреса клиентов. Параметр <code class="bash">zone=MY_RATE_ZONE:10m</code> создаёт зону разделяемой памяти на 10 МБ и назначает ей имя <code class="bash">MY_RATE_ZONE</code> (если объём свободного пространства исчерпан, сервер удаляет наименее часто обновляемый элемент). Параметр <code class="bash">rate=1r/s</code> ограничивает скорость одним запросом в секунду. Вместо единицы измерения <code class="bash">r/s</code> (запросов в секунду) можно использовать <code class="bash">r/m</code> (запросов в минуту).</p>
+<p>Создав зону, используйте её. <strong>Добавьте</strong></p>
+<pre class="bash"><code># В контексте http, server или location:
+limit_req zone=MY_RATE_ZONE;</code></pre>
+<p>Конечно, зону можно использовать одновременно в нескольких допустимых контекстах. Например, можно обратиться к ней из контекста <code>location /register</code> (где <code>/register</code> ⁠— начальный фрагмент пути на сервере, указываемый после номера порта), чтобы ограничить количество запросов с целью регистрации пользователя.</p></li>
+<li><p>Сохраните изменения в файле, перезагрузите сервер и через браузер <strong>обратитесь с запросом к <a href="http://localhost/" class="uri">http://localhost/</a></strong>. Несколько раз быстро нажмите <kbd>F5</kbd>, чтобы превысить лимит, заданный на предыдущем шаге. Например, при двух и более нажатиях в секунду каждый второй запрос должен заканчиваться выводом в браузер следующего сообщения:</p>
+<pre><code>503 Service Temporarily Unavailable.</code></pre></li>
+<li><p>Ограничьте количество одновременных подключений. Для этого создайте зону разделяемой памяти, которая будет хранить массив информации о количестве подключений. <strong>Добавьте</strong></p>
+<pre class="bash"><code># В контексте http:
+limit_conn_zone $binary_remote_addr zone=MY_ADDRESS_ZONE:10m;</code></pre>
+<p>Создав зону, используйте её. <strong>Добавьте</strong></p>
+<pre class="bash"><code># В контексте http, server или location:
+limit_conn MY_ADDRESS_ZONE 1;</code></pre>
+<p>Логично ограничить количество одновременных подключений на адресах, которые отвечают за скачивание или загрузку файлов на сервер (например, <code>location /download</code>).</p></li>
+<li><p>Закройте медленные соединения.</p>
+<pre class="bash"><code># В контексте http, server или location:
+client_body_timeout 5s;
+client_header_timeout 5s;</code></pre>
+<p>Директивы <code>client_header_timeout</code> и <code>client_body_timeout</code> определяют тайм­‑ауты для операций чтения сервером заголовков и тела запроса (соответственно) ⁠— если клиент ничего не передаёт в течение этого времени, запрос завершается со статусом <code>408 Request Timeout</code>.</p></li>
+<li><p>Сохраните изменения в файле.</p></li>
+</ol>
+</section>
 <section class="level3">
 <h3>Реализация смягчения в <i lang="en">Laravel</i></h3>
 <ol>
@@ -179,7 +207,7 @@ php artisan serve</code></pre>
 <li><p>Запустите браузер и <strong>перейдите по гиперссылке, выведенной на предыдущем шаге</strong>.</p></li>
 <li><p>В браузере <strong>откройте инструменты разработчика</strong> (<kbd>F12</kbd> или <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">⇧ ⁠Shift</kbd> ⁠+ ⁠<kbd lang="en">J</kbd>) и перейдите на вкладку <i lang="en">Network</i> («Сеть»).</p></li>
 <li><p>В браузере <strong>четыре раза нажмите</strong> <kbd>F5</kbd>. Первые три запроса приведут к выводу в окно браузера главной страницы веб­‑приложения. В ответ на четвёртый запрос сервер пришлёт браузеру сообщение со статусом <code>429 Too Many Requests</code>. Код 429 указывает клиенту, что тот отправил слишком много запросов в заданный сервером промежуток времени, и сервер применил «ограничение скорости».</p></li>
-<li><p>В отладчике нажмите на строчку, соответствующую отклонённому запросу (эта строка содержит код 429 и обычно отмечена красным). Откроется окно, в котором необходимо перейти на вкладку <i lang="en">Headers</i> («Заголовки»). Убедитесь, что среди заголовков ответа (<i lang="en">response</i>) есть <code>Retry-After</code> ⁠— его значение представлено либо количеством секунд, либо меткой времени; так или иначе, это указание на время, которое клиенту следует выждать до повторного выполнения запроса <span class="citation" data-cites="RFC/6585">[1]</span>. Конечно, не каждый клиент будет соблюдать рекомендацию, но сервер в любом случае не ответит до указанного срока.</p></li>
+<li><p>В отладчике нажмите на строчку, соответствующую отклонённому запросу (эта строка содержит код 429 и обычно отмечена красным). Откроется окно, в котором необходимо перейти на вкладку <i lang="en">Headers</i> («Заголовки»). Убедитесь, что среди заголовков ответа (<i lang="en">response</i>) есть <code>Retry-After</code> ⁠— его значение представлено либо количеством секунд, либо меткой времени; так или иначе, это указание на время, которое клиенту следует выждать до повторного выполнения запроса <span class="citation" data-cites="RFC/6585">[2]</span>. Конечно, не каждый клиент будет соблюдать рекомендацию, но сервер в любом случае не ответит до указанного срока.</p></li>
 <li><p>Откройте файл <code>vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php</code> и найдите метод <code class="php">resolveRequestSignature()</code>. Он выглядит примерно так:</p>
 <pre class="php uncopyable"><code>protected function resolveRequestSignature($request)
 {
@@ -249,8 +277,11 @@ class ThrottleRequests extends Middleware
 <section id="bibliography" class="level2 unnumbered">
 <h2>Список использованных источников</h2>
 <div id="refs" class="references" role="doc-bibliography">
+<div id="ref-nginx/DDoS">
+<p>1. Nelson R. Mitigating DDoS attacks with NGINX and NGINX Plus [Электронный ресурс] // NGINX : Part of F5. 2015. 2 июля. URL: <a href="https://www.nginx.com/blog/mitigating-ddos-attacks-with-nginx-and-nginx-plus/">https://www.nginx.com/blog/mitigating-ddos-attacks-with-nginx-and-nginx-plus/</a> (дата обращения: 13.06.2020).</p>
+</div>
 <div id="ref-RFC/6585">
-<p>1. Nottingham M., Fielding R.T. 2012. апреля. № 6585. (Request for comments). ISSN 2070-1721. URL: <a href="https://tools.ietf.org/html/rfc6585">https://tools.ietf.org/html/rfc6585</a> (дата обращения: 15.05.2020).</p>
+<p>2. Nottingham M., Fielding R.T. 2012. апреля. № 6585. (Request for comments). ISSN 2070-1721. URL: <a href="https://tools.ietf.org/html/rfc6585">https://tools.ietf.org/html/rfc6585</a> (дата обращения: 15.05.2020).</p>
 </div>
 </div>
 </section></main>
