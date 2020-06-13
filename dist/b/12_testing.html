@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2020-01-01" />
+	<title>Разработка тестовых пакетов</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.2"
+		integrity="sha256-jKP4yOH9fXX9OFEDEq2FvXsKbF99cI0vXhvn9HXWPI0="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-chtml-full.js"
+		integrity="sha256-G6LKmWqxdCa6I8w4fhp58X9L2sJv//luLfR82Ojfmho="
+		crossorigin="anonymous"
+		>
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [
+					['\\(', '\\)']
+				],
+				processEscapes: true
+			}
+		});
+	</script>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2020
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Разработка тестовых пакетов»<br />по МДК.02.01 «Технология разработки программного обеспечения»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться создавать тестовые пакеты с минимально достаточным количеством контрольных примеров.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<p>Реализовать на любом языке программирования три программы из перечня, причём темы первых двух программ нужно выбрать по таблице 1, а третью ⁠— произвольно, исключая номера первой и второй программ.</p>
+<table>
+<caption>Распределение тем программ</caption>
+<thead>
+<tr class="header">
+<th>Номер по журналу</th>
+<th>Номера тем</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1, 2</td>
+<td>1, 11</td>
+</tr>
+<tr class="even">
+<td>3, 4</td>
+<td>2, 9</td>
+</tr>
+<tr class="odd">
+<td>5, 6</td>
+<td>3, 10</td>
+</tr>
+<tr class="even">
+<td>7, 8</td>
+<td>4, 7</td>
+</tr>
+<tr class="odd">
+<td>9, 10</td>
+<td>5, 8</td>
+</tr>
+<tr class="even">
+<td>11, 12</td>
+<td>6, 5</td>
+</tr>
+<tr class="odd">
+<td>13, 14</td>
+<td>7, 6</td>
+</tr>
+<tr class="even">
+<td>15, 16</td>
+<td>8, 3</td>
+</tr>
+<tr class="odd">
+<td>17, 18</td>
+<td>9, 4</td>
+</tr>
+<tr class="even">
+<td>19, 20</td>
+<td>10, 1</td>
+</tr>
+<tr class="odd">
+<td>21, 22</td>
+<td>11, 2</td>
+</tr>
+</tbody>
+</table>
+<p>Темы программ:</p>
+<ol>
+<li>программа записи десятичного числа в восьмеричной системе счисления;</li>
+<li>программа записи десятичного числа в шестнадцатеричной системе счисления;</li>
+<li>программа записи шестнадцатеричного числа в десятичной системе счисления;</li>
+<li>программа для вычисления наибольшего общего делителя двух целых чисел;</li>
+<li>программа для сдвига элементов одномерного массива на указанное количество разрядов;</li>
+<li>программа, реализующая сортировки элементов списка «пузырьком»;</li>
+<li>программа, реализующая поиск максимального значения в двумерном массиве;</li>
+<li>программа, реализующая поиск минимального значения в двумерном массиве;</li>
+<li>программа, вычисляющая среднее арифметического в двумерном массиве;</li>
+<li>программа, суммирующая элементы главной диагонали квадратной матрицы;</li>
+<li>программа, реализующая перемешивание элементов одномерного массива.</li>
+</ol>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Факторизация, или разбиение на классы эквивалентности (англ. <i lang="en">equivalence class partitioning (ECP)</i>), ⁠— техника тестирования методом чёрного ящика, которая требует разбить множество входных значений на подмножества (классы) эквивалентных элементов и разработать для каждого из подмножеств один и только один контрольный пример (англ. <i lang="en">test case</i>). Техника позволяет сократить количество контрольных примеров и, следовательно, сократить временны́е затраты на тестирование.</p>
+<p><i lang="en">ECP</i>, как и другие техники тестирования методом чёрного ящика, предполагают разработку контрольных примеров на основе спецификации, то есть документации на программу.</p>
+<section class="level3">
+<h3>Правила факторизации</h3>
+<ol>
+<li>Если входное значение ограничено диапазоном \(m..n\), то опредён один допустимый (\(\{x | (m \leqslant x) \land (x \leqslant n)\}\)) и два недопустимых (\(\{a | a &lt; m\}\) и \(\{b | b &gt; n\}\)) класса эквивалентности.</li>
+<li>Если входное значение ограничено значением \(x\), то опредён один допустимый (\(\{x\}\)) и один недопустимый (\(\{y | y \neq x\}\)) класс эквивалентности.</li>
+<li>Если допустимые входные значения ограничены \(a\), \(m\), \(x\), то опредён один допустимый (\(X = \{a, m, x\}\)) и один недопустимый (\(\{y | y \notin X\}\)) класс эквивалентности.</li>
+</ol>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<p>Для отладки программ можно использовать сервис <a href="https://www.onlinegdb.com/online_c++_compiler" class="uri">https://www.onlinegdb.com/online_c++_compiler</a>.</p>
+<section class="level3">
+<h3>Пример 1. Поиск значения в массиве</h3>
+<p>Программа реализует поиск одного значения, введённого пользователем с клавиатуры, в заранее определённом множестве или последовательности (например, в таблице базы данных). При нахождении значения выводится значение ИСТИНА, в противном случае ⁠— ЛОЖЬ.</p>
+<pre class="cpp"><code>#include &lt;iostream&gt;
+
+bool find(int number, int* sequence)
+{
+    int length = sizeof(sequence) / sizeof(int);
+    for (int i = 0; i &lt; length; i += 1) {
+        if (sequence[i] == number) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main()
+{
+    using namespace std;
+    int element;
+    
+    std::cin &gt;&gt; element;
+    
+    int set[3] = {5, 7, 13};
+    
+    cout &lt;&lt; find(element, set) &lt;&lt; endl;
+    
+    return 0;
+}</code></pre>
+<p><strong>Решение.</strong> Допустим, множество \(X = \{5, 7, 13\}\) определено в спецификации. Тот факт, что элементы множества не повторяются по определению, а элементы последовательности могут повторяться, не имеют значения для <i lang="en">ECP</i>. Пользователь может ввести значение, как входящее во множество или последовательность \(X\), так и не входящее в них. Следовательно, определены два класса эквивалентности: допустимый \(\{x \in X\}\) и недопустимый \(\{y \notin X\}\).</p>
+<p>В этом случае потребуются два контрольных варианта: а) с любым значением из множества \(X = \{5, 7, 13\}\); б) ⁠с любым значением, не входящим в указанное множество.</p>
+</section>
+<section class="level3">
+<h3>Пример 2. Факториал</h3>
+<p>Дана спецификация на программу расчёта факториала. Факториал натурального числа \(n\) определяется для неотрицательных чисел как произведение всех натуральных чисел от 1 до \(n\) включительно, причём \(0! = 1\):</p>
+<p>$$n! = 1 \times \ldots \times n = \prod_{i = 1}^{n}i.$$</p>
+<p><strong>Задание.</strong> Произвести разбиение входных данных на классы эквивалентности и разработать контрольные варианты.</p>
+<p><strong>Решение.</strong></p>
+<pre class="cpp"><code>#include &lt;iostream&gt;
+
+unsigned int factorial(unsigned int number) {
+    if (number &lt;= 1) {
+        return 1;
+    }
+    return factorial(number - 1) * number;
+}
+
+int main()
+{
+    using namespace std;
+
+    int number;
+
+    cin &gt;&gt; number;
+
+    cout &lt;&lt; factorial(number) &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+<p>Разбиение зависит от спецификации.</p>
+<p>Если спецификация ограничивает максимальное значение \(n\) натуральным числом \(N\), т. е. \(N \in \mathbb{N}\), то опредён один допустимый (\(\{x | (0 \leqslant x) \land (x \leqslant N)\}\)) и два недопустимых (\(\{y | y &lt; 0\}\) и \(\{z | z &gt; N\}\)) класса эквивалентности. В этом случае потребуются три контрольных варианта: а) ⁠\(n &lt; 0\); б) ⁠\(0 \leqslant n \leqslant N\); в) ⁠\(n &gt; N\).</p>
+<p>Если спецификация <strong>не</strong> ограничивает максимальное значение \(n\), то входное значение ограничено диапазоном \(0..\infty\). Следовательно, опредён один допустимый (\(\{x | (0 \leqslant x) \land (x \leqslant \infty)\}\)) и только <strong>один</strong> недопустимый (\(\{y | y &lt; 0\}\)) классы эквивалентности, поскольку не существует вещественного числа \(r\), для которого истинно \(r &gt; \infty\).</p>
+<p><strong>Примечание.</strong> <i lang="en">ECP</i> не учитывает допустимый диапазон <strong>выходных</strong> данных, поэтому входное значение может приводить к недопустимому выходному значению (например, \(20! = 51090942171709440000\) выходит за пределы типа <code class="cpp">unsigned int</code> даже в 64­‑битных системах).</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+</main>
+
+	<footer></footer>
+
+</body>
+</html>
