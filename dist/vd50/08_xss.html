@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2020-01-01" />
+	<title>Поиск уязвимостей для атак XSS</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.2"
+		integrity="sha256-jKP4yOH9fXX9OFEDEq2FvXsKbF99cI0vXhvn9HXWPI0="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-chtml-full.js"
+		integrity="sha256-G6LKmWqxdCa6I8w4fhp58X9L2sJv//luLfR82Ojfmho="
+		crossorigin="anonymous"
+		>
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [
+					['\\(', '\\)']
+				],
+				processEscapes: true
+			}
+		});
+	</script>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2019
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Поиск уязвимостей для атак XSS»<br />по МДК.09.03 «Обеспечение безопасности веб­‑приложений»<br />для специальности 09.02.07 «Информационные системы и программирование»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Получить практический опыт обнаружения и устранения уязвимостей для <i lang="en">XSS</i> в веб­‑приложениях.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+<ol>
+<li>Запустить <i lang="en">WebGoat</i> и решить задачи из раздела <i lang="en">Cross­‑site scripting (XSS)</i>: №⁠№ 2, 7, 10–⁠12 из подраздела <i lang="en"><a href="http://127.0.0.1:8080/WebGoat/start.mvc#lesson/CrossSiteScripting.lesson/">Cross­‑site scripting</a></i>; № 3 из подраздела <i lang="en"><a href="http://127.0.0.1:8080/WebGoat/start.mvc#lesson/CrossSiteScriptingStored.lesson/">Cross­‑site scripting (stored)</a></i>.</li>
+<li>Выполнить все задания на <a href="https://xss-game.appspot.com" class="uri">https://xss-game.appspot.com</a>.</li>
+<li>Выполнить несколько заданий на <a href="https://alf.nu" class="uri">https://alf.nu</a>.</li>
+<li>Выполнить несколько заданий на <a href="https://prompt.ml" class="uri">https://prompt.ml</a>.</li>
+</ol>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="even">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Межсайтовая сценаризация (англ. <i lang="en">cross­‑site scripting</i>) ⁠— это атака, сводящаяся к выполнению в пользовательском агенте (например, браузере) вредоносного сценария, предварительно внедрённого в уязвимое веб­‑приложение. <i lang="en">XSS</i> подвержены все языки разметки, поддерживающие выполнение сценариев: <i lang="en">HTML</i>, <i lang="en">SVG</i>, <i lang="en">XHTML</i> и пр. Вредоносный сценарий обычно пишут на языке программирования <i lang="en">JavaScript</i>.</p>
+<p>Классификация <i lang="en">XSS</i> по способу хранения полезной нагрузки:</p>
+<ul>
+<li>хранимые (англ. <i lang="en">stored</i>) ⁠— вредоносный код размещён в хранилище данных уязвимого веб­‑приложения (например, в БД) и выполняется после извлечения;</li>
+<li>отражённые (англ. <i lang="en">reflected</i>) ⁠— вредоносный сценарий выполняется в контексте уязвимого веб­‑приложения немедленно, без размещения в хранилище данных.</li>
+</ul>
+<p>Рассмотрим пример хранимой <i lang="en">XSS</i>. Представим, что существует уязвимая для <i lang="en">XSS</i> социальная сеть, позволяющая пользователям обмениваться текстовыми сообщениями. Пользовательский интерфейс сети выполнен на <i lang="en">HTML</i>; сообщения сохраняются в БД. Злоумышленник, став пользователем указанной сети, публикует сообщение следующего содержания:</p>
+<pre class="html"><code>&lt;script&gt;alert(&#39;Привет, я XSS!&#39;);&lt;/script&gt;</code></pre>
+<p>Текст, размещённый тегами <i lang="en">HTML</i> <code class="html">&lt;script&gt;</code> и <code class="html">&lt;/script&gt;</code>, браузер по умолчанию рассматривает как сценарий на языке <i lang="en">JavaScript</i> и (при отсутствии других средств защиты наподобие <i lang="en">CSP</i>) немедленно выполняет. Таким образом, сохранённый в БД сценарий будет выполнен в браузере каждого пользователя, читающего сообщение злоумышленника. Конечно, в рассмотренном случае атака приведёт лишь к появлению в браузере жертвы модального окна с сообщением «Привет, я <i lang="en">XSS</i>!», однако обнаруженный вектор наверняка позволит включить в полезную нагрузку гораздо менее безобидный код, например, для манипулирования элементам веб­‑страницы, программными интерфейсами браузера, его адресной строкой и т. д.</p>
+<p>Теперь рассмотрим пример отражённой <i lang="en">XSS</i>. Представим, что существует уязвимая для <i lang="en">XSS</i> поисковая система <a href="https://example.com" class="uri">https://example.com</a>, конкурирующая с <i lang="en">Google</i> и «Яндексом». Поисковый запрос подаётся через форму <i lang="en">HTML</i> с полем ввода и кнопкой. После подачи запроса браузер автоматически переходит на веб­‑страницу, где повторно, в справочных целях выводится искомый текст и результаты поиска (<a href="https://yandex.ru/search/?text=%D0%9C%D0%9F%D0%A2">аналогичная страница на «Яндексе»</a>, <a href="https://www.google.com/search?q=%D0%9C%D0%9F%D0%A2">аналогичная страница на <i lang="en">Google</i></a>). При этом достаточно взглянуть на адресную строку браузера, чтобы понять, что поисковая система получает искомый текст через стартовую строку запроса, т. е. искомый текст закодирован в гиперссылке, и его можно изменять вручную, без формы. Таким образом, злоумышленник может сформировать гиперссылку вида</p>
+<pre class="html"><code>https://example.com/?query=&lt;script&gt;alert(&#39;Привет, я XSS!&#39;);&lt;/script&gt;</code></pre>
+<p>Здесь искомый текст задан фрагментом разметки <i lang="en">HTML</i> с внедрённым сценарием <i lang="en">JavaScript</i>. Если неосторожный пользователь перейдёт по такой гиперссылке, поисковая система выведет искомый текст в контексте веб­‑страницы, и вредоносный сценарий будет выполнен в браузере жертвы. Отличие от хранимой <i lang="en">XSS</i> заключается в том, что внедрение и выполнение вредоносного сценария производит один и тот же браузер.</p>
+<section class="level3">
+<h3>Методы предотвращения <i lang="en">XSS</i></h3>
+<section class="level4">
+<h4>Кодирование</h4>
+<p>Разработанная <i lang="en">OWASP</i> модель предотвращения <i lang="en">XSS</i> рассматривает документ <i lang="en">HTML</i> как шаблон с реквизитами (ячейками) для вывода данных, которые могут содержать <i lang="en">XSS</i>, причём любые данные, попадающие в систему из внешних источников, считаются опасными по умочанию. Например, в социальной сети вредоносный фрагмент может попасть в БД с сообщением пользователя и будет выполняться в браузерах других пользователей при просмотре этого сообщения. Ассортимент ячеек ограничен белым списком, причём для каждой их разновидности установлены индивидуальные правила валидации, экранирования и кодирования.</p>
+<section class="level5">
+<h5>Кодирование содержимого элемента</h5>
+<p>В ненадёжных последовательностях, выводимых между начальным и конечным тегами элемента с потоковым (англ. <i lang="en">flow</i>) или фразовым (англ. <i lang="en">phrasing</i>) содержимым, следует замещать ссылками <mark>специальные</mark> знаки согласно таблице.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Знак</th>
+<th>Код и имя знака по Unicode</th>
+<th>Ссылка на знак в HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"</td>
+<td><code>U+0022 QUOTATION MARK</code></td>
+<td><code>&amp;quot;</code></td>
+</tr>
+<tr class="even">
+<td>&amp;</td>
+<td><code>U+0026 AMPERSAND</code></td>
+<td><code>&amp;amp;</code></td>
+</tr>
+<tr class="odd">
+<td>'</td>
+<td><code>U+0027 APOSTROPHE</code></td>
+<td><code>&amp;#x27;</code></td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td><code>U+002F SOLIDUS</code></td>
+<td><code>&amp;#x2F;</code></td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td><code>U+003C LESS-THAN SIGN</code></td>
+<td><code>&amp;lt;</code></td>
+</tr>
+<tr class="even">
+<td>&gt;</td>
+<td><code>U+003E GREATER-THAN SIGN</code></td>
+<td><code>&amp;gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ссылка <code class="html">&amp;apos;</code> на <code>U+0027</code> есть только в <i lang="en">XML</i> 1.0 и выше, 2‑м издании <i lang="en">XHTML</i> и <i lang="en">HTML5</i> <span class="citation" data-cites="W3C/HTML/4.01 W3C/XHTML/1.0/2">[1; 3, разд. C.16]</span>, а ссылка <code class="html">&amp;sol;</code> на <code>U+002F</code> появилась только в <i lang="en">HTML5</i> <span class="citation" data-cites="W3C/HTML/4.01 W3C/HTML/5">[1; 2]</span>, поэтому их лучше представлять не именованными, а шестнадцатеричными числовыми ссылками.</p>
+<p>Таким образом,</p>
+<pre class="html"><code>&lt;script&gt;alert(&#39;Привет, я XSS!&#39;);&lt;/script&gt;</code></pre>
+<p>становится</p>
+<pre class="html"><code>&amp;lt;script&amp;gt;alert(&amp;#x27;Привет, я XSS!&amp;#x27;);&amp;lt;&amp;#x2F;script&amp;gt;</code></pre>
+<p>и в контексте, например, абзаца выводится как текст. Другими словами, фрагмент разметки</p>
+<pre class="html"><code>&lt;p&gt;&amp;lt;script&amp;gt;alert(&amp;#x27;Привет, я XSS!&amp;#x27;);&amp;lt;&amp;#x2F;script&amp;gt;&lt;/p&gt;</code></pre>
+<p>отображается как текст (без выполнения)</p>
+<pre><code>&lt;script&gt;alert(&#39;Привет, я XSS!&#39;);&lt;/script&gt;</code></pre>
+</section>
+<section class="level5">
+<h5>Кодирование значения атрибута</h5>
+<p>При этом в основную массу атрибутов вообще не следует подставлять значения динамически. Белый список атрибутов, безопасных для такой подстановки: <code>align</code>, <code>alink</code>, <code>alt</code>, <code>bgcolor</code>, <code>border</code>, <code>cellpadding</code>, <code>cellspacing</code>, <code>class</code>, <code>color</code>, <code>cols</code>, <code>colspan</code>, <code>coords</code>, <code>dir</code>, <code>face</code>, <code>height</code>, <code>hspace</code>, <code>ismap</code>, <code>lang</code>, <code>marginheight</code>, <code>marginwidth</code>, <code>multiple</code>, <code>nohref</code>, <code>noresize</code>, <code>noshade</code>, <code>nowrap</code>, <code>ref</code>, <code>rel</code>, <code>rev</code>, <code>rows</code>, <code>rowspan</code>, <code>scrolling</code>, <code>shape</code>, <code>span</code>, <code>summary</code>, <code>tabindex</code>, <code>title</code>, <code>usemap</code>, <code>valign</code>, <code>value</code>, <code>vlink</code>, <code>vspace</code>, <code>width</code>.</p>
+<p>Значения атрибутов требуют агрессивного кодирования, поскольку внутри незакавыченного значения атрибута запрещены пробелы (<a href="http://www.w3.org/TR/html-markup/syntax.html#syntax-attribute-value" class="uri">http://www.w3.org/TR/html-markup/syntax.html#syntax-attribute-value</a>, <a href="http://www.w3.org/TR/html-markup/terminology.html#space" class="uri">http://www.w3.org/TR/html-markup/terminology.html#space</a>) и знаки разметки. Каждый из них позволяет злоумышленнику выйти из контекста значения атрибута в конктекст элемента, чтобы создать другие атрибуты или элементы. Следовательно, в значениях безопасных атрибутов следует замещать ссылками ⁠— именованными или числовыми (желательно шестнадцатеричными для читабельности) ⁠— знаки от <code>NUL</code> до <code>U+009F APPLICATION PROGRAM COMMAND</code> включительно, за исключением арабских цифр (<code>U+0030</code>…<code>U+0039</code>), прописных (<code>U+0041</code>…<code>U+005A</code>) и строчных (<code>U+0061</code>…<code>U+007A</code>) букв английского алфавита.</p>
+<p>Таким образом,</p>
+<pre class="html"><code>Логотип ООО «Вася &amp; партнёры»</code></pre>
+<p>должен быть кодирован так:</p>
+<pre class="html"><code>Логотип&amp;#x20;ООО&amp;#x20;«Вася&amp;#x20;&amp;amp;&amp;#x20;партнёры»</code></pre>
+<p>и в контексте атрибута <code class="html attr-name">alt</code> должен выглядеть так:</p>
+<pre class="html"><code>&lt;img src=&quot;logo.png&quot; alt=&quot;Логотип&amp;#x20;ООО&amp;#x20;«Вася&amp;#x20;&amp;amp;&amp;#x20;партнёры»&quot;&gt;</code></pre>
+</section>
+<section class="level5">
+<h5>Кодирование внутри сценариев <i lang="en">JavaScript</i></h5>
+<p>Все знаки, за исключением арабских цифр, прописных и строчных английский букв, следует приводить к формату <code>\uXXXX</code>.</p>
+</section>
+<section class="level5">
+<h5>Общие рекомендации</h5>
+<p><i lang="en">OWASP</i> предостерегает от вставки ненадёжных данных в другие пазы и особенно:</p>
+<ul>
+<li>между начальным и конечным тегами элементов <code class="html tag">script</code> и <code class="html tag">style</code> (<code class="html">&lt;script&gt;</code>здесь<code class="html">&lt;/script&gt;</code> и <code class="html">&lt;style&gt;</code>здесь<code class="html">&lt;/style&gt;</code>);</li>
+<li>между начальным и конечным ограничителями комментария (<code class="html">&lt;!--здесь--&gt;</code>);</li>
+<li>в имена элементов (<code class="html">&lt;здесь&gt;</code>);</li>
+<li>в имена атрибутов (<code class="html">&lt;element здесь&gt;</code>);</li>
+<li>во вложенные контексты (например, <i lang="en">URL</i> в исходном коде <i lang="en">JavaScript</i> в документе <i lang="en">HTML</i>).</li>
+</ul>
+<p>К общим можно отнести рекомендацию не использовать синтаксические послабления <i lang="en">HTML5</i> и всегда заключать значение атрибута в суррогатные кавычки.</p>
+<p>Явно указывайте кодировку <i lang="en">UTF‑8</i> до вывода пользовательских данных, чтобы предотвратить атаки с использованием <i lang="en">UTF‑7</i>.</p>
+</section>
+</section>
+<section class="level4">
+<h4><code>X-XSS-Protection</code></h4>
+<p>В некоторые пользовательские агенты (браузеры) были встроены компоненты, предназначенные для пресечения отражённых <i lang="en">XSS</i>: в <i lang="en">Internet Explorer</i> 8–⁠11 и <i lang="en">Edge</i> 12–⁠17 ⁠— <a href="https://docs.microsoft.com/ru-ru/archive/blogs/ie/ie8-security-part-iv-the-xss-filter"><i lang="en">XSS Filter</i></a>, в <i lang="en">Chrome</i> 4.0.249–⁠77 ⁠— <a href="https://www.chromium.org/developers/design-documents/xss-auditor"><i lang="en">XSS Auditor</i></a>. Эти компоненты реагировали на размеченный текст, который передан в <i lang="en">URL</i> или теле <i lang="en">HTTP</i>­‑запроса и при этом, во­‑первых, отражён (присутствует) в теле соответствующего <i lang="en">HTTP</i>­‑ответа, а во­‑вторых, похож на полезную нагрузку для <i lang="en">XSS</i>, т. е. содержит теги <code class="html">script</code>, кавычки с методами <i lang="en">DHTML</i> и пр. Среагировав, компонент, в зависимости от настроек, либо вырезал подозрительный фрагмент, либо полностью блокировал отображение веб­‑страницы.</p>
+<p>Управление такими компонентами было реализовано через <code>X-XSS-Protection</code> ⁠— нестандартизованное заголовочное поле ответного (отправляемого сервером) сообщения <i lang="en">HTTP</i>. У поля три возможных общеупотребительных значения: <code>0</code> ⁠— фильтр выключен; <code>1</code> ⁠— фильтр включён, и небезопасные фрагменты сценариев будут удалены; <code>1; mode=block</code> ⁠— фильтр включён, и при обнаружении <i lang="en">XSS</i> отображение веб­‑страницы будет блокировано (по умолчанию в <i lang="en">Chrome</i> 57–⁠73).</p>
+<p>К сожалению, фильтрующие компоненты вряд ли можно считать надёжными средствами защиты. Причины таковы:</p>
+<ol>
+<li>отсутствие аналогов в <i lang="en">Firefox</i>, <i lang="en">Chrome</i> 78 и выше, <i lang="en">Edge</i> 18 и выше;</li>
+<li>ложные срабатывания, например в том случае, когда сценарий во входных данных идентичен сценарию в выходных данных, но никак с ним не связан;</li>
+<li><a href="https://hackademix.net/2009/11/21/ies-xss-filter-creates-xss-vulnerabilities/">уязвимости</a>, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=96616">уязвимости</a>;</li>
+<li>невозможность управления в некоторых версиях браузеров.</li>
+</ol>
+<p><strong>Вывод.</strong> Применение <code>X-XSS-Protection</code> может быть оправдано необходимостью настроить единственный встроенный механизм защиты от <i lang="en">XSS</i> в устаревших браузерах <i lang="en">Chrome</i> 4.0.249–⁠13 и <i lang="en">Internet Explorer</i> 8–⁠11, в которых не реализован или не полностью реализован стандарт <i lang="en">Content Security Policy</i> 1.0.</p>
+</section>
+</section>
+<section class="level3">
+<h3><i lang="en">Content Security Policy</i></h3>
+<p>Провал <code>X-XSS-Protection</code> заставляет взглянуть на стандарт <i lang="en">Content Security Policy</i>. Если запретить выполнение встроенных в веб­‑страницу сценариев, то и <i lang="en">XSS</i> станет невозможен. Таким образом, разработчикам не следует указывать <code>unsafe-inline</code> или <code>base:</code> в качестве допустимых источников в политиках.</p>
+<pre class="html"><code>&lt;meta
+    http-equiv=&quot;Content-Security-Policy&quot;
+    content=&quot;default-src &#39;none&#39;; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+&gt;</code></pre>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Использование <i lang="en">Content Security Policy</i> для предотвращения <i lang="en">XSS</i></h3>
+<ol>
+<li><p>Создайте каталог <code>csp-compatible</code> и перейдите в него. Все файлы, перечисленные ниже, размещайте внутри этого каталога.</p>
+<pre class="bash command-line" data-prompt="$"><code>mkdir csp-compatible &amp;&amp; cd $_</code></pre></li>
+<li><p>Запустите сервер HTTP, используя команду</p>
+<pre class="bash command-line" data-prompt="$"><code>php -S 127.0.0.1:8080</code></pre>
+<p>или</p>
+<pre class="bash command-line" data-prompt="$"><code>python -m http.server 8080</code></pre></li>
+<li><p>Создайте файл <code>index.html</code> со следующим содержимым:</p>
+<pre class="html line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru-luna1918&quot;&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;meta
+		http-equiv=&quot;Content-Security-Policy&quot;
+		content=&quot;default-src &#39;none&#39;; script-src-elem &#39;self&#39;; style-src-elem &#39;self&#39;&quot;
+	&gt;
+	&lt;title&gt;Подключение сценариев, совместимое с CSP&lt;/title&gt;
+	&lt;script async defer src=&quot;a.js&quot;&gt;&lt;/script&gt;
+	&lt;script defer src=&quot;b.js&quot;&gt;&lt;/script&gt;
+	&lt;script defer src=&quot;c-and-d.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;a href=&quot;#&quot;&gt;Нажми сюда&lt;/a&gt;
+	&lt;button&gt;Нажми сюда&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></li>
+<li><p>Создайте файл <code>a.js</code> со следующим содержимым:</p>
+<pre class="javascript line-numbers"><code>(function () {
+	&#39;use strict&#39;;
+	console.log(&#39;Сценарий A выполнен.&#39;);
+}());
+</code></pre></li>
+<li><p>Создайте файл <code>b.js</code> со следующим содержимым:</p>
+<pre class="javascript line-numbers"><code>(function () {
+	&#39;use strict&#39;;
+
+	var worker = new Worker(&#39;worker.js&#39;);
+
+	worker.addEventListener(&#39;message&#39;, function (event) {
+		console.log(event.data);
+	}, false);
+
+	worker.postMessage(&#39;Запустить выполнение сценария B!&#39;);
+}());
+</code></pre></li>
+<li><p>Создайте файл <code>worker.js</code> со следующим содержимым:</p>
+<pre class="javascript line-numbers"><code>addEventListener(&#39;message&#39;, function (event) {
+	postMessage(&#39;Сценарий B выполнен.&#39;);
+}, false);
+</code></pre></li>
+<li><p>Создайте файл <code>c-and-d.js</code> со следующим содержимым:</p>
+<pre class="javascript line-numbers"><code>(function () {
+	&#39;use strict&#39;;
+
+	var a = document.getElementsByTagName(&#39;a&#39;)[0];
+	var button = document.getElementsByTagName(&#39;button&#39;)[0];
+
+	a.addEventListener(&#39;click&#39;, function (event) {
+		// Отменяем переход по ссылке.
+		event.preventDefault();
+
+		console.log(&#39;Сценарий C выполнен.&#39;);
+	});
+
+	button.addEventListener(&#39;click&#39;, function () {
+		console.log(&#39;Сценарий D выполнен.&#39;);
+	});
+}());
+</code></pre></li>
+<li><p>Откройте <a href="http://127.0.0.1:8080" class="uri">http://127.0.0.1:8080</a> в браузере.</p></li>
+<li><p>Нажмите <kbd>F12</kbd>, чтобы открыть панель разработчика.</p></li>
+<li><p>На панели разработчика перейдите на вкладку «Консоль» (<i lang="en">Console</i>).</p></li>
+<li><p>Убедитесь, что в консоль браузера выведены сообщения о выполнении сценариев <i lang="en">A</i> и <i lang="en">B</i>.</p></li>
+<li><p>Нажмите на гиперссылку и кнопку, чтобы выполнить сценарии <i lang="en">C</i> и <i lang="en">D</i>.</p></li>
+<li><p>Убедитесь, что в консоль браузера выведены сообщения о выполнении сценариев <i lang="en">C</i> и <i lang="en">D</i>.</p></li>
+<li><p>Остановите сервер HTTP, нажав <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">C</kbd> в эмуляторе терминала.</p></li>
+</ol>
+</section>
+<section class="level3">
+<h3>Использование возможностей <i lang="en">PHP</i> для предотвращения <i lang="en">XSS</i></h3>
+<p>Необходимо применять правильно параметризованную функцию <code class="php">htmlspecialchars()</code> ко всем данным, выводимым в содержимом элемента разметки <i lang="en">HTML</i>, <i lang="en">SVG</i>, <i lang="en">XHTML</i>, <i lang="en">XML</i> и др. Пример:</p>
+<pre class="php"><code>&lt;div&gt;
+    &lt;?php
+    $message = &#39;...&#39;;
+    echo htmlspecialchars($message, ENT_QUOTES, &#39;UTF-8&#39;);
+    // Без третьего аргумента, равного ENT_QUOTES, функция не кодирует U+0027 APOSTROPHE.
+    ?&gt;
+&lt;/div&gt;</code></pre>
+<p>К данным, выводимым в значениях безопасных атрибутов, следует применять более агрессивное кодирование:</p>
+<pre class="php"><code>&lt;?php
+$description = &#39;Логотип ООО «Вася &amp; партнёры»&#39;;
+$output = preg_replace_callback(
+    &#39;/[\x{00}-\x{9f}]/imu&#39;,
+    function ($result) {
+        return &#39;&amp;#x&#39; . ord($result[0]) . &#39;;&#39;;
+    },
+    $description
+);
+?&gt;
+&lt;img src=&quot;logo.png&quot; alt=&quot;&lt;?= $output ?&gt;&quot;&gt;</code></pre>
+<p>Функция <code class="php">preg_replace_callback()</code> принимает три аргумента: регулярное выражение, функцию обратного вызова и строку. Регулярное выражение <code class="php string">'/[\x{00}-\x{9f}]/imu'</code> находит в строке все символы с кодами от <code>0</code> до <code>9F</code> включительно. Функция обратного вызова заменяет найденный символ последовательностью <code>&amp;#xN;</code>, где <code>N</code> ⁠— код символа.</p>
+</section>
+<section class="level3">
+<h3>Использование шаблонизатора <i lang="en">Blade</i> (в <i lang="en">Laravel</i>) для предотвращения <i lang="en">XSS</i></h3>
+<p>Встроенный в <i lang="en">Laravel</i> шаблонизатор <i lang="en">Blade</i> предлагает парный оператор <code>{{</code>...<code>}}</code>, который автоматически передаёт содержимое в функцию PHP <code class="php">htmlentitites()</code>. Она аналогична <code class="php">htmlspecialchars()</code>, но кодирует все символы, для которых существует именованная ссылка. Пример:</p>
+<pre class="html"><code>{{ $message }}</code></pre>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-W3C/HTML/4.01">
+<p>1. HTML 4.01 specification [Электронный ресурс]  : W3C recommendation // W3C. 1999. 24 декабря. URL: <a href="https://www.w3.org/TR/1999/REC-html401-19991224/">https://www.w3.org/TR/1999/REC-html401-19991224/</a> (дата обращения: 13.06.2020).</p>
+</div>
+<div id="ref-W3C/HTML/5">
+<p>2. HTML5 [Электронный ресурс]  : W3C recommendation // W3C. 2014. 28 октября. URL: <a href="https://www.w3.org/TR/2014/REC-html5-20141028/">https://www.w3.org/TR/2014/REC-html5-20141028/</a> (дата обращения: 13.06.2020).</p>
+</div>
+<div id="ref-W3C/XHTML/1.0/2">
+<p>3. XHTML™ 1.0 The Extensible HyperText Markup Language (Second Edition) : A Reformulation of HTML 4 in XML 1.0 [Электронный ресурс]  : W3C recommendation // W3C. 2002. 1 августа. URL: <a href="https://www.w3.org/TR/2002/REC-xhtml1-20020801/">https://www.w3.org/TR/2002/REC-xhtml1-20020801/</a> (дата обращения: 10.05.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>
