@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html
+	lang="ru-luna1918"
+	xml:lang="ru-luna1918"
+	xmlns="http://www.w3.org/1999/xhtml"
+	
+	>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="0" />
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+	<meta name="generator" content="pandoc" />
+	<meta name="author" content="Караваев С. В." />
+	<meta name="dcterms.date" content="2020-01-01" />
+	<title>Основы CSS. Верстка веб­‑страниц. Основы отзывчивого веб­‑дизайна</title>
+	<script>
+		var html = document.getElementsByTagName('html')[0];
+		if (!JSON.parse(localStorage.getItem('mode'))) {
+			html.className += 'dark';
+		}
+	</script>
+	<!--[if (gte IE 5)&(lt IE 9)]>
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js">
+	</script>
+	<![endif]-->
+	<link
+		rel="stylesheet"
+		href="../../templates/top/css/top.min.css?v=1.0.2"
+		integrity="sha256-jKP4yOH9fXX9OFEDEq2FvXsKbF99cI0vXhvn9HXWPI0="
+		crossorigin="anonymous"
+		>
+	<script
+		defer
+		src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-chtml-full.js"
+		integrity="sha256-G6LKmWqxdCa6I8w4fhp58X9L2sJv//luLfR82Ojfmho="
+		crossorigin="anonymous"
+		>
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [
+					['\\(', '\\)']
+				],
+				processEscapes: true
+			}
+		});
+	</script>
+	<script
+		defer
+		src="../../templates/top/js/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism.min.js"
+		integrity="sha256-SUo7UCJhdZYtsq1XB6rkLdTQsMW05XCis5hGqpAxCIk="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/prism-copy-to-clipboard.min.js"
+		integrity="sha256-k+5eqBMjvzcK8qMrgcq0QspY8dp1He6woNDhsgRrgn8="
+		crossorigin="anonymous"
+		></script>
+	<script
+		defer
+		src="../../templates/top/js/init.js"
+		integrity="sha256-ehXZKKfhu5hpCgGI2dXbPGJibPllIYEFbkzR1KDI5oM="
+		crossorigin="anonymous"
+		></script>
+</head>
+<body>
+	
+	<header id="header">
+		<p class="ministry">Министерство науки и высшего образования Российской Федерации</p>
+		<p class="university">федеральное государственное бюджетное образовательное учреждение высшего образования<br/>«Российский экономический университет имени Г. В. Плеханова»</p>
+		<p class="college">Московский приборостроительный техникум</p>
+		<hr />
+		<div>
+			<small class="udc">
+									УДК 004.02
+							</small>
+			<small class="author">
+									© Караваев С. В., 2017
+							</small>
+		</div>
+		<h1 class="title">Методические указания по выполнению лабораторной работы на тему<br />«Освоение обработчика шаблона»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+	</header>
+
+
+	<main><section id="order" class="level2">
+<h2>Порядок выполнения работы</h2>
+<ol>
+<li>Узнать <a href="#purpose">цель работы</a>.</li>
+<li>Получить <a href="#task">задание</a>.</li>
+<li>Подготовить <a href="#wares">техническое и программное обеспечение</a>.</li>
+<li>Внимательно ознакомиться с <a href="#theory">теоретическими сведениями</a> и <a href="#example">примером выполнения задания</a>.</li>
+<li>Выполнить <a href="#task">задание</a>, одновременно подготавливая черновик <a href="#report">отчёта</a>.</li>
+<li>Оформить беловой вариант <a href="#report">отчёта</a>.</li>
+<li>Сдать работу преподавателю.</li>
+</ol>
+</section>
+<section id="purpose" class="level2">
+<h2>Цель работы</h2>
+<p>Научиться эксплуатировать обработчик шаблонов.</p>
+</section>
+<section id="task" class="level2">
+<h2>Задание</h2>
+</section>
+<section id="wares" class="level2">
+<h2>Обязательное техническое и программное обеспечение</h2>
+<table>
+<caption>Обязательное программное обеспечение</caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Характеристика, наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web framework</td>
+<td>Laravel ^7.9.2</td>
+</tr>
+<tr class="even">
+<td>Браузер</td>
+<td>Совместимый с HTML 5.2 и CSS Snapshot 2018</td>
+</tr>
+<tr class="odd">
+<td>Валидатор формата</td>
+<td><a href="https://jigsaw.w3.org/css-validator/" class="uri">https://jigsaw.w3.org/css-validator/</a></td>
+</tr>
+<tr class="even">
+<td>Валидатор формата</td>
+<td><a href="https://validator.w3.org/" class="uri">https://validator.w3.org/</a></td>
+</tr>
+<tr class="odd">
+<td>Инструмент тестирования</td>
+<td>PHPUnit ^8</td>
+</tr>
+<tr class="even">
+<td>Компилятор</td>
+<td>PHP ^7.2.5</td>
+</tr>
+<tr class="odd">
+<td>Менеджер пакетов программ</td>
+<td>Composer ^1.6.0-RC</td>
+</tr>
+<tr class="even">
+<td>Модули PHP</td>
+<td><code>ctype</code>, <code>json</code>, <code>mbstring</code>, <code>openssl</code>, <code>PDO</code>, <code>tokenizer</code>, <code>xml</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для дополнений</td>
+<td><code>bcmath</code> (Telescope), <code>zip</code> (<code>laravel/installer</code>)</td>
+</tr>
+<tr class="even">
+<td>Модули PHP для MySQL</td>
+<td><code>mysqlnd</code> (не <code>mysqli</code>!), <code>pdo_mysql</code></td>
+</tr>
+<tr class="odd">
+<td>Модули PHP для SQLite</td>
+<td><code>pdo_sqlite</code> (не <code>sqlite3</code>!)</td>
+</tr>
+<tr class="even">
+<td>СУБД</td>
+<td>MySQL Community Server ^8.0.0</td>
+</tr>
+<tr class="odd">
+<td>Текстовый процессор</td>
+<td>Совместимый с OpenDocument v1.0</td>
+</tr>
+<tr class="even">
+<td>Текстовый редактор</td>
+<td>Совместимый с UTF‑8 без маркера порядка байтов (BOM)</td>
+</tr>
+</tbody>
+</table>
+<p>Для составления исходного кода рекомендуется использовать следующие текстовые редакторы: <a href="https://code.visualstudio.com/">Visual Studio Code</a>, <a href="https://www.sublimetext.com/">Sublime Text</a>. «Блокнот», поставляемый с операционной системой <i lang="en">Windows</i>, использовать нельзя!</p>
+<section class="level3">
+<h3>Примечания для <i lang="en">Windows</i></h3>
+<p>Пользователям операционной системы <i lang="en">Windows</i> рекомендуется установить <a href="https://ospanel.io/download/">Open Server Basic</a>, который содержит <i lang="en">Apache HTTP Server</i>, <i lang="en">MySQL</i>, <i lang="en">nginx</i> и <i lang="en">PHP</i>.</p>
+<table>
+<caption>Минимальные требования для <i lang="en">MySQL 8.0.2</i></caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Библиотека</td>
+<td><i lang="en">Microsoft C Runtime Library (CRT) 14.2</i></td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td><i lang="en">Windows Vista SP2 (?), Windows 7 SP1</i></td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Минимальные требования для <i lang="en">PHP 7.4.6</i></caption>
+<thead>
+<tr class="header">
+<th>Тип</th>
+<th>Наименование, версия</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Библиотека</td>
+<td><i lang="en">Microsoft C Runtime Library (CRT) 14.16</i></td>
+</tr>
+<tr class="even">
+<td>Операционная система</td>
+<td><i lang="en">Windows Vista SP2 (?), Windows 7 SP1</i></td>
+</tr>
+</tbody>
+</table>
+<p>Для установки <i lang="en">CRT</i> рекомендуется установить последнюю версию <i lang="en"><a href="https://support.microsoft.com/ru-ru/help/2977003/the-latest-supported-visual-c-downloads">Microsoft Visual C++ 2015–2019 Redistributable</a></i> <span class="citation" data-cites="PHP/Windows">[1]</span>.</p>
+</section>
+</section>
+<section id="theory" class="level2">
+<h2>Теоретические сведения</h2>
+<p>Шаблонизатор (англ. <i lang="en">template processor</i> или <i lang="en">template engine</i>) ⁠— программное средство, формирующее документы путём комбинирования шаблонов и данных. Шаблонизаторы развивают концепцию о разделении информации и форм её представления. Язык шаблонизатора обычно содержит оператор вывода, условный оператор, оператор цикла, фильтры и средства модуляризации для наследования, включения и пр., но вся сосредоточенная в шаблоне логика должна касаться только представления информации (<i lang="en">View</i> в <i lang="en">MVC</i>). Другими словами, шаблонизатор не умеет (и не должен) обращаться к базе данных, выполнять перенаправление и пр.</p>
+<p>Для проектов на <i lang="en">PHP</i> подойдут шаблонизаторы <i lang="en">Twig</i>, <i lang="en">Smarty</i>, <i lang="en">Mustache.php</i> и <i lang="en">Blade</i>, последний из которых встроен в <i lang="en">Laravel</i>.</p>
+<section class="level3">
+<h3>Шаблонизаторы как подсистема безопасности для предотвращения <i lang="en">XSS</i></h3>
+<p>Разработанная <i lang="en">OWASP</i> <em>позитивная модель предотвращения <i lang="en">XSS</i></em> рассматривает документ <i lang="en">HTML</i> как шаблон с пазами (англ. <i lang="en">slot</i>) для выводимых данных. Для каждой разновидности пазов установлены индивидуальные правила валидации, экранирования и кодирования. Так, для содержимого элемента, выводимого между стартовым и конечным тегами элемента с потоковым (англ. <i lang="en">flow</i>) или фразовым (англ. <i lang="en">phrasing</i>) содержимым, следует замещать специальные знаки соответствующими ссылками согласно таблице.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Знак</th>
+<th>Код и имя знака по Unicode</th>
+<th>Ссылка на знак в HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"</td>
+<td><code>U+0022 QUOTATION MARK</code></td>
+<td><code class="html">&amp;quot;</code></td>
+</tr>
+<tr class="even">
+<td>&amp;</td>
+<td><code>U+0026 AMPERSAND</code></td>
+<td><code class="html">&amp;amp;</code></td>
+</tr>
+<tr class="odd">
+<td>'</td>
+<td><code>U+0027 APOSTROPHE</code></td>
+<td><code class="html">&amp;#x27;</code></td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td><code>U+002F SOLIDUS</code></td>
+<td><code class="html">&amp;#x2F;</code></td>
+</tr>
+<tr class="odd">
+<td>&lt;</td>
+<td><code>U+003C LESS-THAN SIGN</code></td>
+<td><code class="html">&amp;lt;</code></td>
+</tr>
+<tr class="even">
+<td>&gt;</td>
+<td><code>U+003E GREATER-THAN SIGN</code></td>
+<td><code class="html">&amp;gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Допустим, мы хотим извлечь из базы данных и опубликовать на веб­‑странице все сообщения из базы данных блога. На языке программирования <i lang="en">PHP</i> защищённый от <i lang="en">XSS</i> вывод будет осуществляться примерно так:</p>
+<pre class="php"><code>foreach ($messages as $message) {
+    echo htmlspecialchars($message-&gt;title, ENT_QUOTES, &#39;UTF-8&#39;, true);
+}</code></pre>
+<p>Тот же самый фрагмент на языке шаблонизатора <i lang="en">Blade</i> выглядит более компактно:</p>
+<pre class="php"><code>@foreach ($messages as $message)
+    {{ $message-&gt;title }}
+@endforeach</code></pre>
+<p>Как видно из примеров, <i lang="en">Blade</i>, как и другие шаблонизаторы, содержит оператор вывода <code>{{</code>...<code>}}</code>, выполняющий кодирование автоматически. Впрочем, любая подсистема безопасности бесполезна, если ей неправильно пользуются. В следущем случае оператор вывода <i lang="en">Blade</i> не поможет, если в переменной <code class="php">$x</code> окажется фрагмент «<code class="javascript">+ onclick=alert();</code>». Как результат, в браузере жертвы всплывёт модальное окно.</p>
+<pre class="php"><code>&lt;button class={{ $x }}&gt;Нажми, если не страшно&lt;/button&gt;</code></pre>
+<p>В связи с этим лучше отказаться от вывода данных где бы то ни было, кроме как между стартовым и конечным тегами элемента с потоковым или фразовым содержимым. Явно указывайте кодировку до вывода пользовательских данных, чтобы предотвратить атаки с использованием <i lang="en">UTF‑7</i>.</p>
+</section>
+<section class="level3">
+<h3>Применение шаблонов</h3>
+<p>Шаблоны <i lang="en">Blade</i> размещают в каталоге <code>resources/views</code>, в файлах с расширением имени <code>blade.php</code>. Шаблоны, относящиеся только к одной модели, следует размещать в именованных вложенных каталогах. Например, шаблоны, относящиеся к сущности <code>Message</code>, желательно поместить в каталог <code>resources/views/messages</code>.</p>
+<p>Шаблон можно вызывать из контроллера функцией <code class="php">view()</code>. Поиск шаблонов ведётся в каталоге <code>resources/views</code>, и эту часть пути необходимо опустить, равно как и расширение с обеими точками (<code>.blade.php</code>). В оставшейся части пути остаётся заменить <code>/</code> или <code>\</code> на <code>.</code>. Например, шаблон <code>resources/views/messages/create.blade.php</code> можно вызвать из контроллера, написав: <code class="php">view('messages.create')</code>.</p>
+<p>Как говорилось ранее, шаблон не должен самостоятельно порождать или извлекать данные предметной области: эти данные при вызове обязан передать контроллер. В <i lang="en">Laravel</i> проще всего выполнить такую передачу через второй параметр функции <code class="php">view()</code>. Аргументов выступает ассоциативный массив, ключи которого соответствуют именам переменных в шаблоне. Например, вызов <code class="php">view('messages.create', ['x2' =&gt; $x1])</code> означает, что текущее значение переменной <code class="php">$x1</code> передаётся из контроллера в шаблон <code>resources/views/messages/create.blade.php</code> и становится доступно внутри него через переменную <code class="php">$x2</code> (не забывайте о знаке <code class="php">$</code>, который предшествует именам переменных как в <i lang="en">PHP</i>, так и в <i lang="en">Blade</i>).</p>
+<p>Конечно, имена переменных в контроллере и шаблоне могут совпадать, но их также необходимо указывать: <code class="php">view('messages.create', ['message' =&gt; $message])</code> передаёт в шаблон значение переменной <code class="php">$message</code>, и там оно оказывается доступно под тем же именем ⁠— <code class="php">$message</code>.</p>
+<p>Обратите внимание, что переменную, хранящую одно значение, <em>рекомендуется</em> именовать в единственном числе, а переменную, хранящую коллекцию (массив) объектов ⁠— во множественном. Например, по имени переменной <code class="php">$message</code> можно предположить, что в ней находится ссылка на объект, моделирующий <em>одно</em> сообщение, тогда как в <code class="php">$messages</code> наверняка размещена ссылка на коллекцию (массив) сообщений.</p>
+</section>
+<section class="level3">
+<h3>Основные операторы и директивы</h3>
+<p><code class="php">App::getLocale()</code> ⁠— это локаль клиента <i lang="en">HTTP</i>. Значение для английской локали ⁠— <code>en</code>, для русской ⁠— <code>ru</code>.</p>
+<p>Директива <code class="php">@yield('имя')</code> выводит секцию с указанным именем. Содержимое секции обычно определено в шаблоне­‑наследнике через директиву <code class="php">@section</code>.</p>
+<p>Оператор <code class="php">@push('имя_стека')</code> добавляет содержимое в стек с указанным именем. Стек хранится в ОЗУ, его можно пополнять чем угодно, откуда угодно и когда угодно, следовательно, стек удобен для перечисления файлов <i lang="en">CSS</i> и <i lang="en">JavaScript</i>, подключаемых к шаблону. Вывести содержимое стека можно через вызов <code class="php">@stack('имя_стека')</code>.</p>
+</section>
+</section>
+<section id="example" class="level2">
+<h2>Пример выполнения задания</h2>
+<section class="level3">
+<h3>Перенос</h3>
+<p>Шаблон на <i lang="en">Bootstrap</i>, разработанный ранее, разместите в файле <code>resources/views/base.blade.php</code>. Он станет базовым для всех других шаблонов. Базовое имя файла специального значения не имеет, но используется при наследовании, директивой <code class="php">@extends</code>.</p>
+<p>В указанном файле замените идентификатор естественного языка на системный.</p>
+<p>До:</p>
+<pre class="html"><code>&lt;html lang=&quot;ru-luna1918&quot;&gt;</code></pre>
+<p>После:</p>
+<pre class="html"><code>&lt;html lang=&quot;{{ App::getLocale() }}&quot;&gt;</code></pre>
+<p>Также замените текстовые заглушки на директивы <code class="php">@yield</code>. Имена секций (<code class="php">title</code>, <code class="php">main</code>) используются в дочерних шаблонах, чтобы задать содержимое секций директивой <code class="php">@section</code>.</p>
+<p>До:</p>
+<pre class="html"><code>&lt;title&gt;Заготовка для шаблона Bootstrap&lt;/title&gt;</code></pre>
+<p>После:</p>
+<pre class="html"><code>&lt;title&gt;@yield(&#39;title&#39;)&lt;/title&gt;</code></pre>
+<p>До:</p>
+<pre class="html"><code>&lt;article&gt;Основное содержимое&lt;/article&gt;</code></pre>
+<p>После:</p>
+<pre class="html"><code>&lt;article&gt;@yield(&#39;main&#39;)&lt;/article&gt;</code></pre>
+<p>Добавьте (после <code class="php">@yield('main')</code>) вывод ошибок:</p>
+<pre class="php"><code>@if ($errors-&gt;count())
+    &lt;div class=&quot;alert alert-danger&quot;&gt;
+        @foreach ($errors-&gt;all() as $e)
+            {{ $e }}
+        @endforeach
+    &lt;/div&gt;
+@endif</code></pre>
+</section>
+<section class="level3">
+<h3>Подготовка шаблонов</h3>
+<p>В каталоге <code>resources/views</code> создайте следующие каталоги и файлы:</p>
+<ul>
+<li><code>messages/partials/form.blade.php</code>;</li>
+<li><code>messages/create.blade.php</code>;</li>
+<li><code>messages/edit.blade.php</code>;</li>
+<li><code>messages/remove.blade.php</code>;</li>
+<li><code>messages/index.blade.php</code>;</li>
+<li><code>messages/show.blade.php</code>.</li>
+</ul>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/partials/fields.blade.php</code></h4>
+<pre class="html"><code>&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;
+        Заголовок:
+        &lt;input type=&quot;text&quot; name=&quot;title&quot; class=&quot;form-control&quot;&gt;
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;
+        Содержимое:
+        &lt;textarea name=&quot;content&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/create.blade.php</code></h4>
+<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
+@extends(&#39;base&#39;)
+
+{{-- В секции title родительского шаблона будет выведено: «Создание записи в блоге». --}}
+@section(&#39;title&#39;, &#39;Создание записи в блоге&#39;)
+
+{{-- В секции main родительского шаблона будет выведена форма. --}}
+@section(&#39;main&#39;)
+    &lt;h1&gt;Создание записи в блоге&lt;/h1&gt;
+
+    &lt;form action=&quot;{{ route(&#39;messages.store&#39;) }}&quot; method=&quot;post&quot;&gt;
+
+        {{ csrf_field() }}
+
+        @include(&#39;messages.partials.fields&#39;)
+
+        &lt;input type=&quot;submit&quot; class=&quot;btn btn-block btn-success&quot;&gt;
+    &lt;/form&gt;
+@endsection</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/edit.blade.php</code></h4>
+<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
+@extends(&#39;base&#39;)
+
+{{-- В секции title родительского шаблона будет выведено: «Изменение записи в блоге». --}}
+@section(&#39;title&#39;, &#39;Изменение записи в блоге&#39;)
+
+{{-- В секции main родительского шаблона будет выведена форма. --}}
+@section(&#39;main&#39;)
+    &lt;h1&gt;Изменение записи в блоге&lt;/h1&gt;
+
+    &lt;form action=&quot;{{ route(&#39;messages.update&#39;, $message-&gt;id) }}&quot; method=&quot;post&quot;&gt;
+
+        {{ csrf_field() }}
+
+        {{-- Скрытое поле с именем метода HTTP. --}}
+        {{-- Это системное требование. См. php artisan route:list --}}
+        &lt;input name=&quot;_method&quot; type=&quot;hidden&quot; value=&quot;put&quot;&gt;
+
+        @include(&#39;messages.partials.fields&#39;)
+
+        &lt;input type=&quot;submit&quot; class=&quot;btn btn-block btn-success&quot;&gt;
+    &lt;/form&gt;
+@endsection</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/remove.blade.php</code></h4>
+<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
+@extends(&#39;base&#39;)
+
+{{-- В секции title родительского шаблона будет выведено: «Удаление записи в блоге». --}}
+@section(&#39;title&#39;, &#39;Удаление записи в блоге&#39;)
+
+{{-- В секции main родительского шаблона будет выведена форма. --}}
+@section(&#39;main&#39;)
+    &lt;h1&gt;Удаление записи в блоге&lt;/h1&gt;
+
+    &lt;form action=&quot;{{ route(&#39;messages.destroy&#39;, $message-&gt;id) }}&quot; method=&quot;post&quot;&gt;
+
+        {{ csrf_field() }}
+
+        {{-- Скрытое поле с именем метода HTTP. --}}
+        {{-- Это системное требование. См. php artisan route:list --}}
+        &lt;input name=&quot;_method&quot; type=&quot;hidden&quot; value=&quot;delete&quot;&gt;
+
+        @include(&#39;messages.partials.fields&#39;)
+
+        &lt;input type=&quot;submit&quot; class=&quot;btn btn-block btn-success&quot;&gt;
+    &lt;/form&gt;
+@endsection</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/index.blade.php</code></h4>
+<p>Задействуйте шаблон таблицы, созданный с применением <i lang="en">Bootstrap</i> при выполнении одной из предыдущих работ.</p>
+<pre class="php"><code>@extends(&#39;base&#39;)
+
+@section(&#39;title&#39;, &#39;Перечень записей в блоге&#39;)
+
+@section(&#39;main&#39;)
+    &lt;h1&gt;Перечень записей в блоге&lt;/h1&gt;
+
+    &lt;div class=&quot;table-responsive&quot;&gt;
+      &lt;table class=&quot;table table-hover table-striped&quot;&gt;
+        &lt;thead class=&quot;thead-inverse&quot;&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Идентификатор&lt;/th&gt;
+            &lt;th&gt;Заголовок&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+
+        &lt;tbody&gt;
+
+            @foreach ($messages as $message)
+                &lt;tr&gt;
+                    &lt;td&gt;{{ $message-&gt;id }}&lt;/td&gt;
+                    &lt;td&gt;{{ $message-&gt;title }}&lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;a href=&quot;{{ route(&#39;messages.edit&#39;, $message-&gt;id) }}&quot;&gt;
+                            Изменить
+                        &lt;/a&gt;
+                    &lt;/td&gt;
+                    &lt;td&gt;
+                        &lt;a href=&quot;{{ route(&#39;messages.remove&#39;, $message-&gt;id) }}&quot;&gt;
+                            Удалить
+                        &lt;/a&gt;
+                    &lt;/td&gt;
+                &lt;/tr&gt;
+            @endforeach
+
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+@endsection</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>resources/views/messages/show.blade.php</code></h4>
+<pre class="php"><code>@extends(&#39;base&#39;)
+
+@section(&#39;title&#39;, $message-&gt;title)
+
+@section(&#39;main&#39;)
+    &lt;h1&gt;{{ $message-&gt;title }}&lt;/h1&gt;
+
+    {{ $message-&gt;content }}
+@endsection</code></pre>
+</section>
+<section class="level4">
+<h4>Редактирование <code>app/Http/Controllers/MessageController.php</code></h4>
+<pre class="php"><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreMessageRequest;
+use App\Message;
+use Illuminate\Http\Request;
+
+class MessageController extends Controller
+{
+    /**
+     * Вывести перечень ресурсов (сообщений в блоге).
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        // Выводим перечень сообщений.
+        return view(&#39;messages.index&#39;);
+    }
+
+    /**
+     * Вывести форму для создания нового ресурса (сообщения в блоге).
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // Выводим форму создания сообщения.
+        return view(&#39;messages.create&#39;);
+    }
+
+    /**
+     * Сохранить новый ресурс (сообщение в блоге) в БД.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreMessageRequest $request)
+    {
+        // Перенаправляем клиент на страницу с конкретным сообщением.
+        return redirect(route(&#39;messages.show&#39;, $message-&gt;id));
+    }
+
+    /**
+     * Вывести конкретный ресурс (одно сообщение в блоге).
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Message $message)
+    {
+        // Выводим страницу с конкретным сообщением.
+        return view(&#39;messages.show&#39;, [
+            &#39;message&#39; =&gt; $message,
+        ]);
+    }
+
+    /**
+     * Показать форму для редактирования конкретного ресурса (сообщения в блоге).
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Message $message)
+    {
+        // Выводим форму редактирования сообщения.
+        return view(&#39;messages.edit&#39;, [
+            &#39;message&#39; =&gt; $message,
+        ]);
+    }
+
+    /**
+     * Обновить ресурс (сообщение в блоге) в БД.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Message $message)
+    {
+        // Перенаправляем клиент на страницу с перечнем сообщений.
+        return redirect(route(&#39;messages.index&#39;));
+    }
+
+    /**
+     * Показать форму для удаления указанного ресурса.
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Message $message)
+    {
+        // Выводим форму удаления сообщения.
+        return view(&#39;messages.remove&#39;, [
+            &#39;message&#39; =&gt; $message,
+        ]);
+    }
+    
+    /**
+     * Удалить конкретный ресурс (сообщение в блоге) из БД.
+     *
+     * @param  \App\Message  $message
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Message $message)
+    {
+        // Перенаправляем клиент на страницу с перечнем оставшихся сообщений.
+        return redirect(route(&#39;messages.index&#39;));
+    }
+}
+</code></pre>
+</section>
+</section>
+<section class="level3">
+<h3>Итог</h3>
+<p>Пока мы не сможем проверить работоспособность системы. Необходимо будет дописать контроллер, добавив в него работу с БД. Это будет сделано в следующей работе.</p>
+</section>
+</section>
+<section id="report" class="level2">
+<h2>Структура отчёта</h2>
+<p>Отчёт о выполнении работы должен содержать следующие разделы:</p>
+<ul>
+<li>постановка задачи;</li>
+<li>цель работы;</li>
+<li>аппаратные и программные средства;</li>
+<li>теоретические сведения;</li>
+<li>входные и выходные данные (по необходимости);</li>
+<li>тесты (по необходимости);</li>
+<li>исходный код;</li>
+<li>результаты работы.</li>
+</ul>
+</section>
+<section id="bibliography" class="level2 unnumbered">
+<h2>Список использованных источников</h2>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-PHP/Windows">
+<p>1. Install requirements [Электронный ресурс] // PHP.net. URL: <a href="https://www.php.net/manual/en/install.windows.requirements.php">https://www.php.net/manual/en/install.windows.requirements.php</a> (дата обращения: 17.05.2020).</p>
+</div>
+</div>
+</section></main>
+
+	<footer></footer>
+
+</body>
+</html>

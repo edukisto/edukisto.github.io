@@ -89,7 +89,7 @@
 									© Караваев С. В., 2017
 							</small>
 		</div>
-		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Основы CSS. Верстка веб­‑страниц. Основы отзывчивого веб­‑дизайна»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+		<h1 class="title">Методические указания по выполнению лабораторной работы на тему<br />«Основы CSS. Верстка веб­‑страниц. Основы отзывчивого веб­‑дизайна»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
 	</header>
 
 
@@ -363,12 +363,11 @@
     content=&quot;width=device-width, initial-scale=1.0, shrink-to-fit=no&quot;
 &gt;
 </code></pre>
-<p>Ключ <code class="html attr-value">HandheldFriendly</code> появился в браузере <i lang="en">AvantGo</i> для карманных персональных компьютеров и для смартфонов <i lang="en">BlackBerry</i>. Значение <code class="html attr-value">true</code> декларирует совместимость вёрстки веб­‑страницы с КПК, планшетам и смартфонам.</p>
+<p>Ключ <code class="html attr-value">HandheldFriendly</code> появился в браузере <i lang="en">AvantGo</i>, предназначенном для карманных персональных компьютеров (КПК) и для смартфонов <i lang="en">BlackBerry</i>. Значение <code class="html attr-value">true</code> декларирует совместимость вёрстки веб­‑страницы с КПК, планшетам и смартфонам.</p>
 <p>Ключ <code class="html attr-value">MobileOptimized</code> впервые реализовали в 2005 г. в браузере <i lang="en">Pocket Internet Explorer</i> под управлением операционной системы <i lang="en">Windows Mobile 5.0</i> для КПК <i lang="en">PocketPC</i> <span class="citation" data-cites="firtman.mobile-web">[1, с. 214]</span>. Ключ позволял верстальщикам указать предпочтительную ширину экрана, причём значение <code class="html attr-value">0</code> соответствовало ширине экрана на произвольном устройстве <span class="citation" data-cites="grimes.ie-mobile-6">[2]</span>.</p>
 <p>Ключ <code class="html attr-value">viewport</code> впервые реализовали в браузере <i lang="en">Safari</i>. Среди свойств <code class="html attr-value">viewport</code> следует выделить <code class="html attr-value">width</code>, <code class="html attr-value">initial-scale</code> и <code class="html attr-value">user-scalable</code>.</p>
-<p>Свойство <code class="html attr-value">width</code> со значением <code class="html attr-value">device-width</code> декларировало, что ширина веб­‑страницы адаптируется под ширину устройства, чем провоцировало побочные эффекты. Так, <i lang="en">iPad 3</i> (2012 г.) даже в ландшафтной ориентации интерпретировал <code class="html attr-value">width=device-width</code> как <code class="html attr-value">width=768</code> и для исправления ошибки требовалось указать <code class="html attr-value">initial-scale=1</code>. <i lang="en">Safari 9.0</i> (2015 г.) при установке <code class="html attr-value">width=device-width</code> уменьшает масштаб отображения веб­‑страницы, чтобы уместить в области просмотра негабаритные элементы. Прежнее поведение восстанавливает свойство <code class="html attr-value">shrink-to-fit=no</code> <span class="citation" data-cites="new-in-safari-9.0">[6]</span>.</p>
-<p>Свойство <code class="html attr-value">initial-scale=1</code> устанавливает единичный коэффициент масштабирования веб­‑страницы при первом отображении <span class="citation" data-cites="safari-meta">[7]</span>.</p>
-<p>Свойство <code class="html attr-value">user-scalable</code> с установленным по умолчанию значением <code class="html attr-value">yes</code> разрешает пользователю масштабировать веб­‑страницу в пределах от <code class="html attr-value">minimum-scale</code> до <code class="html attr-value">maximum-scale</code> <span class="citation" data-cites="safari-meta">[7]</span>.</p>
+<p>Свойство <code class="html attr-value">width</code> со значением <code class="html attr-value">device-width</code> декларировало, что ширина веб­‑страницы адаптируется под ширину устройства, чем провоцировало побочные эффекты. Так, <i lang="en">iPad 3</i> (2012 г.) даже в ландшафтной ориентации интерпретировал <code class="html attr-value">width=device-width</code> как <code class="html attr-value">width=768</code>; для исправления ошибки требовалось указать <code class="html attr-value">initial-scale=1</code>. <i lang="en">Safari 9.0</i> (2015 г.) при установке <code class="html attr-value">width=device-width</code> уменьшал масштаб отображения веб­‑страницы, чтобы уместить в области просмотра негабаритные элементы. Прежнее поведение восстанавливало свойство <code class="html attr-value">shrink-to-fit=no</code> <span class="citation" data-cites="new-in-safari-9.0">[6]</span>.</p>
+<p>Итак, свойство <code class="html attr-value">initial-scale=1</code> устанавливает единичный (стопроцентный) коэффициент масштабирования веб­‑страницы при первом отображении <span class="citation" data-cites="safari-meta">[7]</span>, а свойство <code class="html attr-value">user-scalable</code> с установленным по умолчанию значением <code class="html attr-value">yes</code> разрешает пользователю масштабировать веб­‑страницу в пределах от <code class="html attr-value">minimum-scale</code> до <code class="html attr-value">maximum-scale</code> <span class="citation" data-cites="safari-meta">[7]</span>.</p>
 <p>Порядок следования ключей неслучаен и следует стратегии <i lang="en">progressive enhancement</i>, так как <code class="html attr-value">MobileOptimized</code> переопределяет <code class="html attr-value">HandheldFriendly</code>, а <code class="html attr-value">viewport</code> переопределяет и <code class="html attr-value">MobileOptimized</code>, и <code class="html attr-value">HandheldFriendly</code> <span class="citation" data-cites="viewport-on-windows-phone-7">[5]</span>.</p>
 </section>
 <section class="level3">
@@ -511,7 +510,7 @@
 </tbody>
 </table>
 <p>Пусть ширина <code class="html">div</code> с классом <code class="html attr-value">row</code> равна или превышает 768 пикселей. Тогда причисление <code class="html">nav</code> и <code class="html">article</code> к классу <code class="css">col-md-6</code> приравняет ширину каждого из них к 6/12 ширины родителя, выровняет по высоте и разместит эти элементы на одной <em>горизонтальной</em> оси. Ширина <code class="html">div</code> с классом <code class="html attr-value">row</code> меньше 768 пикселей вернёт <code class="html">nav</code> и <code class="html">article</code> к стопроцентной ширине и размещению на одной <em>вертикальной</em> оси.</p>
-<p><strong>Внесите в документ <i lang="en">HTML</i> следующие правки</strong> и, обновив отображение в браузере (<kbd>F5</kbd>), попробуйте установить максимальный (<kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">+</kbd>) и минимальный (<kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">-</kbd>) масштабы отображения ⁠— таким нехитрым способом Вы имитируете переключение между устройствами с экранами разных размеров. Вы увидите, как размещение блоков изменяется в зависимости от ширины области просмотра.</p>
+<p><strong>Внесите в документ <i lang="en">HTML</i> следующие правки</strong> и, обновив отображение в браузере (<kbd>F5</kbd>), попробуйте установить максимальный (<kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">+</kbd>) и минимальный (<kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">-</kbd>) масштабы ⁠— таким нехитрым способом Вы имитируете переключение между устройствами с экранами разных размеров. Вы увидите, как размещение блоков изменяется в зависимости от ширины области просмотра.</p>
 <pre class="html line-numbers" data-line="43-44" data-start="41"><code>&lt;div class=&quot;container-fluid&quot;&gt;
     &lt;div class=&quot;row&quot;&gt;
         &lt;nav     class=&quot;col-lg-6 bg-primary&quot;&gt;Меню&lt;/nav&gt;
@@ -526,12 +525,12 @@
         &lt;article class=&quot;col-lg-9 bg-warning&quot;&gt;Основное содержимое&lt;/article&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-<p>Добавим <code class="html">aside</code> ⁠— полосу для маловостребованной информации. Пользователи не расстроятся, если на небольших и средних экранах <code class="html">aside</code> отобразится в нижней части страницы. Вместе с тем, на экранах шире 1200 пикселей можно смело пожертвовать шириной <code class="html">article</code> ради <code class="html">aside</code>.</p>
+<p>Добавим <code class="html">aside</code> ⁠— полосу для маловостребованной информации. Пользователи не расстроятся, если на небольших и средних по размеру экранах она отобразится в нижней части страницы. Вместе с тем, на экранах шире 1200 пикселей можно смело пожертвовать шириной <code class="html">article</code> ради <code class="html">aside</code>.</p>
 <pre class="html line-numbers" data-line="43-45" data-start="41"><code>&lt;div class=&quot;container-fluid&quot;&gt;
     &lt;div class=&quot;row&quot;&gt;
         &lt;nav     class=&quot;col-lg-3  col-xl-3 bg-primary&quot;&gt;Меню&lt;/nav&gt;
         &lt;article class=&quot;col-lg-9  col-xl-6 bg-warning&quot;&gt;Основное содержимое&lt;/article&gt;
-        &lt;aside   class=&quot;col-lg-12 col-xl-3 bg-success&quot;&gt;aside&lt;/aside&gt;
+        &lt;aside   class=&quot;col-lg-12 col-xl-3 bg-success&quot;&gt;Реклама&lt;/aside&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <p>Контейнер не ограничивает количество дочерних строк, а колонки не ограничивают количество дочерних контейнеров. В следующем примере подвал находится в отдельной строке и поэтому не окажется на одной горизонтальной оси с <code class="html">nav</code>, <code class="html">article</code> и <code class="html">aside</code> даже при изменении ширины.</p>
@@ -592,29 +591,30 @@
 <li><code class="css">bg-danger</code>, <code class="css">bg-info</code>, <code class="css">bg-primary</code>, <code class="css">bg-success</code>, <code class="css">bg-warning</code> ⁠— цвет фона, игнорирующий <code class="css">table-hover</code>;</li>
 <li><code class="css">text-danger</code>, <code class="css">text-dark</code>, <code class="css">text-info</code>, <code class="css">text-light</code>, <code class="css">text-primary</code>, <code class="css">text-secondary</code>, <code class="css">text-success</code>, <code class="css">text-warning</code> ⁠— цвет текста.</li>
 </ul>
-<pre class="html"><code>&lt;div class=&quot;table-responsive&quot;&gt;
+<p><strong>Попробуйте использовать следующую таблицу как содержимое элемента <code class="html">article</code> (между тегами <code class="html">&lt;article&gt;</code> и <code class="html">&lt;/article&gt;</code>).</strong></p>
+<pre class="html line-numbers" data-start="44"><code>&lt;div class=&quot;table-responsive&quot;&gt;
   &lt;table class=&quot;table table-hover table-striped&quot;&gt;
-    &lt;caption&gt;Example&lt;/caption&gt;
+    &lt;caption&gt;Перечень записей в блоге&lt;/caption&gt;
 
     &lt;thead class=&quot;thead-inverse&quot;&gt;
       &lt;tr&gt;
-        &lt;th&gt;Фамилия&lt;/th&gt;
-        &lt;th&gt;Зарплата&lt;/th&gt;
+        &lt;th&gt;Автор&lt;/th&gt;
+        &lt;th&gt;Заголовок&lt;/th&gt;
       &lt;/tr&gt;
     &lt;/thead&gt;
 
     &lt;tbody&gt;
       &lt;tr&gt;
         &lt;td&gt;Иванов Иван Иванович&lt;/td&gt;
-        &lt;td&gt;100&lt;/td&gt;
+        &lt;td&gt;Привет, мир!&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-        &lt;td&gt;Петров&lt;/td&gt;
-        &lt;td class=&quot;table-success text-success&quot;&gt;200&lt;/td&gt;
+        &lt;td&gt;Петров Пётр Петрович&lt;/td&gt;
+        &lt;td&gt;Hello, world!&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-        &lt;td&gt;Сидоров&lt;/td&gt;
-        &lt;td&gt;150&lt;/td&gt;
+        &lt;td&gt;Сидоров Сидор Сидорович&lt;/td&gt;
+        &lt;td&gt;Foo, bar, baz&lt;/td&gt;
       &lt;/tr&gt;
     &lt;/tbody&gt;
   &lt;/table&gt;
