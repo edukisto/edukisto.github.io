@@ -89,7 +89,7 @@
 									© Караваев С. В., 2017
 							</small>
 		</div>
-		<h1 class="title">Методические указания по выполнению лабораторной работы на тему<br />«Освоение обработчика шаблона»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
+		<h1 class="title">Методические указания по выполнению практической работы на тему<br />«Освоение обработчика шаблона»<br />по МДК.03.01 «Сопровождение и продвижение программного обеспечения отраслевой направленности»<br />для специальности 09.02.05 «Прикладная информатика (по отраслям)»</h1>
 	</header>
 
 
@@ -111,6 +111,16 @@
 </section>
 <section id="task" class="level2">
 <h2>Задание</h2>
+<p>На базе <i lang="en">web framework</i>’а <i lang="en">Laravel</i> реализовать шаблоны и взаимодействие с СУБД следующих сущностей:</p>
+<ul>
+<li><code>Message</code> (по методическим указаниям, на оценку «3»);</li>
+<li><code>Role</code> (самостоятельно, на оценку «4»).</li>
+</ul>
+<p>На оценку «5» необходимо самостоятельно</p>
+<ul>
+<li>используя функцию <code>route()</code> в шаблонах создать гиперссылки для возврата к перечню (<code>messages.index</code> и <code>roles.index</code>) с веб­‑страниц, на которых выводится один кортеж (<code>messages.show</code> и <code>roles.show</code>) или размещены формы редактирования (<code>messages.index</code> и <code>roles.index</code>), удаления (<code>messages.remove</code> и <code>roles.remove</code>). Пример можно найти в шаблоне <code>resources/views/messages/index.blade.php</code>;</li>
+<li>доработать базовый шаблон (<code>resources/views/base.blade.php</code>) по собственному вкусу.</li>
+</ul>
 </section>
 <section id="wares" class="level2">
 <h2>Обязательное техническое и программное обеспечение</h2>
@@ -296,9 +306,34 @@
 </section>
 <section class="level3">
 <h3>Основные операторы и директивы</h3>
-<p><code class="php">App::getLocale()</code> ⁠— это локаль клиента <i lang="en">HTTP</i>. Значение для английской локали ⁠— <code>en</code>, для русской ⁠— <code>ru</code>.</p>
 <p>Директива <code class="php">@yield('имя')</code> выводит секцию с указанным именем. Содержимое секции обычно определено в шаблоне­‑наследнике через директиву <code class="php">@section</code>.</p>
 <p>Оператор <code class="php">@push('имя_стека')</code> добавляет содержимое в стек с указанным именем. Стек хранится в ОЗУ, его можно пополнять чем угодно, откуда угодно и когда угодно, следовательно, стек удобен для перечисления файлов <i lang="en">CSS</i> и <i lang="en">JavaScript</i>, подключаемых к шаблону. Вывести содержимое стека можно через вызов <code class="php">@stack('имя_стека')</code>.</p>
+<section class="level4">
+<h4><code>@if</code>...<code>@endif</code></h4>
+<p>Оператор условия.</p>
+<pre><code>@if (count($messages) === 1)
+    &lt;p&gt;У Вас одна запись в блоге.&lt;/p&gt;
+@elseif (2==22)
+    &lt;p&gt;У Вас одна запись в блоге.&lt;/p&gt;
+@else
+    &lt;b&gt;Hello3&lt;/b&gt;
+@endif</code></pre>
+</section>
+<section class="level4">
+<h4>Оператор</h4>
+<pre><code>@switch($i)
+    @case(1)
+        &lt;p&gt;У Вас одна запись в блоге.&lt;/p&gt;
+        @break
+
+    @case(2)
+        &lt;p&gt;У Вас {{ $count }} записи в блоге.&lt;/p&gt;
+        @break
+
+    @default
+        Default case...
+@endswitch</code></pre>
+</section>
 </section>
 </section>
 <section id="example" class="level2">
@@ -306,21 +341,30 @@
 <section class="level3">
 <h3>Перенос</h3>
 <p>Шаблон на <i lang="en">Bootstrap</i>, разработанный ранее, разместите в файле <code>resources/views/base.blade.php</code>. Он станет базовым для всех других шаблонов. Базовое имя файла специального значения не имеет, но используется при наследовании, директивой <code class="php">@extends</code>.</p>
+<section class="level4">
+<h4>Локаль</h4>
 <p>В указанном файле замените идентификатор естественного языка на системный.</p>
 <p>До:</p>
-<pre class="html"><code>&lt;html lang=&quot;ru-luna1918&quot;&gt;</code></pre>
+<pre class="html line-numbers" data-start="2"><code>&lt;html lang=&quot;ru-luna1918&quot;&gt;</code></pre>
 <p>После:</p>
-<pre class="html"><code>&lt;html lang=&quot;{{ App::getLocale() }}&quot;&gt;</code></pre>
+<pre class="html line-numbers" data-start="2"><code>&lt;html lang=&quot;{{ App::getLocale() }}&quot;&gt;</code></pre>
+<p><code class="php">App::getLocale()</code> ⁠— это локаль клиента <i lang="en">HTTP</i>. Значение для английской локали ⁠— <code>en</code>, для русской ⁠— <code>ru</code>.</p>
+</section>
+<section class="level4">
+<h4>Секции</h4>
 <p>Также замените текстовые заглушки на директивы <code class="php">@yield</code>. Имена секций (<code class="php">title</code>, <code class="php">main</code>) используются в дочерних шаблонах, чтобы задать содержимое секций директивой <code class="php">@section</code>.</p>
 <p>До:</p>
-<pre class="html"><code>&lt;title&gt;Заготовка для шаблона Bootstrap&lt;/title&gt;</code></pre>
+<pre class="html line-numbers" data-start="12"><code>&lt;title&gt;Заготовка для шаблона Bootstrap&lt;/title&gt;</code></pre>
 <p>После:</p>
-<pre class="html"><code>&lt;title&gt;@yield(&#39;title&#39;)&lt;/title&gt;</code></pre>
+<pre class="html line-numbers" data-start="12"><code>&lt;title&gt;@yield(&#39;title&#39;)&lt;/title&gt;</code></pre>
 <p>До:</p>
 <pre class="html"><code>&lt;article&gt;Основное содержимое&lt;/article&gt;</code></pre>
 <p>После:</p>
 <pre class="html"><code>&lt;article&gt;@yield(&#39;main&#39;)&lt;/article&gt;</code></pre>
-<p>Добавьте (после <code class="php">@yield('main')</code>) вывод ошибок:</p>
+</section>
+<section class="level4">
+<h4>Вывод сообщений об ошибках</h4>
+<p>Добавьте (после <code class="php">@yield('main')</code>) вывод сообщений об ошибках:</p>
 <pre class="php"><code>@if ($errors-&gt;count())
     &lt;div class=&quot;alert alert-danger&quot;&gt;
         @foreach ($errors-&gt;all() as $e)
@@ -328,6 +372,7 @@
         @endforeach
     &lt;/div&gt;
 @endif</code></pre>
+</section>
 </section>
 <section class="level3">
 <h3>Подготовка шаблонов</h3>
@@ -341,36 +386,47 @@
 <li><code>messages/show.blade.php</code>.</li>
 </ul>
 <section class="level4">
+<h4>Поддержка методов <i lang="en">HTTP</i> на формах</h4>
+<p>Маршрутизатор <i lang="en">Laravel</i> поддерживает шесть методов <i lang="en">HTTP</i>, необходимых для реализации <i lang="en">REST</i>: <code>DELETE</code>, <code>GET</code>, <code>OPTIONS</code>, <code>PATCH</code>, <code>POST</code>, <code>PUT</code>, однако формы <i lang="en">HTML5</i> позволяют подавать запросы только двумя методами: <code>GET</code> и <code>POST</code>. Для обеспечения совместимости форм с <i lang="en">RESTful</i>­‑маршрутизатором придётся использовать в шаблонах форм директиву <code class="php">@method</code> ⁠— она создаёт скрытое поле с названием правильного метода, тогда как в атрибуте <code class="html attr-name">method</code> формы придётся указывать <code class="html attr-value">POST</code> (без учёта регистра).</p>
+<pre><code>@method(&#39;delete&#39;)</code></pre>
+</section>
+<section class="level4">
 <h4>Редактирование <code>resources/views/messages/partials/fields.blade.php</code></h4>
-<pre class="html"><code>&lt;div class=&quot;form-group&quot;&gt;
+<p>В этот файл мы вынесем поля формы, которые затем подключим к формам создания и редактирования посредством директивы <code class="php">@include</code>.</p>
+<pre class="php line-numbers" data-line="4-9,16-19"><code>&lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;
         Заголовок:
-        &lt;input type=&quot;text&quot; name=&quot;title&quot; class=&quot;form-control&quot;&gt;
+        &lt;input
+            type=&quot;text&quot;
+            name=&quot;title&quot;
+            value=&quot;{{ $message-&gt;title }}&quot;
+            class=&quot;form-control&quot;
+        &gt;
     &lt;/label&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;
         Содержимое:
-        &lt;textarea name=&quot;content&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
+        &lt;textarea
+            name=&quot;content&quot;
+            class=&quot;form-control&quot;
+        &gt;{{ $message-&gt;content }}&lt;/textarea&gt;
     &lt;/label&gt;
 &lt;/div&gt;</code></pre>
 </section>
 <section class="level4">
 <h4>Редактирование <code>resources/views/messages/create.blade.php</code></h4>
-<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
-@extends(&#39;base&#39;)
+<p>Этот шаблон расширяет (наследует) базовый <code>resources/views/base.blade.php</code>.</p>
+<pre class="php line-numbers"><code>@extends(&#39;base&#39;)
 
-{{-- В секции title родительского шаблона будет выведено: «Создание записи в блоге». --}}
 @section(&#39;title&#39;, &#39;Создание записи в блоге&#39;)
 
-{{-- В секции main родительского шаблона будет выведена форма. --}}
 @section(&#39;main&#39;)
     &lt;h1&gt;Создание записи в блоге&lt;/h1&gt;
 
     &lt;form action=&quot;{{ route(&#39;messages.store&#39;) }}&quot; method=&quot;post&quot;&gt;
-
-        {{ csrf_field() }}
+        @csrf
 
         @include(&#39;messages.partials.fields&#39;)
 
@@ -380,25 +436,19 @@
 </section>
 <section class="level4">
 <h4>Редактирование <code>resources/views/messages/edit.blade.php</code></h4>
-<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
-@extends(&#39;base&#39;)
+<pre class="php line-numbers"><code>@extends(&#39;base&#39;)
 
-{{-- В секции title родительского шаблона будет выведено: «Изменение записи в блоге». --}}
 @section(&#39;title&#39;, &#39;Изменение записи в блоге&#39;)
 
-{{-- В секции main родительского шаблона будет выведена форма. --}}
 @section(&#39;main&#39;)
     &lt;h1&gt;Изменение записи в блоге&lt;/h1&gt;
 
     &lt;form action=&quot;{{ route(&#39;messages.update&#39;, $message-&gt;id) }}&quot; method=&quot;post&quot;&gt;
-
-        {{ csrf_field() }}
-
-        {{-- Скрытое поле с именем метода HTTP. --}}
-        {{-- Это системное требование. См. php artisan route:list --}}
-        &lt;input name=&quot;_method&quot; type=&quot;hidden&quot; value=&quot;put&quot;&gt;
+        @csrf
 
         @include(&#39;messages.partials.fields&#39;)
+
+        @method(&#39;put&#39;)
 
         &lt;input type=&quot;submit&quot; class=&quot;btn btn-block btn-success&quot;&gt;
     &lt;/form&gt;
@@ -406,25 +456,17 @@
 </section>
 <section class="level4">
 <h4>Редактирование <code>resources/views/messages/remove.blade.php</code></h4>
-<pre class="php"><code>{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
-@extends(&#39;base&#39;)
+<pre class="php line-numbers"><code>@extends(&#39;base&#39;)
 
-{{-- В секции title родительского шаблона будет выведено: «Удаление записи в блоге». --}}
-@section(&#39;title&#39;, &#39;Удаление записи в блоге&#39;)
+@section(&#39;title&#39;, &#39;Удаление записи из блога&#39;)
 
-{{-- В секции main родительского шаблона будет выведена форма. --}}
 @section(&#39;main&#39;)
-    &lt;h1&gt;Удаление записи в блоге&lt;/h1&gt;
+    &lt;h1&gt;Удаление записи из блога&lt;/h1&gt;
 
     &lt;form action=&quot;{{ route(&#39;messages.destroy&#39;, $message-&gt;id) }}&quot; method=&quot;post&quot;&gt;
+        @csrf
 
-        {{ csrf_field() }}
-
-        {{-- Скрытое поле с именем метода HTTP. --}}
-        {{-- Это системное требование. См. php artisan route:list --}}
-        &lt;input name=&quot;_method&quot; type=&quot;hidden&quot; value=&quot;delete&quot;&gt;
-
-        @include(&#39;messages.partials.fields&#39;)
+        @method(&#39;delete&#39;)
 
         &lt;input type=&quot;submit&quot; class=&quot;btn btn-block btn-success&quot;&gt;
     &lt;/form&gt;
@@ -433,12 +475,14 @@
 <section class="level4">
 <h4>Редактирование <code>resources/views/messages/index.blade.php</code></h4>
 <p>Задействуйте шаблон таблицы, созданный с применением <i lang="en">Bootstrap</i> при выполнении одной из предыдущих работ.</p>
-<pre class="php"><code>@extends(&#39;base&#39;)
+<pre class="php line-numbers"><code>@extends(&#39;base&#39;)
 
 @section(&#39;title&#39;, &#39;Перечень записей в блоге&#39;)
 
 @section(&#39;main&#39;)
     &lt;h1&gt;Перечень записей в блоге&lt;/h1&gt;
+
+    &lt;a href=&quot;{{ route(&#39;messages.create&#39;) }}&quot;&gt;Добавить&lt;/a&gt;
 
     &lt;div class=&quot;table-responsive&quot;&gt;
       &lt;table class=&quot;table table-hover table-striped&quot;&gt;
@@ -475,7 +519,7 @@
 </section>
 <section class="level4">
 <h4>Редактирование <code>resources/views/messages/show.blade.php</code></h4>
-<pre class="php"><code>@extends(&#39;base&#39;)
+<pre class="php line-numbers"><code>@extends(&#39;base&#39;)
 
 @section(&#39;title&#39;, $message-&gt;title)
 
@@ -487,7 +531,7 @@
 </section>
 <section class="level4">
 <h4>Редактирование <code>app/Http/Controllers/MessageController.php</code></h4>
-<pre class="php"><code>&lt;?php
+<pre class="php line-numbers" data-line="18-19,22-24,34-35,51-55,98-102,130-131" data-start="1"><code>&lt;?php
 
 namespace App\Http\Controllers;
 
@@ -504,8 +548,13 @@ class MessageController extends Controller
      */
     public function index()
     {
+        // Выбираем из БД все сообщения.
+        $messages = Message::all();
+
         // Выводим перечень сообщений.
-        return view(&#39;messages.index&#39;);
+        return view(&#39;messages.index&#39;, [
+            &#39;messages&#39; =&gt; $messages,
+        ]);
     }
 
     /**
@@ -515,8 +564,13 @@ class MessageController extends Controller
      */
     public function create()
     {
+        // Создаём новое сообщение в оперативной памяти.
+        $message = new Message();
+
         // Выводим форму создания сообщения.
-        return view(&#39;messages.create&#39;);
+        return view(&#39;messages.create&#39;, [
+            &#39;message&#39; =&gt; $message,
+        ]);
     }
 
     /**
@@ -527,6 +581,12 @@ class MessageController extends Controller
      */
     public function store(StoreMessageRequest $request)
     {
+        // Извлекаем поля формы из запроса.
+        $attributes = $request-&gt;only([&#39;title&#39;, &#39;content&#39;]);
+
+        // Сохраняем сообщение в БД.
+        $message = Message::create($attributes);
+
         // Перенаправляем клиент на страницу с конкретным сообщением.
         return redirect(route(&#39;messages.show&#39;, $message-&gt;id));
     }
@@ -568,6 +628,12 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
+        // Извлекаем поля формы из запроса.
+        $attributes = $request-&gt;only([&#39;title&#39;, &#39;content&#39;]);
+
+        // Обновляем сообщение в БД.
+        $message-&gt;update($attributes);
+
         // Перенаправляем клиент на страницу с перечнем сообщений.
         return redirect(route(&#39;messages.index&#39;));
     }
@@ -594,16 +660,39 @@ class MessageController extends Controller
      */
     public function destroy(Message $message)
     {
+        // Удаляем сообщение из БД.
+        $message-&gt;delete();
+
         // Перенаправляем клиент на страницу с перечнем оставшихся сообщений.
         return redirect(route(&#39;messages.index&#39;));
     }
 }
 </code></pre>
 </section>
+<section class="level4">
+<h4>Редактирование <code>app/Message.php</code></h4>
+<pre class="php line-numbers" data-line="9-10"><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Message extends Model
+{
+    // Разрешаем заполнение указанных атрибутов в таблице БД.
+    protected $fillable = [&#39;title&#39;, &#39;content&#39;];
+}</code></pre>
+</section>
 </section>
 <section class="level3">
 <h3>Итог</h3>
-<p>Пока мы не сможем проверить работоспособность системы. Необходимо будет дописать контроллер, добавив в него работу с БД. Это будет сделано в следующей работе.</p>
+<ol>
+<li><p>В эмуляторе выведите таблицу маршрутизации:</p>
+<pre class="bash"><code>php artisan route:list</code></pre></li>
+<li><p>Запустите отладочный сервер <i lang="en">HTTP</i>:</p>
+<pre class="bash"><code>php artisan serve</code></pre></li>
+<li><p>Посредством браузера перейдите по <i lang="en">URI</i>, который соответствует перечню сообщений. Обычно это <a href="http://localhost:8000/messages/" class="uri">http://localhost:8000/messages/</a>.</p></li>
+</ol>
 </section>
 </section>
 <section id="report" class="level2">
