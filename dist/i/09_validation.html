@@ -235,21 +235,20 @@
 <pre class="blade"><code>{{ __(&#39;Create message&#39;) }}</code></pre>
 <p>выведет «Создать сообщение», если локаль сайта равна <code>ru</code>.</p></li>
 <li><p>Откройте каталог <code>resources/lang</code> и создайте копию каталога <code>en</code>, назвав её <code>ru</code>.</p></li>
-<li><p>В файле <code>resources/lang/ru/validation.php</code> хранятся сообщения об ошибках заполнения форм. Переведите на русский язык сообщения, расположенные в этом файле справа от стрелки <code class="php">=&gt;</code>. Конечно, можно перевести только те сообщения, которые задействованы Вашими валидаторами. Например, если в файле <code>app/Http/Requests/StoreMessageRequest.php</code> упомянуто только правило <code>required</code>, то и в <code>resources/lang/ru/validation.php</code> нужно исправить только одну строку:</p></li>
-</ol>
+<li><p>В файле <code>resources/lang/ru/validation.php</code> хранятся сообщения об ошибках заполнения форм. Переведите на русский язык сообщения, расположенные в этом файле справа от стрелки <code class="php">=&gt;</code>. Конечно, можно перевести только те сообщения, которые задействованы Вашими валидаторами. Например, если в файле <code>app/Http/Requests/StoreMessageRequest.php</code> упомянуто только правило <code>required</code>, то и в <code>resources/lang/ru/validation.php</code> нужно исправить только одну строку:</p>
 <pre class="json"><code>&#39;required&#39; =&gt; &#39;The :attribute field is required.&#39;,</code></pre>
 <pre class="json"><code>&#39;required&#39; =&gt; &#39;Поле :attribute обязательно для заполнения.&#39;,</code></pre>
-<ol>
-<li>В файле <code>config/app.php</code> переключите локаль сайта на русскую, заменив</li>
-</ol>
+</li>
+<li>В файле <code>config/app.php</code> переключите локаль сайта на русскую, заменив
+
 <pre class="php"><code>&#39;locale&#39; =&gt; &#39;en&#39;,</code></pre>
 <p>на</p>
 <pre class="php"><code>&#39;locale&#39; =&gt; &#39;ru&#39;,</code></pre>
-<ol>
-<li>В консоли вывести перечень маршрутов:</li>
-</ol>
+</li>
+<li>В консоли вывести перечень маршрутов:
+
 <pre class="bash"><code>php artisan route:list</code></pre>
-<ol>
+</li>
 <li><p>Посредством браузера последовательно посетить все страницы, веб­‑адреса которых оканчиваются на <code>/create/</code>, <code>/edit/</code>, <code>/remove/</code>, и проверить их разметку через <a href="https://validator.w3.org/#validate_by_input" class="uri">https://validator.w3.org/#validate_by_input</a>. Разметку можно скопировать, нажав <kbd lang="en">⎈ ⁠Ctrl</kbd> ⁠+ ⁠<kbd lang="en">U</kbd> в окне браузера.</p></li>
 <li><p>Повторите предыдущий шаг для страниц, на которых выводятся сообщения об ошибках, допущенных пользователями при заполнении форм.</p></li>
 <li><p>Исправьте ошибки в разметке, если таковые имеются.</p></li>
