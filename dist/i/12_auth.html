@@ -250,8 +250,8 @@ php artisan ui:auth</code></pre>
 <p>Вы должны увидеть как минимум формы регистрации и аутентификации пользователей ⁠— испытайте их, <strong>перейдя по гиперссылке: </register/> и зарегистрировав нового пользователя</strong>.</p>
 <p>Шаблоны, которые создал <i lang="en">Artisan</i>, свёрстаны с использованием оформительской библиотеки <i lang="en">Bootstrap</i>, что упрощает разработку. Вместе с тем, в шаблонах нет констант для интернационализации ⁠— впоследствии придётся исправить этот недостаток, а затем выполнить перевод пользовательского интерфейса как минимум на русский язык.</p>
 <p>В целом же, подсистема аутентификации готова к эксплуатации.</p>
-<p><strong>Важное замечание.</strong> Теперь из объекта класса <code class="php">Request</code> или его подкласса можно вызвать метод <code>user()</code>, который вернёт объект аутентифицированного пользователя. Теперь мы наконец­‑то сможем указать значение внешнего ключа в таблице <code class="sql">messages</code>!</p>
-<p>Например, в методе <code>store()</code> контроллера <code>MessageController</code> было написано так:</p>
+<p><strong>Важное замечание.</strong> Теперь из объекта класса <code class="php">Request</code> или его подкласса можно вызвать метод <code class="php">user()</code>, который вернёт объект аутентифицированного пользователя. Теперь мы наконец­‑то сможем указать значение внешнего ключа в таблице <code class="sql">messages</code>!</p>
+<p>Например, в методе <code class="php">store()</code> контроллера <code class="php">MessageController</code> было написано так:</p>
 <pre class="php"><code>// Извлекаем поля формы из запроса.
 $attributes = $request-&gt;only([&#39;title&#39;, &#39;content&#39;]);
 
@@ -265,6 +265,11 @@ $attributes[&#39;user_id&#39;] = $request-&gt;user()-&gt;id;
 
 // Сохраняем сообщение в БД.
 $message = Message::create($attributes);</code></pre>
+
+<p>Этот код сработает, если в классе <code class="php">Message</code> (файл <code>app/Message.php</code>) разрешено заполнение атрибута <code class="php">user_id</code>:</p>
+
+<pre class="php"><code>protected $fillable = ['user_id', 'title', 'content'];</code></pre>
+
 </section>
 <section class="level3">
 <h3>Авторизация</h3>
