@@ -376,7 +376,7 @@ class MessageTest extends TestCase
 }
 </code></pre></li>
 <li><p>Добавим код, необходимый для тестирования вставки данных в БД.</p>
-<pre class="php line-numbers" data-line="5-6,14,18,20-42"><code>&lt;?php
+<pre class="php line-numbers" data-line="5-6,13,16,20,22-47"><code>&lt;?php
 
 namespace Tests\Feature;
 
@@ -388,6 +388,8 @@ use Tests\TestCase;
 
 class MessageTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Тестирование вставки сообщения в таблицу БД.
      *
@@ -411,13 +413,16 @@ class MessageTest extends TestCase
         $message-&gt;content = &#39;Содержание сообщения.&#39;;
         // Указываем автора.
         $message-&gt;user_id = $user-&gt;id;
+
+        $original = $message->toArray();
+
         // Записываем в БД информацию о сообщении.
         $message-&gt;save();
 
         // assertDatabaseHas() проверяет таблицу на наличие указанных данных.
         // $message-&gt;getTable() возвращает имя таблицы БД ⁠— по умолчанию messages.
         // $message-&gt;toArray() возвращает массив атрибутов и их значений.
-        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $message-&gt;toArray());
+        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $original);
     }
 }
 </code></pre></li>
