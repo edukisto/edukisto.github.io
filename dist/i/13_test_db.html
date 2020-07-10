@@ -546,14 +546,19 @@ class MessageTest extends TestCase
     public function testInsertingIntoDatabase()
     {
         // Метод factory() возвращает фабрику объектов класса Message.
-        // Метод create() создаёт соответствующий кортеж в БД.
+        // Метод make() создаёт объект класса Message.
         // Ссылка на объект записывается в переменную $message.
-        $message = factory(Message::class)-&gt;create();
+        $message = factory(Message::class)-&gt;make();
+
+        // $message-&gt;toArray() возвращает массив значений свойств.
+        $original = $message-&gt;toArray();
+
+        // Создаём кортеж в БД.
+        $message-&gt;save();
 
         // assertDatabaseHas() проверяет таблицу на наличие указанных данных.
         // $message-&gt;getTable() возвращает имя таблицы БД ⁠— messages.
-        // $message-&gt;toArray() возвращает массив значений свойств.
-        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $message-&gt;toArray());
+        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $original);
     }
 }
 </code></pre></li>
@@ -569,7 +574,7 @@ OK (3 tests, 3 assertions)</code></pre></li>
 <pre class="sql"><code>SELECT * FROM users;
 SELECT * FROM messages;</code></pre></li>
 <li><p>Добавьте в набор тестов контрольные варианты для тестирования методов изменения и удаления кортежей:</p>
-<pre class="php line-numbers" data-line="36-70"><code>&lt;?php
+<pre class="php line-numbers" data-line="41-80"><code><?php
 
 namespace Tests\Feature;
 
@@ -585,7 +590,7 @@ class MessageTest extends TestCase
      * Trait, отменяющий изменения в БД
      * после выполнения каждого тестового варианта.
      */
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * Тестирование вставки сообщения в таблицу БД.
@@ -595,30 +600,40 @@ class MessageTest extends TestCase
     public function testInsertingIntoDatabase()
     {
         // Метод factory() возвращает фабрику объектов класса Message.
-        // Метод create() создаёт соответствующий кортеж в БД.
+        // Метод make() создаёт объект класса Message.
         // Ссылка на объект записывается в переменную $message.
-        $message = factory(Message::class)-&gt;create();
+        $message = factory(Message::class)-&gt;make();
+
+        // $message-&gt;toArray() возвращает массив значений свойств.
+        $original = $message-&gt;toArray();
+
+        // Создаём кортеж в БД.
+        $message-&gt;save();
 
         // assertDatabaseHas() проверяет таблицу на наличие указанных данных.
         // $message-&gt;getTable() возвращает имя таблицы БД ⁠— messages.
-        // $message-&gt;toArray() возвращает массив значений свойств.
-        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $message-&gt;toArray());
+        $this-&gt;assertDatabaseHas($message-&gt;getTable(), $original);
     }
 
     /**
-     * Тест изменения кортежа в таблице БД.
+     * Тест изменения кортежа в таблице БД.
      *
      * @return void
      */
     public function testUpdatingInDB()
     {
-        // Создаём объект в ОЗУ и кортеж в БД.
+        // Создаём объект в ОЗУ и кортеж в БД.
         $old_message = factory(Message::class)-&gt;create();
-        // Создаём ещё один объект, но только в ОЗУ.
+        // Создаём ещё один объект, но только в ОЗУ.
         $new_message = factory(Message::class)-&gt;make();
+
+        // Ассоциируем новое сообщение со старым автором.
+        $new_message-&gt;user()-&gt;associate($old_message-&gt;user-&gt;id);
+
         // Обновляем кортеж данными из второго объекта.
         $old_message-&gt;update($new_message-&gt;toArray());
-        // Проверяем, обновлён ли кортеж.
+
+        // Проверяем, обновлён ли кортеж.
         $this-&gt;assertDatabaseHas(
             $old_message-&gt;getTable(),
             $new_message-&gt;toArray()
@@ -632,11 +647,11 @@ class MessageTest extends TestCase
      */
     public function testDeletingFromDB()
     {
-        // Создаём объект в ОЗУ и кортеж в БД.
+        // Создаём объект в ОЗУ и кортеж в БД.
         $message = factory(Message::class)-&gt;create();
         // Удаляем кортеж.
         $message-&gt;delete();
-        // Проверяем, удалён ли кортеж.
+        // Проверяем, удалён ли кортеж.
         $this-&gt;assertDatabaseMissing($message-&gt;getTable(), $message-&gt;toArray());
     }
 }
