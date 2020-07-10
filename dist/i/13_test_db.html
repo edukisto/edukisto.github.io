@@ -520,10 +520,11 @@ $factory-&gt;define(Message::class, function (Faker $faker) {
 <h4>Упрощение и пополнение набора тестов для класса <code class="php">App\Message</code></h4>
 <ol>
 <li><p>Приведём исходный код в файле <code>tests/Feature/MessageTest.php</code> к следующему виду:</p>
-<pre class="php line-numbers" data-line="5,12-17,25-28"><code>&lt;?php
+<pre class="php line-numbers" data-line="5-6,13-18,26-29"><code>&lt;?php
 
 namespace Tests\Feature;
 
+use App\Message;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
