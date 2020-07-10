@@ -481,7 +481,7 @@ $factory-&gt;define(User::class, function (Faker $faker) {
 <p><strong>Создадим фабрику для модели <code class="php">Message</code></strong>. Название фабрики обязательно должно оканчиваться на слово <code class="php">Factory</code>.</p>
 <pre class="bash"><code>php artisan make:factory --model=Message -- MessageFactory</code></pre>
 <p>Возможно, создание фабрики завершится ошибкой и выводом сообщения: <i lang="en">Factory already exists!</i> Ничего страшного! Это сообщение означает, что фабрику Вы создали ранее.</p>
-<p><strong>Откроем файл <code>database/factories/UserFactory.php</code> на редактирование.</strong></p>
+<p><strong>Откроем файл <code>database/factories/MessageFactory.php</code> на редактирование.</strong></p>
 <pre class="php line-numbers uncopyable"><code>&lt;?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
@@ -535,7 +535,7 @@ class MessageTest extends TestCase
      * Trait, отменяющий изменения в БД
      * после выполнения каждого тестового варианта.
      */
-    //use RefreshDatabase;
+    use RefreshDatabase;
 
     /**
      * Тестирование вставки сообщения в таблицу БД.
@@ -568,10 +568,11 @@ OK (3 tests, 3 assertions)</code></pre></li>
 <pre class="sql"><code>SELECT * FROM users;
 SELECT * FROM messages;</code></pre></li>
 <li><p>Добавьте в набор тестов контрольные варианты для тестирования методов изменения и удаления кортежей:</p>
-<pre class="php line-numbers" data-line="35-69"><code>&lt;?php
+<pre class="php line-numbers" data-line="36-70"><code>&lt;?php
 
 namespace Tests\Feature;
 
+use App\Message;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
