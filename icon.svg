@@ -16,7 +16,7 @@
   <style type="text/css">
 #arc {
   stroke: #3578e5;
-  stroke-width: .02;
+  stroke-width: 0.02;
 }
 
 #hand,
@@ -25,7 +25,7 @@
 #p,
 #t {
   stroke: #fff;
-  stroke-width: .5;
+  stroke-width: 0.5;
 }
 
 #hand {
@@ -36,7 +36,7 @@ text {
   font-family: serif;
   font-size: 8.4px;
   stroke: #fff;
-  stroke-width: .1;
+  stroke-width: 0.1;
 }
   </style>
   <defs>
