@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  fill="none"
+  height="1160"
+  stroke="none"
+  stroke-width="0"
+  version="1.1"
+  viewBox="0 0 116 116"
+  width="1160"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <title>МПТ</title>
+  <style type="text/css">
+#arc {
+  stroke: #3578e5;
+  stroke-width: 0.02;
+}
+
+#hand,
+#head,
+#m,
+#p,
+#t {
+  stroke: #fff;
+  stroke-width: 0.5;
+}
+
+#hand {
+  stroke-width: 2;
+}
+
+text {
+  font-family: serif;
+  font-size: 8.4px;
+  stroke: #fff;
+  stroke-width: 0.1;
+}
+  </style>
+  <defs>
+    <path
+      d="
+        M0 -3
+        l2 -1
+        h5
+        a1 1 0 0 1 -1 1
+        h4
+        a.5 .5 0 0 1 0 1.5
+        h1
+        a.75 .75 0 0 1 0 1.5
+        h-1
+        a.75 .75 0 0 1 0 1.5
+        h-1
+        a.75 .75 0 0 1 0 1.5
+        h-6
+        l-3 -1
+        z
+      "
+      id="hand"
+    />
+    <path
+      d="
+        M-10.5 0
+        l7.5 -7.5
+        l3 3
+        l3 -3
+        l7.5 7.5
+        z
+      "
+      id="m"
+    />
+    <path
+      d="
+        M-8 0
+        h16
+        v12.5
+        h-4
+        V4
+        h-8
+        v8.5
+        h-4
+        z
+      "
+      id="p"
+    />
+    <path
+      d="
+        M-9 0
+        h18
+        v2
+        h-7
+        v8.5
+        h-4
+        v-8.5
+        h-7
+        z
+      "
+      id="t"
+    />
+  </defs>
+  <g
+    fill="#3578e5"
+    transform="translate(58 58)"
+  >
+    <use
+      transform="translate(0 -14) scale(4)"
+      xlink:href="#m"
+    />
+    <use
+      transform="translate(0 -17) scale(4)"
+      xlink:href="#p"
+    />
+    <use
+      transform="translate(0 2) scale(4)"
+      xlink:href="#t"
+    />
+    <use
+      transform="translate(-38 6) scale(-1 1)"
+      xlink:href="#hand"
+    />
+    <use
+      transform="translate(38 6) scale(1 1)"
+      xlink:href="#hand"
+    />
+    <circle
+      id="head"
+      r="2"
+      transform="translate(0 -6) scale(4)"
+    />
+    <path
+      d="
+        M-1 0
+        a1 1 0 0 1 2 0
+      "
+      fill="none"
+      id="arc"
+      transform="scale(52)"
+    />
+    <text>
+      <textPath
+        startOffset="0"
+        xlink:href="#arc"
+      >
+        Московский приборостроительный техникум
+      </textPath>
+    </text>
+  </g>
+</svg>
