@@ -2,6 +2,8 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
   fill="none"
   height="1160"
   stroke="none"
@@ -9,8 +11,6 @@
   version="1.1"
   viewBox="0 0 116 116"
   width="1160"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
 >
   <title>МПТ</title>
   <style type="text/css">
@@ -105,24 +105,24 @@ text {
     transform="translate(58 58)"
   >
     <use
-      transform="translate(0 -14) scale(4)"
       xlink:href="#m"
+      transform="translate(0 -14) scale(4)"
     />
     <use
-      transform="translate(0 -17) scale(4)"
       xlink:href="#p"
+      transform="translate(0 -17) scale(4)"
     />
     <use
-      transform="translate(0 2) scale(4)"
       xlink:href="#t"
+      transform="translate(0 2) scale(4)"
     />
     <use
+      xlink:href="#hand"
       transform="translate(-38 6) scale(-1 1)"
-      xlink:href="#hand"
     />
     <use
-      transform="translate(38 6) scale(1 1)"
       xlink:href="#hand"
+      transform="translate(38 6) scale(1 1)"
     />
     <circle
       id="head"
@@ -140,8 +140,8 @@ text {
     />
     <text>
       <textPath
-        startOffset="0"
         xlink:href="#arc"
+        startOffset="0"
       >
         Московский приборостроительный техникум
       </textPath>
