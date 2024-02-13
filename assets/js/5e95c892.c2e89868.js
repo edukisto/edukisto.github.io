@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_edukisto_tlm=self.webpackChunk_edukisto_tlm||[]).push([[304],{1524:function(e,r,s){s.r(r),s.d(r,{default:function(){return l}});s(1504);var t=s(5456),u=s(8920),c=s(5808),n=s(5464),a=s(444),i=s(7624);function l(e){return(0,i.jsx)(u.cr,{className:(0,t.c)(c.W.wrapper.docsPages),children:(0,i.jsx)(a.c,{children:(0,n.k)(e.route.routes)})})}}}]);
