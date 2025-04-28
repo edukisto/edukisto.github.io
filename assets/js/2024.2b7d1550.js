@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_edukisto_tlm=self.webpackChunk_edukisto_tlm||[]).push([[2024],{2024:function(e,t,u){u.d(t,{createArchitectureServices:function(){return c.S}});var c=u(8815);u(3579)}}]);
