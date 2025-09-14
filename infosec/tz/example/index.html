@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ru-luna1918" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-infosec/tz/example" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Пример выполнения задания | Караваев С. В.</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="robots" content="noindex, nofollow"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://edukisto.github.io/infosec/tz/example/"><meta data-rh="true" property="og:locale" content="ru_luna1918"><meta data-rh="true" name="docusaurus_locale" content="ru-luna1918"><meta data-rh="true" name="docsearch:language" content="ru-luna1918"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Пример выполнения задания | Караваев С. В."><meta data-rh="true" name="description" content="Требования к порядку создания, развития, ввода в эксплуатацию, эксплуатации и вывода из эксплуатации государственных ИС утверждает Правительство России  (п. 6 ст. 14 ФЗ‑149). В настоящее время действуют требования, утверждённые постановлением от 06.07.2015 № 676. Они, в свою очередь и в частности, требуют (см. ст. 1(1)) выполнения"><meta data-rh="true" property="og:description" content="Требования к порядку создания, развития, ввода в эксплуатацию, эксплуатации и вывода из эксплуатации государственных ИС утверждает Правительство России  (п. 6 ст. 14 ФЗ‑149). В настоящее время действуют требования, утверждённые постановлением от 06.07.2015 № 676. Они, в свою очередь и в частности, требуют (см. ст. 1(1)) выполнения"><link data-rh="true" rel="icon" href="/favicon.ico"><link data-rh="true" rel="canonical" href="https://edukisto.github.io/infosec/tz/example/"><link data-rh="true" rel="alternate" href="https://edukisto.github.io/infosec/tz/example/" hreflang="ru-luna1918"><link data-rh="true" rel="alternate" href="https://edukisto.github.io/infosec/tz/example/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"10.02.05. МДК 01.04","item":"https://edukisto.github.io/infosec/"},{"@type":"ListItem","position":2,"name":"Работа № 1","item":"https://edukisto.github.io/infosec/tz/"},{"@type":"ListItem","position":3,"name":"Пример выполнения задания","item":"https://edukisto.github.io/infosec/tz/example"}]}</script><link href="/icon.svg" rel="icon" type="image/svg+xml">
+<link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/brands.min.css" integrity="sha256-4QQlrXaLyY/x+ycqCshCD50boi8GEsCP8QEMlQgP/n4=">
+<link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c="><link rel="stylesheet" href="/assets/css/styles.607048fd.css">
+<script src="/assets/js/runtime~main.7ac88b6a.js" defer="defer"></script>
+<script src="/assets/js/main.c97d7d4f.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/icon.svg"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/icon.svg" alt="Эмблема МПТ" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/icon.svg" alt="Эмблема МПТ" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Московский приборостроительный техникум</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/">Главная страница</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/infosec/">10.02.05. МДК 01.04</a><button aria-label="Collapse sidebar category &#x27;10.02.05. МДК 01.04&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/infosec/wares/">АО и ПО</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/infosec/tz/">Работа № 1</a><button aria-label="Collapse sidebar category &#x27;Работа № 1&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/infosec/tz/purpose/">Цель работы</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/infosec/tz/task/">Задание</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/infosec/tz/theory/">Теоретические сведения</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/infosec/tz/example/">Пример выполнения задания</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/webdev/">09.02.07‑ВД. МДК 09.01</a><button aria-label="Expand sidebar category &#x27;09.02.07‑ВД. МДК 09.01&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Главная страница" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/infosec/"><span>10.02.05. МДК 01.04</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/infosec/tz/"><span>Работа № 1</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Пример выполнения задания</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Пример выполнения задания</h1></header>
+<p>Требования к порядку создания, развития, ввода в эксплуатацию, эксплуатации и вывода из эксплуатации государственных ИС утверждает Правительство России  (п. 6 ст. 14 ФЗ‑149). В настоящее время действуют <a href="https://www.consultant.ru/document/cons_doc_LAW_182413/904c36e7365759fd27de9957ebf40b0a09c91a5c/#dst100010" target="_blank" rel="noopener noreferrer">требования</a>, утверждённые постановлением от 06.07.2015 № 676. Они, в свою очередь и в частности, требуют (см. ст. 1(1)) выполнения</p>
+<p>1) требований ФСБ России и ФСТЭК России о защите информации;</p>
+<!-- -->
+<p>2) при наличии в ИС персональных данных (далее — ПД) — требований к их защите, которые предусмотрены ч. 3 ст. 19 ФЗ‑152 (речь об <a href="http://pravo.gov.ru/proxy/ips/?docbody=&amp;nd=102160483" target="_blank" rel="noopener noreferrer">уровнях защищённости ПД</a>, которые установлены постановлением Правительства России от 01.11.2012 № 1119).</p>
+<p>Порядок создания и эксплуатации ИС, не являющихся государственными или муниципальными, определяется оператором ИС в соответствии с ФЗ‑149 (п. 6 ст. 13 ФЗ‑149). <strong>Будем считать, что это именно так.</strong></p>
+<!-- -->
+<p><a href="https://drive.google.com/file/d/1-7lShOEKjaQqV8YHAw14QF_TH_wAeimo/view" target="_blank" rel="noopener noreferrer">Пример оформления ТЗ</a>.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="структура-тз">Структура ТЗ<a href="#структура-тз" class="hash-link" aria-label="Прямая ссылка на Структура ТЗ" title="Прямая ссылка на Структура ТЗ">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ненумеруемый-раздел-введение">Ненумеруемый раздел «Введение»<a href="#ненумеруемый-раздел-введение" class="hash-link" aria-label="Прямая ссылка на Ненумеруемый раздел «Введение»" title="Прямая ссылка на Ненумеруемый раздел «Введение»">​</a></h3>
+<p>Во введении называют и кратко характеризуют объект и область применения программного продукта. Примеры объектов применения: здание, сооружение, транспортное средство, техническое устройство. Примеры областей применения: торговля, электронная коммерция, культура, образование, охрана правопорядка, производство пищевых продуктов, добыча полезных ископаемых.</p>
+<p>Во введение можно обосновать (доказать) актуальность разработки программного продукта. В этом случае во введении отмечают те недостатки производственного процесса в организации, которые будут устранены благодаря внедрению программного продукта.</p>
+<p>Рекомендуемый объём раздела — 1 страница.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел1-основания-для-разработки">Раздел 1. Основания для разработки<a href="#раздел1-основания-для-разработки" class="hash-link" aria-label="Прямая ссылка на Раздел 1. Основания для разработки" title="Прямая ссылка на Раздел 1. Основания для разработки">​</a></h3>
+<p>В первом нумеруемом разделе «Основания для разработки» указывают</p>
+<ul>
+<li>документ (его наименование, дата утверждения, номер, должность утвердившего лица, наименование организации) или документы, на основании которых ведётся разработка;</li>
+<li>условное обозначение темы разработки.</li>
+</ul>
+<blockquote>
+<p>Основанием для разработки служит <span>учебный план программы подготовки специалистов среднего звена по специальности 09.02.07 «Информационные системы и программирование» в соответствии с квалификацией специалиста среднего звена «администратор баз данных»</span>, утверждённый проректором РЭУ им. Г. В. Плеханова 24 февраля 2022 г.</p>
+</blockquote>
+<p>или</p>
+<blockquote>
+<p>Разработка ведётся на основании приказа директора ООО «Ёжик» от 31.12.2022 № 1 «Об автоматизации учёта».</p>
+</blockquote>
+<p>В этот раздел безусловно следует добавить ссылки на следующие документы:</p>
+<ul>
+<li>федеральный закон «Об информации, информационных технологиях и о защите информации» от 27.07.2006 № 149‑ФЗ;</li>
+<li>постановление Правительства России от 06.07.2015 № 676 (ред. от 18.03.2025) «О требованиях к порядку создания, развития, ввода в эксплуатацию, эксплуатации и вывода из эксплуатации государственных информационных систем и дальнейшего хранения содержащейся в их базах данных информации».</li>
+</ul>
+<p>Если в разрабатываемой ИС есть ПД, то следует добавить также ссылки на следующие документы:</p>
+<ul>
+<li>федеральный закон «О персональных данных» от 27.07.2006 № 152‑ФЗ;</li>
+<li>постановление Правительства России от 01.11.2012 № 1119 «Об утверждении требований к защите персональных данных при их обработке в информационных системах персональных данных»;</li>
+<li><a href="https://fstec.ru/files/234/----18--2013--N-21/262/----18--2013--N-21.pdf" target="_blank" rel="noopener noreferrer">приказ ФСТЭК России от 18.02.2013 № 21 (ред. от 14.05.2020)</a> «Об утверждении Состава и содержания организационных и технических мер по обеспечению безопасности персональных данных при их обработке в информационных системах персональных данных».</li>
+<li>методический документ «<a href="https://fstec.ru/dokumenty/vse-dokumenty/spetsialnye-normativnye-dokumenty/metodicheskij-dokument-ot-5-fevralya-2021-g" target="_blank" rel="noopener noreferrer">Методика оценки угроз безопасности информации</a>», утверждённый ФСТЭК России 05.02.2021;</li>
+<li>методический документ «<a href="https://fstec.ru/dokumenty/vse-dokumenty/spetsialnye-normativnye-dokumenty/metodicheskij-dokument-ot-11-fevralya-2014-g" target="_blank" rel="noopener noreferrer">Меры защиты информации в государственных информационных системах</a>», утверждённый ФСТЭК России 11.02.2014.</li>
+</ul>
+<p><strong><a href="https://fstec.ru/dokumenty-filter" target="_blank" rel="noopener noreferrer">Самостоятельно найдите</a> и добавьте ссылку на методический документ, касающийся безопасной настройки операционных систем на базе ядра <i lang="en">Linux</i></strong>.</p>
+<!-- -->
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел2-назначение-разработки">Раздел 2. Назначение разработки<a href="#раздел2-назначение-разработки" class="hash-link" aria-label="Прямая ссылка на Раздел 2. Назначение разработки" title="Прямая ссылка на Раздел 2. Назначение разработки">​</a></h3>
+<p>В разделе «Назначение разработки» указывают функциональное и эксплуатационное назначение программного продукта.</p>
+<p>При описании <strong>функционального назначения</strong> <span>указывают классы решаемых задач</span> и <span>сведения о функциональных ограничениях на применение</span> (<a href="https://protect.gost.ru/document.aspx?control=7&amp;id=156496" target="_blank" rel="noopener noreferrer">ГОСТ 19.402‑78</a>). Пример:</p>
+<blockquote>
+<p>Функциональное назначение программы состоит в автоматизации учёта товаров.</p>
+</blockquote>
+<p>При описании <strong>эксплуатационного назначения</strong> указывают <span>ограничения, накладываемые на область применения программы</span> (<a href="https://protect.gost.ru/document.aspx?control=7&amp;id=155684" target="_blank" rel="noopener noreferrer">ГОСТ 19.502‑78</a>), в т. ч. место эксплуатации. Пример:</p>
+<blockquote>
+<p>Эксплуатационное назначение программы — склад фармацевтической организации.</p>
+</blockquote>
+<p><strong>Пример 1</strong>. Пусть в разработке находятся две программы с общим функциональным назначением — обучение чтению, при этом эксплуатационное назначение одной программы состоит</p>
+<blockquote>
+<p>в дошкольном и начальном школьном образовании детей в возрасте от 4 до 7 лет,</p>
+</blockquote>
+<p>а другой —</p>
+<blockquote>
+<p>в коррекция дислексии (<span>неспособности к чтению</span>) у <span>пациентов, перенёсших инсульт</span>.</p>
+</blockquote>
+<p>Очевидно, что профили специалистов, привлекаемых к разработке этих программ, будут различаться.</p>
+<p><strong>Пример 2</strong>. Пусть в разработке находятся две программы с общим функциональным назначением — <span>моделирование движения воздушного судна</span>, при этом эксплуатационное назначение первой программы — это</p>
+<blockquote>
+<p>развлекательная видеоигра для детей от 7 лет,</p>
+</blockquote>
+<p>а второй —</p>
+<blockquote>
+<p>тренажёр <span>для освоения лётным составом в наземных условиях образцов авиационной техники, повышения квалификации, исследований, подготовки к полётам и тренировки</span>.</p>
+</blockquote>
+<!-- -->
+<p>Здесь эксплуатационное назначение определяет некоторые функциональные аспекты авиационного симулятора: физика и управление упрощены в первом случае и приближены к реальным во втором случае. Кроме того, ошибки во второй программе с гораздо большей вероятностью могут причинить вред здоровью или повлечь человеческие жертвы.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел3-требования-кпрограмме-или-программному-изделию">Раздел 3. Требования к программе или программному изделию<a href="#раздел3-требования-кпрограмме-или-программному-изделию" class="hash-link" aria-label="Прямая ссылка на Раздел 3. Требования к программе или программному изделию" title="Прямая ссылка на Раздел 3. Требования к программе или программному изделию">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел31-требования-кфункциональным-характеристикам">Подраздел 3.1. Требования к функциональным характеристикам<a href="#подраздел31-требования-кфункциональным-характеристикам" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.1. Требования к функциональным характеристикам" title="Прямая ссылка на Подраздел 3.1. Требования к функциональным характеристикам">​</a></h4>
+<p>В подразделе «Требования к функциональным характеристикам» должны быть указаны требования к составу выполняемых функций, организации входных и выходных данных, временным характеристикам и т. п. [ГОСТ 19.201‑78].</p>
+<p>Требование, специфицирующее (определяющее) функцию, которую должна выполнять система или компонент системы, называют функциональным (англ. <i lang="en">functional requirement</i>) [<sup><a href="#user-content-fn-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017" id="user-content-fnref-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017" data-footnote-ref="true" aria-describedby="footnote-label">1</a></sup>]. Функциональные требования следует <span>выражать в форме утверждений</span> (возможно, с глаголами «должен», «должна» или «должно»). Примеры:</p>
+<ul>
+<li>«Корзина должна рассчитать предварительную стоимость заказа»;</li>
+<li>«На карте должен быть построен маршрут»;</li>
+<li>«Оператор должен иметь возможность управлять записями о товарах».</li>
+</ul>
+<!-- -->
+<p>Функциональные характеристики должны быть определены с точки зрения практического использования, а не внешнего вида, структуры и т. п.</p>
+<p>Жаргонный синоним функциональной характеристики — «фи́ча» (от англ. <i lang="en">feature</i>) [<sup><a href="#user-content-fn-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017" id="user-content-fnref-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017-2" data-footnote-ref="true" aria-describedby="footnote-label">1</a></sup>].</p>
+<p>Входные и выходные данные целесообразно представить в табличной форме.</p>
+<table><thead><tr><th>Наименование</th><th>Тип данных</th><th>Допустимые значения</th></tr></thead><tbody><tr><td>Имя пользователя</td><td>Строковый</td><td><code>/^(?!\d)[\da-z]{4,31}$/</code></td></tr><tr><td>Оценка</td><td>Натуральный</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>1</mn><mo separator="true">;</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1; 5]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord">5</span><span class="mclose">]</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi mathvariant="normal">∣</mi><mn>1</mn><mo>⩽</mo><mi>n</mi><mo>⩽</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">{n \vert 1 \leqslant n \leqslant 5}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord"><span class="mord mathnormal">n</span><span class="mord">∣1</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel amsrm">⩽</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">5</span></span></span></span></span></td></tr><tr><td>Температура, ° C</td><td>Действительный</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>273</mn><mo separator="true">,</mo><mn>15</mn><mo separator="true">;</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[-273,15; \infin)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">273</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord">15</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord">∞</span><span class="mclose">)</span></span></span></span></td></tr><tr><td>Флажок</td><td>Булев</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">{</mo><mtext>ложь</mtext><mo separator="true">;</mo><mtext>истина</mtext><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{ложь; истина\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">{</span><span class="mord cyrillic_fallback">ложь</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord cyrillic_fallback">истина</span><span class="mclose">}</span></span></span></span></td></tr><tr><td>Число студентов</td><td>Целый неотрицательный</td><td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">;</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[0; \infin)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord">∞</span><span class="mclose">)</span></span></span></span></td></tr></tbody></table>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел32-требования-кнадёжности">Подраздел 3.2. Требования к надёжности<a href="#подраздел32-требования-кнадёжности" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.2. Требования к надёжности" title="Прямая ссылка на Подраздел 3.2. Требования к надёжности">​</a></h4>
+<p>Требования сводятся к трём основным понятиям <span>безопасности информации</span>: доступность, конфиденциальность, целостность.</p>
+<p>Основные требования:</p>
+<ul>
+<li>к доступности — обеспечение устойчивого функционирования (в идеале — в режиме 24/7/365; рассмотреть применение коммерческих <i lang="en">VDS</i> или <i lang="en">VPS</i>; резервное копирование), <strong>время восстановления после отказа</strong> (см. п. 53 <a href="https://minjust.consultant.ru/files/55701" target="_blank" rel="noopener noreferrer">приказа ФСТЭК России от 11.04.2025 № 117</a>);</li>
+<li>к целостности — контроль входной и выходной информации.</li>
+</ul>
+<p>В случае разработки веб­‑сайта следует потребовать применения <code>https</code> для обеспечения конфиденциальности (посредством шифрования трафика и аутентификации сервера по сертификату) и целостности информации, передаваемой через вычислительную сеть.</p>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Класс защищённости ИС</div><div class="admonitionContent_BuS1"><p>В ТЗ включают <span>требование к классу защищённости ИС</span>, который согласно приложению к <a href="https://minjust.consultant.ru/files/55701" target="_blank" rel="noopener noreferrer">приказу ФСТЭК России от 11.04.2025 № 117</a> определяют следующим образом.</p><ol>
+<li>
+<p>От имени заказчика определяем <strong>степень возможного ущерба</strong> от нарушения каждого из трёх свойств безопасности информации: доступности, конфиденциальности и целостности. Степень определяется как</p>
+<ul>
+<li><strong>высокая</strong>, если оператор не сможет выполнить ни одну из своих функций;</li>
+<li><strong>средняя</strong>, если оператор не может выполнить хотя бы одну из своих функций;</li>
+<li><strong>низкая</strong>, если выполнение функций возможно, но неэффективно.</li>
+</ul>
+<p>Оформим результат в виде таблицы и внесём её в ТЗ.</p>
+<table><thead><tr><th>Свойство</th><th>Степень возможного ущерба</th><th>Обоснование</th></tr></thead><tbody><tr><td>Доступность</td><td></td><td></td></tr><tr><td>Конфиденциальность</td><td></td><td></td></tr><tr><td>Целостность</td><td></td><td></td></tr></tbody></table>
+<p>Учтём, что многие торговые предприятия (<a href="https://www.sberbank.com/ru/s_m_business/pro_business/kak-rabotat-legalno-bez-onlajn-kass" target="_blank" rel="noopener noreferrer">но не все</a>) не смогут осуществлять свою деятельность на законных основаниях, если утрачена возможность формировать кассовые чеки (уничтожена БД товаров, блокирована онлайн­‑касса и т. п.).</p>
+</li>
+<li>
+<p>Определяем <strong>уровень значимости (УЗ)</strong> информации:</p>
+<ul>
+<li>УЗ 1 — хотя бы для одного свойства определена высокая степень ущерба;</li>
+<li>УЗ 2 — хотя бы для одного свойства определена средняя степень ущерба и ни для одного свойства не определена высокая степень ущерба;</li>
+<li>УЗ 3 — для всех свойств определена низкая степень ущерба.</li>
+</ul>
+<p>Укажем УЗ в ТЗ и обоснуем выбор.</p>
+<p>Примечание. В отношении информации ограниченного распространения или для служебного пользования всегда устанавливают УЗ 1.</p>
+</li>
+<li>
+<p>Определяем <strong>масштаб ИС</strong>:</p>
+<ul>
+<li>федеральный, если ИС работает на территории всей России или 2 и более её субъектов;</li>
+<li>региональный, если ИС в пределах одного субъекта федерации (например, Москвы);</li>
+<li>объе́ктовый, если ИС в пределах одного государственного органа, муниципального образования, организации (независимо от числа объектов, зданий и т. п.).ы</li>
+</ul>
+</li>
+<li>
+<p>По таблице определяем класс защищённости ИС.</p>
+<div><!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">Уровень значимости информации</th>
+        <th colspan="3">Масштаб информационной системы</th>
+      </tr>
+      <tr>
+        <th>Федеральный</th>
+        <th>Региональный</th>
+        <th>Объектовый</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>УЗ 1</td>
+        <td>К1</td>
+        <td>К1</td>
+        <td>К1</td>
+      </tr>
+      <tr>
+        <td>УЗ 2</td>
+        <td>К1</td>
+        <td>К2</td>
+        <td>К2</td>
+      </tr>
+      <tr>
+        <td>УЗ 3</td>
+        <td>К2</td>
+        <td>К3</td>
+        <td>К3</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
+</div>
+<p>Обратим внимание, что раньше классов было четыре. Самый низкий, К4, ныне исключён, хотя продолжает упоминаться в некоторых ранее утверждённых методических документах.</p>
+</li>
+<li>
+<p>Изучаем приложение 2 (страница 159) к методическому документу «<a href="https://fstec.ru/dokumenty/vse-dokumenty/spetsialnye-normativnye-dokumenty/metodicheskij-dokument-ot-11-fevralya-2014-g" target="_blank" rel="noopener noreferrer">Меры защиты информации в государственных информационных системах</a>», утверждённому ФСТЭК России 11.02.2014, и указываем в ТЗ условные обозначения и наименования мер, которые соответствут классу защищённости ИС (отмечены знаком «плюс»; на стоящие рядом с ним цифры и буквы пока не обращаем внимания).</p>
+<p>Например, мера ИАФ.2 касается только ИС, отнесённых к классам защищённости К1 и К2, тогда как мера ИАФ.5 касается ИС всех классов защищённости.</p>
+</li>
+</ol></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Уровни защищённости персональных данных</div><div class="admonitionContent_BuS1"><ol>
+<li>
+<p>Вспомним категории персональных данных (далее — ПД) согласно федеральному закону № 152‑ФЗ «О персональных данных»:</p>
+<ul>
+<li>ПД из общедоступных источников (телефонных справочников, адресных книг, энциклопедий, досок почёта), в которые они включены с письменного согласия субъекта. Социальные сети не считаются общедоступными источниками;</li>
+<li>специальные категории ПД, касающиеся расовой, национальной принадлежности, политических взглядов, религиозных или философских убеждений, состояния здоровья, интимной жизни;</li>
+<li>биометрические ПД (описывают физиологические и биологические особенности человека, на основании которых можно установить его личность);</li>
+<li>иные ПД.</li>
+</ul>
+</li>
+<li>
+<p>Изучим типы угроз безопасности ПД, определённые в <a href="http://pravo.gov.ru/proxy/ips/?docbody=&amp;nd=102160483" target="_blank" rel="noopener noreferrer">постановлении Правительства России от 01.11.2012 № 1119</a>:</p>
+<ul>
+<li>угрозы 1‑го типа связаны с уязвимостями в системном ПО ИС (в операционной системе, драйверах и т. п.);</li>
+<li>угрозы 2‑го типа связаны с уязвимостями в прикладном ПО ИС (в веб­‑браузере, СУБД, трансляторе, текстовом редакторе, сценариях и т. п.);</li>
+<li>угрозы 3‑го типа не связан с уязвимостями в системном или прикладном ПО ИС.</li>
+</ul>
+<p><strong>Будем считать угрозы 1‑го типа неактуальными для нашей ИС.</strong></p>
+</li>
+<li>
+<p>Определим по таблице уровень защищённости ПД. Таблица соответствует положению № 1119.</p>
+<figure><p><img decoding="async" loading="lazy" src="/assets/images/1119-daa734a551a9d3d6a8945f2818db5f9c.png" width="1777" height="673" class="img_ev3q"></p></figure>
+</li>
+<li>
+<p>Внесём в ТЗ уровень защищённости ПД и подробное обоснование его выбора.</p>
+</li>
+<li>
+<p>Внесём в ТЗ требования для обеспечения уровня защищённости ПД (см. пункты 13–⁠16 постановления).</p>
+</li>
+</ol></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел33-условия-эксплуатации">Подраздел 3.3. Условия эксплуатации<a href="#подраздел33-условия-эксплуатации" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.3. Условия эксплуатации" title="Прямая ссылка на Подраздел 3.3. Условия эксплуатации">​</a></h4>
+<p>Виды обслуживания программы, необходимое количество и квалификация персонала.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел34-требования-ксоставу-ипараметрам-технических-средств">Подраздел 3.4. Требования к составу и параметрам технических средств<a href="#подраздел34-требования-ксоставу-ипараметрам-технических-средств" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.4. Требования к составу и параметрам технических средств" title="Прямая ссылка на Подраздел 3.4. Требования к составу и параметрам технических средств">​</a></h4>
+<p>В этом подразделе рекомендуется привести минимальные и рекомендуемые требования к <strong>аппаратному</strong> обеспечению, необходимому для разработки и эксплуатации программы.</p>
+<p>При заполнении таблиц следует найти в Интернете системные требования для программных продуктов, которые необходимы для разработки и эксплуатации программы. Такие сведения доступны для многих программных продуктов:</p>
+<ul>
+<li><a href="https://www.mysql.com/support/supportedplatforms/database.html" target="_blank" rel="noopener noreferrer">MySQL</a>,</li>
+<li><a href="https://www.php.net/manual/ru/install.windows.requirements.php" target="_blank" rel="noopener noreferrer">PHP</a>,</li>
+<li><a href="https://code.visualstudio.com/docs/supporting/requirements" target="_blank" rel="noopener noreferrer">Visual Studio</a>,</li>
+<li><a href="https://learn.microsoft.com/en-us/windows/whats-new/windows-11-requirements#hardware-requirements" target="_blank" rel="noopener noreferrer">Windows 11</a>.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел35-требования-кинформационной-ипрограммной-совместимости">Подраздел 3.5. Требования к информационной и программной совместимости<a href="#подраздел35-требования-кинформационной-ипрограммной-совместимости" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.5. Требования к информационной и программной совместимости" title="Прямая ссылка на Подраздел 3.5. Требования к информационной и программной совместимости">​</a></h4>
+<p>В этом подразделе <span>указывают требования к информационным структурам на входе и выходе (<i lang="en">HTML</i>, <i lang="en">JSON</i>) и методам решения, исходным кодам, языкам программирования и программным средствам, используемым программой</span>.</p>
+<p>Рекомендуется привести <a href="/infosec/wares/">таблицы</a>, которые содержат требования к <strong>программному</strong> обеспечению, необходимому для разработки и эксплуатации программы.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел36-требования-кмаркировке-иупаковке">Подраздел 3.6. Требования к маркировке и упаковке<a href="#подраздел36-требования-кмаркировке-иупаковке" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.6. Требования к маркировке и упаковке" title="Прямая ссылка на Подраздел 3.6. Требования к маркировке и упаковке">​</a></h4>
+<blockquote>
+<p>Упаковка программного продукта не предусмотрена.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="подраздел37-требования-ктранспортированию-ихранению">Подраздел 3.7. Требования к транспортированию и хранению<a href="#подраздел37-требования-ктранспортированию-ихранению" class="hash-link" aria-label="Прямая ссылка на Подраздел 3.7. Требования к транспортированию и хранению" title="Прямая ссылка на Подраздел 3.7. Требования к транспортированию и хранению">​</a></h4>
+<p>В этом подразделе <span>указывают условия транспортирования, места, условия и сроки хранения программного продукта в различных условиях</span>.</p>
+<p>Написать о хостинге репозиториев (<i lang="en">GitHub</i>, <i lang="en">GitLab</i>, <i lang="en">Bitbucket</i>) о непрерывных интеграции и доставке (<i lang="en">CI/⁠CD</i>).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел4-требования-кпрограммной-документации">Раздел 4. Требования к программной документации<a href="#раздел4-требования-кпрограммной-документации" class="hash-link" aria-label="Прямая ссылка на Раздел 4. Требования к программной документации" title="Прямая ссылка на Раздел 4. Требования к программной документации">​</a></h3>
+<p>В этом разделе <span>указывают предварительный состав программной документации и, при необходимости, специальные требования к ней</span>.</p>
+<blockquote>
+<p>Предварительный состав программной документации:</p>
+<ul>
+<li>техническое задание,</li>
+<li>пояснительная записка,</li>
+<li>руководство программиста,</li>
+<li>руководство оператора,</li>
+<li>текст программы.</li>
+</ul>
+<p>Программные документы должны быть составлены в соответствии с Единой системой программной документации (ЕСПД):</p>
+<ul>
+<li>техническое задание — по <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=155153" target="_blank" rel="noopener noreferrer">ГОСТ 19.201‑78</a>;</li>
+<li>пояснительная записка — по <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=153335" target="_blank" rel="noopener noreferrer">ГОСТ 19.404‑79</a>;</li>
+<li>руководство программиста — по <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=153799" target="_blank" rel="noopener noreferrer">ГОСТ 19.504‑79</a>;</li>
+<li>руководство оператора — по <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=153854" target="_blank" rel="noopener noreferrer">ГОСТ 19.505‑79</a>;</li>
+<li>текст программы — по <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=155463" target="_blank" rel="noopener noreferrer">ГОСТ 19.401‑78</a>.</li>
+</ul>
+<p>Программные документы должны быть оформлены в соответствии с ГОСТ 19.106‑78.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел5-техникоэкономические-показатели">Раздел 5. Технико­‑экономические показатели<a href="#раздел5-техникоэкономические-показатели" class="hash-link" aria-label="Прямая ссылка на Раздел 5. Технико­‑экономические показатели" title="Прямая ссылка на Раздел 5. Технико­‑экономические показатели">​</a></h3>
+<blockquote>
+<p>Технико­‑экономические показатели не рассчитывались.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел6-стадии-иэтапы-разработки">Раздел 6. Стадии и этапы разработки<a href="#раздел6-стадии-иэтапы-разработки" class="hash-link" aria-label="Прямая ссылка на Раздел 6. Стадии и этапы разработки" title="Прямая ссылка на Раздел 6. Стадии и этапы разработки">​</a></h3>
+<p>Перенесите в этот раздел таблицу из <a href="https://protect.gost.ru/document.aspx?control=7&amp;id=158091" target="_blank" rel="noopener noreferrer">ГОСТ 19.102‑77</a>. Из <a href="https://files.stroyinf.ru/Data/250/25005.pdf" target="_blank" rel="noopener noreferrer">этого</a> файла текст можно копировать.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="раздел7-порядок-контроля-иприёмки">Раздел 7. Порядок контроля и приёмки<a href="#раздел7-порядок-контроля-иприёмки" class="hash-link" aria-label="Прямая ссылка на Раздел 7. Порядок контроля и приёмки" title="Прямая ссылка на Раздел 7. Порядок контроля и приёмки">​</a></h3>
+<p>В этом разделе <span>указывают виды испытаний и общие требования к приёмке работы</span>. Рекомендуемый объём при выполнении лабораторной работы — 1–⁠2 страницы.</p>
+<!-- -->
+<p>Необходимо ознакомиться с пунктами 65–⁠67 <a href="https://minjust.consultant.ru/files/55701" target="_blank" rel="noopener noreferrer">приказа ФСТЭК России от 11.04.2025 № 117</a> и <a href="https://files.stroyinf.ru/Data2/1/4294848/4294848908.pdf" target="_blank" rel="noopener noreferrer">ГОСТ 34.603‑92</a> и указать в этом разделе</p>
+<ul>
+<li>на какой стадии разработки, где (на объекте исполнителя или заказчика) и с какой целью положено проводить испытания АС;</li>
+<li>какие три основных вида испытаний установлены для АС;</li>
+<li>кем и какой документ должен быть разработан в соответствии с <a href="https://files.stroyinf.ru/Data/146/14688.pdf" target="_blank" rel="noopener noreferrer">ГОСТ 19.301‑79</a> для проведения испытаний;</li>
+<li>что включает в себя каждый вид испытаний (ориентироваться на приказ ФСТЭК России).</li>
+</ul>
+<p><strong>В нашем случае аттестация необязательна, но контроль уровня защищённости информация необходим.</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="оформление-тз">Оформление ТЗ<a href="#оформление-тз" class="hash-link" aria-label="Прямая ссылка на Оформление ТЗ" title="Прямая ссылка на Оформление ТЗ">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="стили">Стили<a href="#стили" class="hash-link" aria-label="Прямая ссылка на Стили" title="Прямая ссылка на Стили">​</a></h3>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP fa-brands fa-windows tabs__item--active">Microsoft Word 2016 и выше</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><h4 class="anchor anchorWithStickyNavbar_LWe7" id="базовый-стиль">Базовый стиль<a href="#базовый-стиль" class="hash-link" aria-label="Прямая ссылка на Базовый стиль" title="Прямая ссылка на Базовый стиль">​</a></h4><ol>
+<li>
+<p>На вкладке «Главная» нажмите на кнопку вызова окна «Стили» (<kbd>⎇ Alt</kbd> + <kbd>⎈ Ctrl</kbd> + <kbd>⇧ Shift</kbd> + <kbd>S</kbd>)</p>
+<figure><p><img decoding="async" loading="lazy" src="data:image/webp;base64,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" width="509" height="622" class="img_ev3q"></p><figcaption><p>Окно «Стили» и кнопка его вызова</p></figcaption></figure>
+</li>
+<li>
+<p>В окне «Стили» нажмите на кнопку «Создать стиль».</p>
+<p>Будет открыто модальное окно «Создание стиля».</p>
+</li>
+<li>
+<p>В модальном окне «Создание стиля» измените настройки согласно таблице:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Имя</td><td>ЕСПД. Базовый</td></tr><tr><td>Основан на стиле</td><td>(нет)</td></tr><tr><td>Стиль следующего абзаца</td><td>ЕСПД. Базовый</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Шрифт...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Шрифт»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Шрифт</td><td><i lang="en">Times New Roman</i></td></tr><tr><td>Размер</td><td>14</td></tr></tbody></table>
+<figure><p><img decoding="async" loading="lazy" src="/assets/images/font-35b2511c9493fb539c5083b66596c4c5.webp" width="489" height="516" class="img_ev3q"></p><figcaption><p>Окно «Шрифт»</p></figcaption></figure>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Абзац...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Отступы и интервалы»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Интервал. После</td><td>0</td></tr><tr><td>Интервал междустрочный</td><td>1,5 строки</td></tr></tbody></table>
+<figure><p><img decoding="async" loading="lazy" src="/assets/images/paragraph-411b45f6ba7a03b9ed0d548e733a54d3.webp" width="504" height="551" class="img_ev3q"></p><figcaption><p>Окно «Абзац»</p></figcaption></figure>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку <i lang="en">OK</i>.</p>
+</li>
+</ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="абзац">Абзац<a href="#абзац" class="hash-link" aria-label="Прямая ссылка на Абзац" title="Прямая ссылка на Абзац">​</a></h4><ol>
+<li>
+<p>В окне «Стили» нажмите на кнопку «Создать стиль».</p>
+</li>
+<li>
+<p>В модальном окне «Создание стиля» измените настройки согласно таблице:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Имя</td><td>ЕСПД. Абзац</td></tr><tr><td>Основан на стиле</td><td>ЕСПД. Базовый</td></tr><tr><td>Стиль следующего абзаца</td><td>ЕСПД. Абзац</td></tr></tbody></table>
+<p>Таким образом Вы создадите стиль «ЕСПД. Абзац», который наследует настройки стиля «ЕСПД. Базовый».</p>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Абзац...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Отступы и интервалы»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Отступ. Первая строка</td><td>Отступ</td></tr><tr><td>Отступ. На</td><td>1,25 см</td></tr></tbody></table>
+<p>Значение взято из ГОСТ Р 7.0.97‑2016.</p>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку выравнивания текста по ширине.</p>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку <i lang="en">OK</i>.</p>
+</li>
+<li>
+<p>Поставьте курсор на абзац, который хотите преобразовать в абзац основного текста, и выберите пункт «ЕСПД. Абзац» в окне «Стили».</p>
+</li>
+</ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="заголовок-базовый">Заголовок базовый<a href="#заголовок-базовый" class="hash-link" aria-label="Прямая ссылка на Заголовок базовый" title="Прямая ссылка на Заголовок базовый">​</a></h4><ol>
+<li>
+<p>В окне «Стили» нажмите на кнопку «Создать стиль».</p>
+</li>
+<li>
+<p>В модальном окне «Создание стиля» измените настройки согласно таблице:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Имя</td><td>ЕСПД. Заголовок базовый</td></tr><tr><td>Основан на стиле</td><td>ЕСПД. Базовый</td></tr><tr><td>Стиль следующего абзаца</td><td>ЕСПД. Абзац</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Шрифт...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Шрифт»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Начертание</td><td>Полужирный</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Абзац...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Положение на странице»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Разбивка на страницы. Не отрывать от следующего</td><td>☑</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку <i lang="en">OK</i>.</p>
+</li>
+</ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="заголовок-раздела">Заголовок раздела<a href="#заголовок-раздела" class="hash-link" aria-label="Прямая ссылка на Заголовок раздела" title="Прямая ссылка на Заголовок раздела">​</a></h4><ol>
+<li>
+<p>В окне «Стили» нажмите на кнопку «Создать стиль».</p>
+</li>
+<li>
+<p>В модальном окне «Создание стиля» измените настройки согласно таблице:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Имя</td><td>ЕСПД. Заголовок раздела</td></tr><tr><td>Основан на стиле</td><td>ЕСПД. Заголовок базовый</td></tr><tr><td>Стиль следующего абзаца</td><td>ЕСПД. Абзац</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Шрифт...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Шрифт»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Видоизменение</td><td>Все прописные</td></tr></tbody></table>
+</li>
+</ol><ol start="4">
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Абзац...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<!-- -->
+<p>На вкладке «Положение на странице»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Разбивка на страницы. С новой страницы</td><td>☑</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку выравнивания текста по центру.</p>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку <i lang="en">OK</i>.</p>
+</li>
+<li>
+<p>Поставьте курсор на абзац, который хотите преобразовать в заголовок раздела, и выберите пункт «ЕСПД. Заголовок раздела» в окне «Стили».</p>
+</li>
+<li>
+<p>Если выбранный заголовок раздела нумеруемый, то не убирая курсор с абзаца, на вкладке «Главная» нажмите на кнопку «Многоуровневый список» и на панели выберите вариант с арабскими цифрами и точками (1, 1.1, 1.1.1...).</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Внимание!</div><div class="admonitionContent_BuS1"><p>Если Вы впервые нумеруете заголовок раздела, выберите указанный вариант из блока «Библиотеки списков».</p><p>Если Вы нумеруете один из предыдущих или последующих заголовков раздела, выберите этот же вариант из блока «Списки в текущих документах».</p></div></div>
+</li>
+<li>
+<p>Повторите два предыдущих шага для всех заголовков раздела.</p>
+</li>
+<li>
+<p>Нажатием правой кнопки мыши на любом нумеруемом заголовке раздела вызовите контекстное меню и выберите пункт «Изменить отступы в списке...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Отступ текста</td><td>0</td></tr><tr><td>Символ после номера</td><td>Пробел</td></tr></tbody></table>
+<!-- -->
+</li>
+</ol><h4 class="anchor anchorWithStickyNavbar_LWe7" id="заголовок-подраздела">Заголовок подраздела<a href="#заголовок-подраздела" class="hash-link" aria-label="Прямая ссылка на Заголовок подраздела" title="Прямая ссылка на Заголовок подраздела">​</a></h4><ol>
+<li>
+<p>В окне «Стили» нажмите на кнопку «Создать стиль».</p>
+</li>
+<li>
+<p>В модальном окне «Создание стиля» измените настройки согласно таблице:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Имя</td><td>ЕСПД. Заголовок подраздела</td></tr><tr><td>Основан на стиле</td><td>ЕСПД. Заголовок базовый</td></tr><tr><td>Стиль следующего абзаца</td><td>ЕСПД. Абзац</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку «Формат» и выберите пункт «Абзац...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<p>На вкладке «Отступы и интервалы»:</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Отступ. Первая строка</td><td>Отступ</td></tr><tr><td>Отступ. На</td><td>1,25 см</td></tr></tbody></table>
+</li>
+<li>
+<p>В окне «Создание стиля» нажмите на кнопку <i lang="en">OK</i>.</p>
+</li>
+<li>
+<p>Поставьте курсор на абзац, который хотите преобразовать в заголовок подраздела, и выберите пункт «ЕСПД. Заголовок подраздела» в окне «Стили».</p>
+</li>
+<li>
+<p>Не убирая курсор с абзаца, на вкладке «Главная» нажмите на кнопку «Многоуровневый список» и на панели выберите вариант с арабскими цифрами и точками (1, 1.1, 1.1.1...) <strong>из блока «Списки в текущих документах»</strong>.</p>
+</li>
+<li>
+<p>Не убирая курсор с абзаца, на вкладке «Главная» нажмите на кнопку «Многоуровневый список» и, нажав на «Изменить уровень списка», выберите пункт «1.1».</p>
+</li>
+<li>
+<p>Если нумерация задана неправильно, то нажатием правой кнопки мыши на заголовке подраздела вызовите контекстное меню и выберите пункт «Продолжить нумерацию».</p>
+</li>
+<li>
+<p>Нажатием правой кнопки мыши на любом заголовке подраздела вызовите контекстное меню и выберите пункт «Изменить отступы в списке...». Должно быть открыто одноимённое модальное окно. В нём измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Выравнивание номера на</td><td>1,25 см</td></tr><tr><td>Отступ текста</td><td>0</td></tr><tr><td>Символ после номера</td><td>Пробел</td></tr></tbody></table>
+</li>
+</ol></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="поля">Поля<a href="#поля" class="hash-link" aria-label="Прямая ссылка на Поля" title="Прямая ссылка на Поля">​</a></h3>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP fa-brands fa-windows tabs__item--active">Microsoft Word 2016 и выше</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ol>
+<li>
+<p>Нажмите «Макет ⏵ Поля ⏵ Настраиваемые поля».</p>
+</li>
+<li>
+<p>В модальном окне «Параметры страницы» измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Верхнее</td><td>2,5 см</td></tr><tr><td>Нижнее</td><td>1,5 см</td></tr><tr><td>Левое</td><td>2 см</td></tr><tr><td>Правое</td><td>1 см</td></tr></tbody></table>
+</li>
+</ol></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="номера-страниц">Номера страниц<a href="#номера-страниц" class="hash-link" aria-label="Прямая ссылка на Номера страниц" title="Прямая ссылка на Номера страниц">​</a></h3>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP fa-brands fa-windows tabs__item--active">Microsoft Word 2016 и выше</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><ol>
+<li>
+<p>Нажмите «Правка ⏵ Номер страницы ⏵ Вверху страницы ⏵ Простой номер 2».</p>
+</li>
+<li>
+<p>В окне стили вызовите контекстное меню на стиле «Верхний колонтитул» и выберите пункт «Изменить...».</p>
+</li>
+<li>
+<p>В модальном окне «Изменение стиля» измените настройки согласно таблице и нажмите на кнопку <i lang="en">OK</i>.</p>
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Основан на стиле</td><td>ЕСПД. Базовый</td></tr></tbody></table>
+</li>
+<li>
+<p>Нажмите «Вставка ⏵ Верхний колонтитул ⏵ Изменить верхний колонтитул». Будет открыта панель «Конструктор».</p>
+</li>
+<li>
+<p>На панели «Конструктор» установите галочку «Особый колонтитул для первой страницы», чтобы не отображать номер на первой страницы.</p>
+</li>
+<li>
+<p>На панели «Конструктор» установите такое значение поля «От верхнего края до верхнего колонтитула», чтобы содержимое оказалось посередине по вертикали. При кегле 14 и полуторном межстрочном интервале это значение должно составлять приблизительно 0,7572 см.</p>
+</li>
+</ol></div></div></div>
+<!-- -->
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="список-источников">Список источников<a href="#список-источников" class="hash-link" aria-label="Прямая ссылка на Список источников" title="Прямая ссылка на Список источников">​</a></h2>
+<!-- -->
+<section data-footnotes="true" class="footnotes"><h2 class="anchor anchorWithStickyNavbar_LWe7 sr-only" id="footnote-label">Список источников<a href="#footnote-label" class="hash-link" aria-label="Прямая ссылка на Список источников" title="Прямая ссылка на Список источников">​</a></h2>
+<ol>
+<li id="user-content-fn-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017">
+<p><i lang="en">ISO/⁠IEC/⁠IEEE 24765:2017. Systems and software engineering. Vocabulary</i> [Электронный ресурс]. <i lang="en">2nd ed.</i> Взамен <i lang="en">IEEE Std 610.12‑1990</i>. Сведения доступны также через Интернет: <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/c071952_ISO_IEC_IEEE_24765_2017.zip" target="_blank" rel="noopener noreferrer">https://standards.iso.org/ittf/PubliclyAvailableStandards/c071952_ISO_IEC_IEEE_24765_2017.zip</a>. <a href="#user-content-fnref-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017" data-footnote-backref="" aria-label="Вернуться к отсылке" class="data-footnote-backref">↩</a> <a href="#user-content-fnref-iso/%E2%81%A0iec/%E2%81%A0ieee%C2%A024765:2017-2" data-footnote-backref="" aria-label="Вернуться к отсылке" class="data-footnote-backref">↩<sup>2</sup></a></p>
+</li>
+</ol>
+</section></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/infosec/tz/theory/"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Теоретические сведения</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/webdev/"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">09.02.07‑ВД. МДК 09.01</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#структура-тз" class="table-of-contents__link toc-highlight">Структура ТЗ</a><ul><li><a href="#ненумеруемый-раздел-введение" class="table-of-contents__link toc-highlight">Ненумеруемый раздел «Введение»</a></li><li><a href="#раздел1-основания-для-разработки" class="table-of-contents__link toc-highlight">Раздел 1. Основания для разработки</a></li><li><a href="#раздел2-назначение-разработки" class="table-of-contents__link toc-highlight">Раздел 2. Назначение разработки</a></li><li><a href="#раздел3-требования-кпрограмме-или-программному-изделию" class="table-of-contents__link toc-highlight">Раздел 3. Требования к программе или программному изделию</a></li><li><a href="#раздел4-требования-кпрограммной-документации" class="table-of-contents__link toc-highlight">Раздел 4. Требования к программной документации</a></li><li><a href="#раздел5-техникоэкономические-показатели" class="table-of-contents__link toc-highlight">Раздел 5. Технико­‑экономические показатели</a></li><li><a href="#раздел6-стадии-иэтапы-разработки" class="table-of-contents__link toc-highlight">Раздел 6. Стадии и этапы разработки</a></li><li><a href="#раздел7-порядок-контроля-иприёмки" class="table-of-contents__link toc-highlight">Раздел 7. Порядок контроля и приёмки</a></li></ul></li><li><a href="#оформление-тз" class="table-of-contents__link toc-highlight">Оформление ТЗ</a><ul><li><a href="#стили" class="table-of-contents__link toc-highlight">Стили</a></li><li><a href="#поля" class="table-of-contents__link toc-highlight">Поля</a></li><li><a href="#номера-страниц" class="table-of-contents__link toc-highlight">Номера страниц</a></li></ul></li><li><a href="#список-источников" class="table-of-contents__link toc-highlight">Список источников</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Автор</div><ul class="footer__items clean-list"><li class="footer__item"><a href="mailto:s.v.karavaev@mpt.ru" target="_blank" rel="noopener noreferrer" class="footer__link-item">s.v.karavaev@mpt.ru<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">© Караваев С. В., 2023–⁠2025</div></div></div></footer></div>
+</body>
+</html>
